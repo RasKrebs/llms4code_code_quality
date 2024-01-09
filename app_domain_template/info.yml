@@ -11,3 +11,9 @@ llm:
     - """Add here additional prompts used during data collection"""
   additional_info:
     - """Add here additional info used during data collection"""
+
+llm1:
+...
+
+llm_n:
+  data_collection_time: 
