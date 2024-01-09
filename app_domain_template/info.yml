@@ -1,0 +1,13 @@
+# Application domain info yaml, to store data used during data collection
+
+# General Application Domain Info
+application_domain: Application Domain 1
+prompt: """Add here the main prompt used during data collection"""
+
+# Model Specific 
+llm:
+  data_collection_time: 10
+  additional_prompts:
+    - """Add here additional prompts used during data collection"""
+  additional_info:
+    - """Add here additional info used during data collection"""
