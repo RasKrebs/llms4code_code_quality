@@ -1,0 +1,57 @@
+### General Application Domain Info
+domain: Data Science
+application: Dimension Reduction
+algorithm: Principal Componenet Analysis (PCA)
+
+long_prompt: """
+Create a python class called PrincipalComponentAnalysis that implements the Principal Component Analysis algorithm from scratch.  During initalization the class should take two arguments:
+* n_components, if not specified it should default to all. 
+* decomposition_method, which should be either 'eigen' or 'svd'. If not specified it should default to 'eigen'. Add a fit method that takes one input, X, that is either a numpy array, pandas dataframe or a list of lists as input. The fit method  should compute the eigen values and eigen vectors (components) for the inputted data, and stores them on the object. If n_components is specified the fit method should store only top n_components eigen values and eigen vectors. In the fit, the method should also compute the explained variance ratio, and cumulative sum of explained variance ratio for each component and store it on the object. Also add a transform method that takes one input, X, that is either a numpy array, pandas dataframe or a list of lists as input. The transform method should project the inputted data onto the components and return the projected data. The transform method should also take an optional argument, n_components, that specifies the number of components to project onto. If n_components is not specified it should default to all. The last method to add is a fit_transform method that takes one input, X, that is either a numpy array, pandas dataframe or a list of lists as input. Like transform, this method should also take an optional n_components, specifying n_components, 
+otherwise use all. The fit_transform method should call the fit method and then the transform method. 
+
+Make sure to add documentation to the class and methods in the form of docstrings and comments. Also make sure to add type hints to the methods.
+"""
+
+med_prompt: """
+Create a python class called PrincipalComponentAnalysis that implements the Principal Component Analysis algorithm from scratch. It should have three methods, fit, transform and fit_transform. Two arguments should be able to be passed, first is n_components which specifies the number of components to use. If n_components is not specified it should default to all. Second is decomposition_method, which should be either 'eigen' or 'svd'. If not specified it should default to 'eigen'.
+
+Make sure to add documentation to the class and methods in the form of docstrings and comments. Also make sure to add type hints to the methods.
+"""
+
+small_prompt: """
+Implement prinicpal component analysis from scratch, that can be used with either eigen decomposition and singular value decomposition. 
+"""
+
+# Model Specific 
+GPT-3.5:
+  data_collection_time: 01/10/2024
+  additional_prompts: # Add here additional prompts used during data collection
+  additional_info: # Add here additional info used during data collection
+  solutions:
+    - long_prompt_path: ../gpt_35_small.py
+    - med_prompt_path: ../gpt_35_med.py
+    - small_prompt_path: ../gpt_35_long.py
+  chat_threads:
+    - long_prompt_path: ../documentation/gpt35_long.pdf
+    - med_prompt_path: ../documentation/gpt35_med.pdf
+    - small_prompt_path: ../documentation/gpt35_small.pdf
+
+GPT-4:
+  data_collection_time: 01/10/2024
+  additional_prompts: # Add here additional prompts used during data collection
+  additional_info: # Add here additional info used during data collection
+  solutions:
+    - long_prompt_path:
+    - med_prompt_path: 
+    - small_prompt_path: 
+  chat_threads:
+    - long_prompt_path: ../documentation/gpt_4_long.pdf
+    - med_prompt_path: ../documentation/gpt_4_med.pdf
+    - small_prompt_path: ../documentation/gpt_4_small.pdf
+
+llm_n:
+  data_collection_time: # Add here data collection time mm/dd/yyyy
+  chat_thread: # Add here chat thread
+  additional_prompts: # Add here additional prompts used during data collection
+  additional_info: # Add here additional info used during data collection
+    - prompt_used: # Add here prompt used
