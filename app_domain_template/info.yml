@@ -1,19 +1,13 @@
 # Application domain info yaml, to store data used during data collection
 
 # General Application Domain Info
-application_domain: Application Domain 1
+application: Application
 prompt: """Add here the main prompt used during data collection"""
 
 # Model Specific 
-llm:
-  data_collection_time: 10
-  additional_prompts:
-    - """Add here additional prompts used during data collection"""
-  additional_info:
-    - """Add here additional info used during data collection"""
-
-llm1:
-...
-
 llm_n:
-  data_collection_time: 
+  data_collection_time: # Add here data collection time mm/dd/yyyy
+  chat_thread: # Add here chat thread
+  additional_prompts: # Add here additional prompts used during data collection
+  additional_info: # Add here additional info used during data collection
+    - prompt_used: # Add here prompt used
