@@ -1,0 +1,42 @@
+cc
+solution.py
+    M 38:4 PrincipalComponentAnalysis.fit - B
+    C 7:0 PrincipalComponentAnalysis - A
+    M 98:4 PrincipalComponentAnalysis.transform - A
+    M 8:4 PrincipalComponentAnalysis.__init__ - A
+    M 119:4 PrincipalComponentAnalysis.fit_transform - A
+
+5 blocks (classes, functions, methods) analyzed.
+Average complexity: A (3.4)
+
+raw
+solution.py
+    LOC: 135
+    LLOC: 57
+    SLOC: 52
+    Comments: 14
+    Single comments: 13
+    Multi: 44
+    Blank: 26
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 27%
+        (C + M % L): 43%
+
+Halstead
+solution.py:
+    h1: 10
+    h2: 31
+    N1: 17
+    N2: 34
+    vocabulary: 41
+    length: 51
+    calculated_length: 186.7993665708668
+    volume: 273.23515223552226
+    difficulty: 5.483870967741935
+    effort: 1498.3863187109284
+    time: 83.24368437282936
+    bugs: 0.09107838407850742
+
+Maintainability Indez
+solution.py - A (66.40)

@@ -1,0 +1,22 @@
+************* Module solution
+solution.py:43:0: C0303: Trailing whitespace (trailing-whitespace)
+solution.py:53:44: C0303: Trailing whitespace (trailing-whitespace)
+solution.py:55:38: C0303: Trailing whitespace (trailing-whitespace)
+solution.py:57:44: C0303: Trailing whitespace (trailing-whitespace)
+solution.py:59:13: C0303: Trailing whitespace (trailing-whitespace)
+solution.py:61:0: C0303: Trailing whitespace (trailing-whitespace)
+solution.py:65:0: C0303: Trailing whitespace (trailing-whitespace)
+solution.py:69:71: C0303: Trailing whitespace (trailing-whitespace)
+solution.py:74:0: C0303: Trailing whitespace (trailing-whitespace)
+solution.py:80:70: C0303: Trailing whitespace (trailing-whitespace)
+solution.py:83:96: C0303: Trailing whitespace (trailing-whitespace)
+solution.py:87:0: C0303: Trailing whitespace (trailing-whitespace)
+solution.py:91:0: C0303: Trailing whitespace (trailing-whitespace)
+solution.py:110:0: C0303: Trailing whitespace (trailing-whitespace)
+solution.py:114:0: C0303: Trailing whitespace (trailing-whitespace)
+solution.py:116:0: C0303: Trailing whitespace (trailing-whitespace)
+solution.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+
+------------------------------------------------------------------
+Your code has been rated at 6.38/10 (previous run: 6.38/10, +0.00)
+
