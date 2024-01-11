@@ -120,3 +120,20 @@ class PrincipalComponentAnalysis:
 # Example usage:
 # pca = PrincipalComponentAnalysis(n_components=2, decomposition_method='eigen')
 # transformed_data = pca.fit_transform(X)
+
+if __name__ == "__main__":
+    # Set random seed for reproducibility
+    np.random.seed(42)
+    
+    # Generate random data
+    X_random = np.random.rand(50000, 50)
+    
+    # Create PCA objects
+    eigen_pca = PrincipalComponentAnalysis(decomposition_method='eigen')
+    svd_pca = PrincipalComponentAnalysis(decomposition_method='svd')
+    
+    # Test the two methods
+    eigen_pca.fit_transform(X_random, n_components=2)
+    #eigen_pca.fit_transform(X_bodyfat, n_components=2)
+    svd_pca.fit_transform(X_random, n_components=2)
+    #svd_pca.fit_transform(X_bodyfat, n_components=2)
