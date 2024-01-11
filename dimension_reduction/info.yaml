@@ -12,7 +12,7 @@ otherwise use all. The fit_transform method should call the fit method and then 
 Make sure to add documentation to the class and methods in the form of docstrings and comments. Also make sure to add type hints to the methods.
 """
 
-med_prompt: """
+medium_prompt: """
 Create a python class called PrincipalComponentAnalysis that implements the Principal Component Analysis algorithm from scratch. It should have three methods, fit, transform and fit_transform. Two arguments should be able to be passed, first is n_components which specifies the number of components to use. If n_components is not specified it should default to all. Second is decomposition_method, which should be either 'eigen' or 'svd'. If not specified it should default to 'eigen'.
 
 Make sure to add documentation to the class and methods in the form of docstrings and comments. Also make sure to add type hints to the methods.
@@ -24,34 +24,43 @@ Implement prinicpal component analysis from scratch, that can be used with eithe
 
 # Model Specific 
 GPT-3.5:
+  path: ../gpt3.5/
+  version: gpt-3.5-turbo (Jan 2024)
   data_collection_time: 01/10/2024
   additional_prompts: # Add here additional prompts used during data collection
   additional_info: # Add here additional info used during data collection
-  solutions:
-    - long_prompt_path: ../gpt_35_small.py
-    - med_prompt_path: ../gpt_35_med.py
-    - small_prompt_path: ../gpt_35_long.py
-  chat_threads:
-    - long_prompt_path: ../documentation/gpt35_long.pdf
-    - med_prompt_path: ../documentation/gpt35_med.pdf
-    - small_prompt_path: ../documentation/gpt35_small.pdf
+  documentation: ../gpt3.5/documentation/
 
 GPT-4:
+  path: ../gpt4/
+  version: gpt-4-turbo (Jan 2024)
   data_collection_time: 01/10/2024
   additional_prompts: # Add here additional prompts used during data collection
   additional_info: # Add here additional info used during data collection
-  solutions:
-    - long_prompt_path:
-    - med_prompt_path: 
-    - small_prompt_path: 
-  chat_threads:
-    - long_prompt_path: ../documentation/gpt_4_long.pdf
-    - med_prompt_path: ../documentation/gpt_4_med.pdf
-    - small_prompt_path: ../documentation/gpt_4_small.pdf
+  documentation: ../gpt4/documentation/
 
-llm_n:
-  data_collection_time: # Add here data collection time mm/dd/yyyy
-  chat_thread: # Add here chat thread
+Codex:
+  path: ../codex/
+  version: Github Copilot (Jan 2024)
+  data_collection_time: 01/10/2024
   additional_prompts: # Add here additional prompts used during data collection
   additional_info: # Add here additional info used during data collection
-    - prompt_used: # Add here prompt used
+  documentation: ../codex/documentation/
+
+DeepSeeker-Coder:
+  path: ../DeepSeeker-Coder/
+  version: DeepSeek-Coder-33
+  data_collection_time: 01/10/2024
+  additional_prompts: # Add here additional prompts used during data collection
+  additional_info: Used DeepSeeker Coder, not the newly available DeepSeeker Chat
+  documentation: ../codex/documentation/
+
+Gemini:
+  path: ../DeepSeeker-Coder/
+  version: Gemini Pro (Accessed through Bard)
+  data_collection_time: 01/10/2024
+  additional_prompts: 
+    - The code is not complete
+    - It seems the response can't be done within the max token you have selected
+  additional_info: Gemini Pro was accessed through Bard. For the long prompt, a maximum token enforced by Bard limited the ability to produce a complete response. Two follow up prompts, described above was used for a more complete response.
+  documentation: ../codex/documentation/
