@@ -1,0 +1,87 @@
+long.py:14:80: E501 line too long (84 > 79 characters)
+long.py:16:80: E501 line too long (93 > 79 characters)
+long.py:33:80: E501 line too long (92 > 79 characters)
+long.py:35:80: E501 line too long (88 > 79 characters)
+long.py:39:80: E501 line too long (86 > 79 characters)
+long.py:43:20: N803 argument name 'X' should be lowercase
+long.py:58:14: N806 variable 'X' in function should be lowercase
+long.py:60:14: N806 variable 'X' in function should be lowercase
+long.py:63:14: N806 variable 'U' in function should be lowercase
+long.py:63:14: N806 variable 'S' in function should be lowercase
+long.py:63:14: N806 variable 'V' in function should be lowercase
+long.py:67:14: N806 variable 'U' in function should be lowercase
+long.py:67:14: N806 variable 'S' in function should be lowercase
+long.py:67:14: N806 variable 'V' in function should be lowercase
+long.py:67:80: E501 line too long (110 > 79 characters)
+long.py:71:80: E501 line too long (91 > 79 characters)
+long.py:76:30: N803 argument name 'X' should be lowercase
+long.py:76:80: E501 line too long (96 > 79 characters)
+long.py:85:80: E501 line too long (87 > 79 characters)
+long.py:95:26: N803 argument name 'X' should be lowercase
+long.py:95:80: E501 line too long (92 > 79 characters)
+long.py:104:80: E501 line too long (87 > 79 characters)
+long.py:112:14: N806 variable 'X' in function should be lowercase
+long.py:114:14: N806 variable 'X' in function should be lowercase
+long.py:120:20: F821 undefined name 'U'
+long.py:120:32: F821 undefined name 'S'
+long.py:122:80: E501 line too long (91 > 79 characters)
+long.py:126:80: E501 line too long (80 > 79 characters)
+long.py:127:70: W292 no newline at end of file
+medium.py:24:80: E501 line too long (80 > 79 characters)
+medium.py:33:20: N803 argument name 'X' should be lowercase
+medium.py:42:80: E501 line too long (81 > 79 characters)
+medium.py:45:26: F821 undefined name 'pd'
+medium.py:46:14: N806 variable 'X' in function should be lowercase
+medium.py:48:31: F821 undefined name 'np'
+medium.py:58:80: E501 line too long (90 > 79 characters)
+medium.py:60:26: N803 argument name 'X' should be lowercase
+medium.py:74:80: E501 line too long (80 > 79 characters)
+medium.py:80:26: F821 undefined name 'pd'
+medium.py:81:14: N806 variable 'X' in function should be lowercase
+medium.py:83:31: F821 undefined name 'np'
+medium.py:93:80: E501 line too long (90 > 79 characters)
+medium.py:95:30: N803 argument name 'X' should be lowercase
+medium.py:110:80: E501 line too long (81 > 79 characters)
+medium.py:116:27: N803 argument name 'X' should be lowercase
+medium.py:125:51: F821 undefined name 'np'
+medium.py:125:65: F821 undefined name 'np'
+medium.py:132:80: E501 line too long (80 > 79 characters)
+medium.py:133:68: F821 undefined name 'np'
+medium.py:133:80: E501 line too long (98 > 79 characters)
+medium.py:134:53: F821 undefined name 'np'
+medium.py:134:80: E501 line too long (93 > 79 characters)
+medium.py:136:25: N803 argument name 'X' should be lowercase
+medium.py:145:10: N806 variable 'U' in function should be lowercase
+medium.py:145:10: N806 variable 'S' in function should be lowercase
+medium.py:145:10: N806 variable 'Vt' in function should be lowercase
+medium.py:145:20: F821 undefined name 'np'
+medium.py:149:10: N806 variable 'S' in function should be lowercase
+medium.py:150:10: N806 variable 'U' in function should be lowercase
+medium.py:151:10: N806 variable 'Vt' in function should be lowercase
+medium.py:153:80: E501 line too long (80 > 79 characters)
+medium.py:154:51: F821 undefined name 'np'
+medium.py:155:53: F821 undefined name 'np'
+medium.py:155:80: E501 line too long (93 > 79 characters)
+medium.py:157:33: N803 argument name 'X' should be lowercase
+medium.py:159:80: E501 line too long (83 > 79 characters)
+medium.py:176:31: N803 argument name 'X' should be lowercase
+medium.py:212:24: W292 no newline at end of file
+small.py:3:1: E302 expected 2 blank lines, found 1
+small.py:3:35: N803 argument name 'X' should be lowercase
+small.py:11:80: E501 line too long (81 > 79 characters)
+small.py:14:6: N806 variable 'X_mean' in function should be lowercase
+small.py:15:6: N806 variable 'X' in function should be lowercase
+small.py:28:6: N806 variable 'transformed_X' in function should be lowercase
+small.py:32:1: E302 expected 2 blank lines, found 1
+small.py:32:44: N803 argument name 'X' should be lowercase
+small.py:40:80: E501 line too long (81 > 79 characters)
+small.py:43:6: N806 variable 'X_mean' in function should be lowercase
+small.py:44:6: N806 variable 'X' in function should be lowercase
+small.py:47:6: N806 variable 'U' in function should be lowercase
+small.py:47:6: N806 variable 'S' in function should be lowercase
+small.py:47:6: N806 variable 'Vt' in function should be lowercase
+small.py:51:6: N806 variable 'S' in function should be lowercase
+small.py:52:6: N806 variable 'U' in function should be lowercase
+small.py:53:6: N806 variable 'Vt' in function should be lowercase
+small.py:57:6: N806 variable 'transformed_X' in function should be lowercase
+small.py:59:25: W292 no newline at end of file

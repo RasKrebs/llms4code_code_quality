@@ -28,7 +28,10 @@ GPT-3.5:
   version: gpt-3.5-turbo (Jan 2024)
   data_collection_time: 01/10/2024
   additional_prompts: # Add here additional prompts used during data collection
-  additional_info: # Add here additional info used during data collection
+  additional_info: Below i've noted some observations
+    - Small prompt, resulted in two functions rather than a class
+    - Medium prompt, has bad type hinting - only takes nddarray
+    - Long prompt, has almost no type hinting
   documentation: ../GPT_35/documentation/
 
 GPT-4:
@@ -36,7 +39,10 @@ GPT-4:
   version: gpt-4-turbo (Jan 2024)
   data_collection_time: 01/10/2024
   additional_prompts: # Add here additional prompts used during data collection
-  additional_info: # Add here additional info used during data collection
+  additional_info: 
+    - Long prompt, returned really good type hinting
+    - Medium prompt, returned really decsent type hinting, but imported unused methods
+    - Small prompt, incuded data standardization 
   documentation: ../GPT4/documentation/
 
 Codex:
@@ -44,33 +50,42 @@ Codex:
   version: Github Copilot (Jan 2024)
   data_collection_time: 01/10/2024
   additional_prompts: # Add here additional prompts used during data collection
-  additional_info: # Add here additional info used during data collection
+  additional_info: Used it through Github Copilot
+    - Long prompt, relatively sparse docstrings, but descent enough type hinting. Only takes numpy, not pd and lists. Very few inline comments
+    - Medium prompt, better docstrings but not as good type hinting as long. Only takes numpy, not pd and lists. More inline comments. Imports Union, but doesn't use.
+    - Small prompt, code is implemented as class. No docstrings,  or type hinting. Similarly, no fit transform. Requires number of components to be specified.
   documentation: ../codex/documentation/
 
 DeepSeeker-Coder:
-  path: ../DeepSeeker-Coder/
-  version: DeepSeek-Coder-33
+  path: ../DeepSeeker-Coder/ 
+  version: DeepSeek-Coder-33 (Jan 2024)
   data_collection_time: 01/10/2024
   additional_prompts: # Add here additional prompts used during data collection
   additional_info: Used DeepSeeker Coder, not the newly available DeepSeeker Chat
+    - Long prompt, incuded quite good type hinting, but docstrings were quite sparse. Didn't conform to typical typestring standards
+    - Medium prompt, incuded semi good type hinting, but similarly docstrings were sparse. Though included parameters in the doc strings
+    - Small prompt, while not directly specified in the prompt, DeepSeeker accurately enclosed PCA in a class. No type hinting though, or any docstrings. Also no fit_transform
   documentation: ../codex/documentation/
 
 Gemini:
   path: ../Gemini/
   version: Gemini Pro (Accessed through Bard Jan 2024)
   data_collection_time: 01/10/2024
-  additional_prompts: 
-    - The code is not complete
-    - It seems the response can't be done within the max token you have selected
+  additional_prompts: Below, i've noted some observations
+    - For long prompt, the code came out in complete. It seems the response can't be done within the max token you have selected. Moreover, it references pandas but does not include import. Same for standard scaler
+    - For medium prompt, the an error in the code was encountered, where single quotation marks was used in one string, rather than single + double. See l. 37 in response.
+    - The small prompt, while it combines everything in one function, it doesn't enable the ability to specify number of components to return
   additional_info: Gemini Pro was accessed through Bard. For the long prompt, a maximum token enforced by Bard limited the ability to produce a complete response. Two follow up prompts, described above was used for a more complete response.
   documentation: ../codex/documentation/
 
 Tabnine:
   path: ../Tabnine/
-  version: Unknown
+  version: Unknown (Jan 2024)
   data_collection_time: 01/11/2024
   additional_prompts: # None
   additional_info: 
-    - The medium prompt answer did not import the necessary libraries, so these were added manually
+    - The medium prompt answer did not import the necessary libraries, so these were added manually. Other than that, it had good doc strings, but no type hinting. It had lots of 'private' methods and additional feautes + had implemented decorators 
+    - Long prompt, is quite good. Good long docstrings, and good type hinting. Added a repr method to class, which is nice. Many inline comments. Used scipy alt. for SVD
+    - Small prompt, did not make it possible to specify number of return components. Also not wrapped in class. No type hinting, but some descent docstring. Additionally, had an error around l. 29 with a wrong transpose.
     - Unlike other methods, Tabnine also added additional methods such as built in class-representation, __repr__, methdo
   documentation: ../codex/documentation/

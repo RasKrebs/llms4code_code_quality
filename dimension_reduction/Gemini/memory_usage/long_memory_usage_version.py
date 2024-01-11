@@ -1,5 +1,7 @@
+from memory_profiler import profile
 import numpy as np
 import pandas as pd
+from sklearn.preprocessing import StandardScaler
 
 class PrincipalComponentAnalysis:
     """
@@ -11,7 +13,7 @@ class PrincipalComponentAnalysis:
     decomposition_method: (str, optional)
         The decomposition method to use. Can be either 'eigen' or 'svd'. If not specified, defaults to 'eigen'.
     """
-
+    @profile
     def __init__(self, n_components=None, decomposition_method='eigen'):
         self.n_components = n_components
         self.decomposition_method = decomposition_method
@@ -23,7 +25,8 @@ class PrincipalComponentAnalysis:
         # Explained variance ratio and cumulative sum of explained variance ratio
         self.explained_variance_ratio = None
         self.cumulative_explained_variance_ratio = None
-
+    
+    @profile
     def fit(self, X):
         """
         Fits the PCA model to the data.
@@ -82,6 +85,7 @@ class PrincipalComponentAnalysis:
         self.explained_variance_ratio = explained_variance_ratio
         self.cumulative_explained_variance_ratio = cumulative_explained_variance_ratio
         
+    @profile
     def transform(self, X):
         """
         Projects the data onto the principal components.
@@ -112,3 +116,18 @@ class PrincipalComponentAnalysis:
         transformed_data = np.dot(X, self.eigenvectors.T)
     
         return transformed_data
+
+# Execute script data to get memory usage
+if __name__ == "__main__":
+    # For reproducibility
+    np.random.seed(42)
+
+    # Generate random data
+    data = np.random.rand(10000, 100)
+    
+    # Create PCA object
+    pca = PrincipalComponentAnalysis()
+
+    # Fit and transform data
+    pca.fit(data)
+    _ = pca.transform(data)

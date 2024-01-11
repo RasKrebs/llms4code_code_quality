@@ -1,0 +1,281 @@
+
+----long----
+
+Filename: memory_usage/long_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    16    165.4 MiB    165.4 MiB           1       @profile
+    17                                             def __init__(self, n_components=None, decomposition_method='eigen'):
+    18    165.4 MiB      0.0 MiB           1           self.n_components = n_components
+    19    165.4 MiB      0.0 MiB           1           self.decomposition_method = decomposition_method
+    20                                         
+    21                                                 # Eigen values and eigen vectors of the covariance matrix
+    22    165.4 MiB      0.0 MiB           1           self.eigenvalues = None
+    23    165.4 MiB      0.0 MiB           1           self.eigenvectors = None
+    24                                         
+    25                                                 # Explained variance ratio and cumulative sum of explained variance ratio
+    26    165.4 MiB      0.0 MiB           1           self.explained_variance_ratio = None
+    27    165.4 MiB      0.0 MiB           1           self.cumulative_explained_variance_ratio = None
+
+
+Filename: memory_usage/long_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    29    165.4 MiB    165.4 MiB           1       @profile
+    30                                             def fit(self, X):
+    31                                                 """
+    32                                                 Fits the PCA model to the data.
+    33                                         
+    34                                                 Parameters:
+    35                                                 X: (numpy.ndarray, pandas.DataFrame, list)
+    36                                                     The data to fit the model to. Can be a numpy array, pandas DataFrame, or a list of lists.
+    37                                                 """
+    38                                         
+    39                                                 # Check if X is a valid data format
+    40    165.4 MiB      0.0 MiB           1           if not isinstance(X, (np.ndarray, pd.DataFrame, list)):
+    41                                                     raise TypeError('X must be a numpy.ndarray, pandas.DataFrame, or a list of lists.')
+    42                                         
+    43                                                 # Check if X is a 2D array
+    44    165.4 MiB      0.0 MiB           1           if not (isinstance(X, np.ndarray) and X.ndim == 2):
+    45                                                     raise ValueError('X must be a 2D array.')
+    46                                         
+    47                                                 # Check if X contains numerical data
+    48    165.4 MiB -136059.1 MiB       10001           for row in X:
+    49    165.4 MiB -27617434.2 MiB     2030000               if not all(isinstance(x, (int, float)) for x in row):
+    50                                                         raise ValueError('X must contain numerical data.')
+    51                                         
+    52                                                 # Standardize the data
+    53    141.1 MiB    -24.3 MiB           1           X = StandardScaler().fit_transform(X)
+    54                                         
+    55                                                 # Compute the covariance matrix
+    56    149.5 MiB      8.4 MiB           1           covariance_matrix = np.cov(X.T)
+    57                                         
+    58                                                 # Calculate the eigen values and eigen vectors
+    59    149.5 MiB      0.0 MiB           1           if self.decomposition_method == 'eigen':
+    60    150.5 MiB      1.0 MiB           1               eigen_values, eigen_vectors = np.linalg.eig(covariance_matrix)
+    61                                                 elif self.decomposition_method == 'svd':
+    62                                                     U, S, Vh = np.linalg.svd(covariance_matrix)
+    63                                                     eigen_values = S.astype(float)
+    64                                                     eigen_vectors = Vh.T.astype(float)
+    65                                                 else:
+    66                                                     raise ValueError('Invalid decomposition_method: {}.'.format(self.decomposition_method))
+    67                                         
+    68                                                 # Sort eigen values and eigen vectors in descending order based on eigen values
+    69    150.5 MiB      0.0 MiB           1           sorted_idx = np.argsort(eigen_values)[::-1]
+    70    150.5 MiB      0.0 MiB           1           eigen_values = eigen_values[sorted_idx]
+    71    150.6 MiB      0.1 MiB           1           eigen_vectors = eigen_vectors[sorted_idx]
+    72                                         
+    73                                                 # Keep only the top n_components
+    74    150.6 MiB      0.0 MiB           1           if self.n_components is not None:
+    75                                                     eigen_values = eigen_values[:self.n_components]
+    76                                                     eigen_vectors = eigen_vectors[:self.n_components]
+    77                                         
+    78                                                 # Compute explained variance ratio and cumulative sum of explained variance ratio
+    79    150.6 MiB      0.0 MiB           1           explained_variance_ratio = eigen_values / np.sum(eigen_values)
+    80    150.6 MiB      0.0 MiB           1           cumulative_explained_variance_ratio = np.cumsum(explained_variance_ratio)
+    81                                         
+    82                                                 # Store the computed values
+    83    150.6 MiB      0.0 MiB           1           self.eigenvalues = eigen_values
+    84    150.6 MiB      0.0 MiB           1           self.eigenvectors = eigen_vectors
+    85    150.6 MiB      0.0 MiB           1           self.explained_variance_ratio = explained_variance_ratio
+    86    150.6 MiB      0.0 MiB           1           self.cumulative_explained_variance_ratio = cumulative_explained_variance_ratio
+
+
+Filename: memory_usage/long_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    88    154.1 MiB    154.1 MiB           1       @profile
+    89                                             def transform(self, X):
+    90                                                 """
+    91                                                 Projects the data onto the principal components.
+    92                                             
+    93                                                 Parameters:
+    94                                                 X: (numpy.ndarray, pandas.DataFrame, list)
+    95                                                     The data to transform. Can be a numpy array, pandas DataFrame, or a list of lists.
+    96                                             
+    97                                                 Returns:
+    98                                                     (numpy.ndarray)
+    99                                                         The projected data.
+   100                                                 """
+   101                                             
+   102                                                 # Check if X is a valid data format
+   103    154.1 MiB      0.0 MiB           1           if not isinstance(X, (np.ndarray, pd.DataFrame, list)):
+   104                                                     raise TypeError('X must be a numpy.ndarray, pandas.DataFrame, or list of lists.')
+   105                                             
+   106                                                 # Check if X is a 2D array
+   107    154.1 MiB      0.0 MiB           1           if not (isinstance(X, np.ndarray) and X.ndim == 2):
+   108                                                     raise ValueError('X must be a 2D array.')
+   109                                             
+   110                                                 # Check if X contains numerical data
+   111    154.1 MiB      0.0 MiB       10001           for row in X:
+   112    154.1 MiB      0.0 MiB     2030000               if not all(isinstance(x, (int, float)) for x in row):
+   113                                                         raise ValueError('X must contain numerical data.')
+   114                                             
+   115                                                 # Transform the data
+   116    169.6 MiB     15.5 MiB           1           transformed_data = np.dot(X, self.eigenvectors.T)
+   117                                             
+   118    169.6 MiB      0.0 MiB           1           return transformed_data
+
+
+
+----medium----
+
+Filename: memory_usage/medium_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    14    119.4 MiB    119.4 MiB           1       @profile
+    15                                             def __init__(self, n_components=None, decomposition_method='eigen'):
+    16    119.4 MiB      0.0 MiB           1           self.n_components = n_components
+    17    119.4 MiB      0.0 MiB           1           self.decomposition_method = decomposition_method
+
+
+Filename: memory_usage/medium_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    19    119.4 MiB    119.4 MiB           1       @profile
+    20                                             def fit(self, X: np.ndarray) -> None:
+    21                                                 """
+    22                                                 Fits the PCA model to the given data.
+    23                                         
+    24                                                 Args:
+    25                                                     X: (np.ndarray) Data to be transformed.
+    26                                                 """
+    27                                                 # Check if data is a numpy array
+    28    119.4 MiB      0.0 MiB           1           if not isinstance(X, np.ndarray):
+    29                                                     raise TypeError('Data must be a numpy.ndarray')
+    30                                         
+    31                                                 # Check dimensions
+    32    119.4 MiB      0.0 MiB           1           if X.ndim != 2:
+    33                                                     raise ValueError('Data must be a 2D matrix')
+    34                                         
+    35                                                 # Check if n_components is an integer and greater than 0
+    36    119.4 MiB      0.0 MiB           1           if self.n_components is not None and not isinstance(self.n_components, int) or self.n_components < 1:
+    37                                                     raise ValueError('n_components must be an integer greater than 0')
+    38                                         
+    39                                                 # Check if decomposition_method is valid
+    40    119.4 MiB      0.0 MiB           1           if self.decomposition_method not in ['eigen', 'svd']:
+    41                                                     raise ValueError("Invalid decomposition_method: must be either 'eigen' or 'svd'")
+    42                                         
+    43                                                 # Calculate mean and covariance matrix
+    44    119.5 MiB      0.0 MiB           1           self.mean = np.mean(X, axis=0)
+    45    127.4 MiB      8.0 MiB           1           self.covariance_matrix = np.cov(X.T)
+    46                                         
+    47                                                 # Perform dimensionality reduction using specified method
+    48    127.4 MiB      0.0 MiB           1           if self.decomposition_method == 'eigen':
+    49    128.2 MiB      0.8 MiB           1               self.eigvals, self.eigvecs = np.linalg.eig(self.covariance_matrix)
+    50                                                 elif self.decomposition_method == 'svd':
+    51                                                     U, S, Vh = np.linalg.svd(self.covariance_matrix)
+    52                                                     self.eigvals = S**2
+    53                                                     self.eigvecs = Vh.T
+    54                                         
+    55                                                 # Sort eigenvectors by descending eigenvalues
+    56    128.2 MiB      0.0 MiB           1           indices = np.argsort(self.eigvals)[::-1]
+    57    128.2 MiB      0.0 MiB           1           self.eigvals = self.eigvals[indices]
+    58    128.2 MiB      0.0 MiB           1           self.eigvecs = self.eigvecs[indices]
+    59                                         
+    60                                                 # Truncate eigenvectors to desired number of components
+    61    128.2 MiB      0.0 MiB           1           if self.n_components is not None:
+    62    128.2 MiB      0.0 MiB           1               self.eigvals = self.eigvals[:self.n_components]
+    63    128.2 MiB      0.0 MiB           1               self.eigvecs = self.eigvecs[:, :self.n_components]
+
+
+Filename: memory_usage/medium_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    66    128.2 MiB    128.2 MiB           1       @profile
+    67                                             def transform(self, X: np.ndarray) -> np.ndarray:
+    68                                                 """
+    69                                                 Transforms the given data using the fitted PCA model.
+    70                                         
+    71                                                 Args:
+    72                                                     X: (np.ndarray) Data to be transformed.
+    73                                         
+    74                                                 Returns:
+    75                                                     np.ndarray: Transformed data in the lower-dimensional space.
+    76                                                 """
+    77                                         
+    78                                                 # Check if data is a numpy array
+    79    128.2 MiB      0.0 MiB           1           if not isinstance(X, np.ndarray):
+    80                                                     raise TypeError('Data must be a numpy.ndarray')
+    81                                         
+    82                                                 # Check dimensions
+    83    128.2 MiB      0.0 MiB           1           if X.ndim != 2:
+    84                                                     raise ValueError('Data must be a 2D matrix')
+    85                                         
+    86                                                 # Standardize data
+    87    128.2 MiB      0.0 MiB           1           Z = X - self.mean
+    88                                         
+    89                                                 # Project data onto principal components
+    90    136.0 MiB      7.8 MiB           1           transformed_data = Z @ self.eigvecs
+    91                                         
+    92    136.0 MiB      0.0 MiB           1           return transformed_data
+
+
+
+----small----
+
+Filename: memory_usage/small_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+     4     70.1 MiB     70.1 MiB           1   @profile
+     5                                         def pca(data, method='eig'):
+     6                                             """
+     7                                             Principal Component Analysis (PCA)
+     8                                         
+     9                                             Parameters:
+    10                                             data (numpy.ndarray): The data to be analyzed.
+    11                                             method (str): The method to be used for dimensionality reduction, either 'eig' for eigen decomposition or 'svd' for singular value decomposition.
+    12                                         
+    13                                             Returns:
+    14                                             numpy.ndarray: The reduced data.
+    15                                             """
+    16                                         
+    17                                             # Check the input data
+    18     70.1 MiB      0.0 MiB           1       assert isinstance(data, np.ndarray), 'The input data must be a numpy.ndarray.'
+    19     70.1 MiB      0.0 MiB           1       assert data.ndim >= 2, 'The input data must be at least a 2D array.'
+    20                                         
+    21                                             # Center the data
+    22     70.1 MiB      0.0 MiB           1       data_mean = np.mean(data, axis=0)
+    23     77.7 MiB      7.6 MiB           1       centered_data = data - data_mean
+    24                                         
+    25                                             # Calculate the covariance matrix
+    26     85.7 MiB      8.0 MiB           1       covariance_matrix = np.cov(centered_data.T)
+    27                                         
+    28                                             # Perform dimensionality reduction
+    29     85.7 MiB      0.0 MiB           1       if method == 'eig':
+    30                                                 # Calculate the eigenvalues and eigenvectors of the covariance matrix
+    31     86.5 MiB      0.8 MiB           1           eigenvalues, eigenvectors = np.linalg.eig(covariance_matrix)
+    32                                         
+    33                                                 # Sort the eigenvalues and eigenvectors in descending order
+    34     86.5 MiB      0.0 MiB           1           idx = eigenvalues.argsort()[::-1]
+    35     86.5 MiB      0.0 MiB           1           eigenvalues = eigenvalues[idx]
+    36     86.5 MiB      0.0 MiB           1           eigenvectors = eigenvectors[:, idx]
+    37                                         
+    38                                                 # Choose the top k eigenvectors as the principal components
+    39     86.5 MiB      0.0 MiB           1           k = min(data.shape[1], len(eigenvalues))
+    40     86.5 MiB      0.0 MiB           1           principal_components = eigenvectors[:, :k]
+    41                                         
+    42                                             elif method == 'svd':
+    43                                                 # Perform singular value decomposition
+    44                                                 u, s, vh = np.linalg.svd(centered_data)
+    45                                         
+    46                                                 # Choose the top k singular values as the principal components
+    47                                                 k = min(data.shape[1], len(s))
+    48                                                 principal_components = vh[:, :k].T
+    49                                         
+    50                                             else:
+    51                                                 raise ValueError('Invalid method: {}'.format(method))
+    52                                         
+    53                                             # Reduce the data to the principal components
+    54     94.2 MiB      7.7 MiB           1       reduced_data = np.dot(centered_data, principal_components.T)
+    55                                         
+    56     94.2 MiB      0.0 MiB           1       return reduced_data
+
+

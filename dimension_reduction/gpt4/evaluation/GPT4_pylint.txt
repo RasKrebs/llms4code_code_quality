@@ -1,0 +1,53 @@
+************* Module long
+long.py:81:0: C0301: Line too long (115/100) (line-too-long)
+long.py:112:0: C0301: Line too long (119/100) (line-too-long)
+long.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+long.py:36:18: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+long.py:60:12: C0103: Variable name "U" doesn't conform to snake_case naming style (invalid-name)
+long.py:60:15: C0103: Variable name "S" doesn't conform to snake_case naming style (invalid-name)
+long.py:60:18: C0103: Variable name "V" doesn't conform to snake_case naming style (invalid-name)
+long.py:60:18: W0612: Unused variable 'V' (unused-variable)
+long.py:81:24: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+long.py:109:8: C0103: Variable name "X_transformed" doesn't conform to snake_case naming style (invalid-name)
+long.py:112:28: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+long.py:3:0: C0411: standard import "from typing import Union, Optional, List" should be placed before "import numpy as np" (wrong-import-order)
+
+------------------------------------------------------------------
+Your code has been rated at 7.50/10 (previous run: 7.50/10, +0.00)
+
+************* Module medium
+medium.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+medium.py:33:18: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+medium.py:48:8: C0103: Variable name "X_centered" doesn't conform to snake_case naming style (invalid-name)
+medium.py:74:24: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+medium.py:88:8: C0103: Variable name "X_centered" doesn't conform to snake_case naming style (invalid-name)
+medium.py:91:28: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+medium.py:2:0: C0411: standard import "from typing import Optional, Tuple, Union" should be placed before "import numpy as np" (wrong-import-order)
+medium.py:2:0: W0611: Unused Tuple imported from typing (unused-import)
+medium.py:2:0: W0611: Unused Union imported from typing (unused-import)
+
+------------------------------------------------------------------
+Your code has been rated at 7.35/10 (previous run: 7.35/10, +0.00)
+
+************* Module small
+small.py:14:37: C0303: Trailing whitespace (trailing-whitespace)
+small.py:28:0: C0304: Final newline missing (missing-final-newline)
+small.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+small.py:3:0: C0116: Missing function or method docstring (missing-function-docstring)
+small.py:3:21: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+small.py:6:0: C0116: Missing function or method docstring (missing-function-docstring)
+small.py:6:14: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+small.py:8:4: C0103: Variable name "X_std" doesn't conform to snake_case naming style (invalid-name)
+small.py:21:0: C0116: Missing function or method docstring (missing-function-docstring)
+small.py:21:12: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+small.py:23:4: C0103: Variable name "X_std" doesn't conform to snake_case naming style (invalid-name)
+small.py:25:4: C0103: Variable name "U" doesn't conform to snake_case naming style (invalid-name)
+small.py:25:7: C0103: Variable name "S" doesn't conform to snake_case naming style (invalid-name)
+small.py:25:10: C0103: Variable name "Vt" doesn't conform to snake_case naming style (invalid-name)
+small.py:27:4: C0103: Variable name "V" doesn't conform to snake_case naming style (invalid-name)
+small.py:25:4: W0612: Unused variable 'U' (unused-variable)
+small.py:25:7: W0612: Unused variable 'S' (unused-variable)
+
+------------------------------------------------------------------
+Your code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)
+

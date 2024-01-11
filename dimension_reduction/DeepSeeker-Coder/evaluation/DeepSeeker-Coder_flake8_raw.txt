@@ -1,0 +1,37 @@
+long.py:5:1: E302 expected 2 blank lines, found 1
+long.py:6:80: E501 line too long (96 > 79 characters)
+long.py:14:20: N803 argument name 'X' should be lowercase
+long.py:17:80: E501 line too long (97 > 79 characters)
+long.py:18:80: E501 line too long (116 > 79 characters)
+long.py:21:14: N806 variable 'X' in function should be lowercase
+long.py:23:14: N806 variable 'X' in function should be lowercase
+long.py:26:10: N806 variable 'X' in function should be lowercase
+long.py:51:80: E501 line too long (85 > 79 characters)
+long.py:54:80: E501 line too long (91 > 79 characters)
+long.py:56:26: N803 argument name 'X' should be lowercase
+long.py:56:80: E501 line too long (122 > 79 characters)
+long.py:59:80: E501 line too long (83 > 79 characters)
+long.py:62:14: N806 variable 'X' in function should be lowercase
+long.py:64:14: N806 variable 'X' in function should be lowercase
+long.py:67:10: N806 variable 'X' in function should be lowercase
+long.py:75:30: N803 argument name 'X' should be lowercase
+long.py:75:80: E501 line too long (126 > 79 characters)
+long.py:81:47: W292 no newline at end of file
+medium.py:3:1: F401 'typing.Union' imported but unused
+medium.py:5:1: E302 expected 2 blank lines, found 1
+medium.py:10:80: E501 line too long (106 > 79 characters)
+medium.py:15:80: E501 line too long (83 > 79 characters)
+medium.py:16:80: E501 line too long (120 > 79 characters)
+medium.py:23:20: N803 argument name 'X' should be lowercase
+medium.py:35:10: N806 variable 'C' in function should be lowercase
+medium.py:43:80: E501 line too long (91 > 79 characters)
+medium.py:56:26: N803 argument name 'X' should be lowercase
+medium.py:69:30: N803 argument name 'X' should be lowercase
+medium.py:80:33: W292 no newline at end of file
+small.py:3:1: E302 expected 2 blank lines, found 1
+small.py:8:20: N803 argument name 'X' should be lowercase
+small.py:11:10: N806 variable 'X' in function should be lowercase
+small.py:30:14: N806 variable 'VT' in function should be lowercase
+small.py:38:26: N803 argument name 'X' should be lowercase
+small.py:39:10: N806 variable 'X' in function should be lowercase
+small.py:40:42: W292 no newline at end of file

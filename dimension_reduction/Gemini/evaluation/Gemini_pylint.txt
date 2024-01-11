@@ -1,0 +1,74 @@
+
+----long.py----
+
+************* Module long
+long.py:11:0: C0301: Line too long (111/100) (line-too-long)
+long.py:32:0: C0301: Line too long (101/100) (line-too-long)
+long.py:83:0: C0303: Trailing whitespace (trailing-whitespace)
+long.py:96:0: C0303: Trailing whitespace (trailing-whitespace)
+long.py:100:0: C0303: Trailing whitespace (trailing-whitespace)
+long.py:104:0: C0303: Trailing whitespace (trailing-whitespace)
+long.py:109:0: C0303: Trailing whitespace (trailing-whitespace)
+long.py:112:0: C0303: Trailing whitespace (trailing-whitespace)
+long.py:113:0: C0304: Final newline missing (missing-final-newline)
+long.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+long.py:26:18: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+long.py:36:42: E0602: Undefined variable 'pd' (undefined-variable)
+long.py:49:12: E0602: Undefined variable 'StandardScaler' (undefined-variable)
+long.py:58:12: C0103: Variable name "U" doesn't conform to snake_case naming style (invalid-name)
+long.py:58:15: C0103: Variable name "S" doesn't conform to snake_case naming style (invalid-name)
+long.py:58:18: C0103: Variable name "Vh" doesn't conform to snake_case naming style (invalid-name)
+long.py:62:29: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+long.py:58:12: W0612: Unused variable 'U' (unused-variable)
+long.py:84:24: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+long.py:98:42: E0602: Undefined variable 'pd' (undefined-variable)
+
+------------------------------------------------------------------
+Your code has been rated at 3.33/10 (previous run: 3.33/10, +0.00)
+
+
+----medium.py----
+
+************* Module medium
+medium.py:8:0: C0301: Line too long (142/100) (line-too-long)
+medium.py:9:0: C0301: Line too long (127/100) (line-too-long)
+medium.py:32:0: C0301: Line too long (109/100) (line-too-long)
+medium.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+medium.py:16:18: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+medium.py:47:12: C0103: Variable name "U" doesn't conform to snake_case naming style (invalid-name)
+medium.py:47:15: C0103: Variable name "S" doesn't conform to snake_case naming style (invalid-name)
+medium.py:47:18: C0103: Variable name "Vh" doesn't conform to snake_case naming style (invalid-name)
+medium.py:47:12: W0612: Unused variable 'U' (unused-variable)
+medium.py:61:24: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+medium.py:81:8: C0103: Variable name "Z" doesn't conform to snake_case naming style (invalid-name)
+medium.py:88:28: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+medium.py:40:8: W0201: Attribute 'mean' defined outside __init__ (attribute-defined-outside-init)
+medium.py:41:8: W0201: Attribute 'covariance_matrix' defined outside __init__ (attribute-defined-outside-init)
+medium.py:45:12: W0201: Attribute 'eigvals' defined outside __init__ (attribute-defined-outside-init)
+medium.py:48:12: W0201: Attribute 'eigvals' defined outside __init__ (attribute-defined-outside-init)
+medium.py:53:8: W0201: Attribute 'eigvals' defined outside __init__ (attribute-defined-outside-init)
+medium.py:58:12: W0201: Attribute 'eigvals' defined outside __init__ (attribute-defined-outside-init)
+medium.py:45:26: W0201: Attribute 'eigvecs' defined outside __init__ (attribute-defined-outside-init)
+medium.py:49:12: W0201: Attribute 'eigvecs' defined outside __init__ (attribute-defined-outside-init)
+medium.py:54:8: W0201: Attribute 'eigvecs' defined outside __init__ (attribute-defined-outside-init)
+medium.py:59:12: W0201: Attribute 'eigvecs' defined outside __init__ (attribute-defined-outside-init)
+
+------------------------------------------------------------------
+Your code has been rated at 4.36/10 (previous run: 7.35/10, -2.99)
+
+
+----small.py----
+
+************* Module small
+small.py:9:0: C0301: Line too long (149/100) (line-too-long)
+small.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+small.py:3:8: W0621: Redefining name 'data' from outer scope (line 58) (redefined-outer-name)
+small.py:42:8: C0103: Variable name "u" doesn't conform to snake_case naming style (invalid-name)
+small.py:42:11: C0103: Variable name "s" doesn't conform to snake_case naming style (invalid-name)
+small.py:42:14: C0103: Variable name "vh" doesn't conform to snake_case naming style (invalid-name)
+small.py:49:25: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+small.py:42:8: W0612: Unused variable 'u' (unused-variable)
+
+------------------------------------------------------------------
+Your code has been rated at 7.04/10 (previous run: 7.04/10, +0.00)
+

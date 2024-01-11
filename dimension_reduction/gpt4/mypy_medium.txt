@@ -1,4 +1,0 @@
-gpt4/medium.py:69: error: Incompatible types in assignment (expression has type "ndarray[Any, dtype[Any]]", variable has type "None")  [assignment]
-gpt4/medium.py:70: error: Incompatible types in assignment (expression has type "ndarray[Any, dtype[Any]]", variable has type "None")  [assignment]
-gpt4/medium.py:89: error: "None" has no attribute "T"  [attr-defined]
-Found 3 errors in 1 file (checked 1 source file)

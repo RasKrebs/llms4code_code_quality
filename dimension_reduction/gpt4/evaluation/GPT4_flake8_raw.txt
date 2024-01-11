@@ -1,0 +1,47 @@
+long.py:5:1: E302 expected 2 blank lines, found 1
+long.py:28:80: E501 line too long (96 > 79 characters)
+long.py:36:20: N803 argument name 'X' should be lowercase
+long.py:46:14: N806 variable 'X' in function should be lowercase
+long.py:48:14: N806 variable 'X' in function should be lowercase
+long.py:51:10: N806 variable 'X' in function should be lowercase
+long.py:60:14: N806 variable 'U' in function should be lowercase
+long.py:60:14: N806 variable 'S' in function should be lowercase
+long.py:60:14: N806 variable 'V' in function should be lowercase
+long.py:64:80: E501 line too long (85 > 79 characters)
+long.py:79:80: E501 line too long (93 > 79 characters)
+long.py:81:26: N803 argument name 'X' should be lowercase
+long.py:81:80: E501 line too long (115 > 79 characters)
+long.py:100:14: N806 variable 'X' in function should be lowercase
+long.py:102:14: N806 variable 'X' in function should be lowercase
+long.py:104:10: N806 variable 'X' in function should be lowercase
+long.py:109:10: N806 variable 'X_transformed' in function should be lowercase
+long.py:112:30: N803 argument name 'X' should be lowercase
+long.py:112:80: E501 line too long (119 > 79 characters)
+medium.py:2:1: F401 'typing.Tuple' imported but unused
+medium.py:2:1: F401 'typing.Union' imported but unused
+medium.py:4:1: E302 expected 2 blank lines, found 1
+medium.py:11:80: E501 line too long (80 > 79 characters)
+medium.py:13:66: W291 trailing whitespace
+medium.py:26:80: E501 line too long (96 > 79 characters)
+medium.py:33:20: N803 argument name 'X' should be lowercase
+medium.py:48:10: N806 variable 'X_centered' in function should be lowercase
+medium.py:54:80: E501 line too long (93 > 79 characters)
+medium.py:57:80: E501 line too long (86 > 79 characters)
+medium.py:74:26: N803 argument name 'X' should be lowercase
+medium.py:88:10: N806 variable 'X_centered' in function should be lowercase
+medium.py:91:30: N803 argument name 'X' should be lowercase
+small.py:3:1: E302 expected 2 blank lines, found 1
+small.py:3:23: N803 argument name 'X' should be lowercase
+small.py:6:1: E302 expected 2 blank lines, found 1
+small.py:6:16: N803 argument name 'X' should be lowercase
+small.py:8:6: N806 variable 'X_std' in function should be lowercase
+small.py:14:38: W291 trailing whitespace
+small.py:16:34: E231 missing whitespace after ','
+small.py:21:1: E302 expected 2 blank lines, found 1
+small.py:21:14: N803 argument name 'X' should be lowercase
+small.py:23:6: N806 variable 'X_std' in function should be lowercase
+small.py:25:6: N806 variable 'U' in function should be lowercase
+small.py:25:6: N806 variable 'S' in function should be lowercase
+small.py:25:6: N806 variable 'Vt' in function should be lowercase
+small.py:27:6: N806 variable 'V' in function should be lowercase
+small.py:28:44: W292 no newline at end of file

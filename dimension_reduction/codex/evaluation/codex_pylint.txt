@@ -1,0 +1,58 @@
+
+----long.py----
+
+************* Module long
+long.py:15:0: C0301: Line too long (118/100) (line-too-long)
+long.py:49:0: C0301: Line too long (117/100) (line-too-long)
+long.py:79:0: C0304: Final newline missing (missing-final-newline)
+long.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+long.py:24:18: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+long.py:40:15: C0103: Variable name "s" doesn't conform to snake_case naming style (invalid-name)
+long.py:40:18: C0103: Variable name "Vt" doesn't conform to snake_case naming style (invalid-name)
+long.py:51:24: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+long.py:64:8: C0103: Variable name "X_new" doesn't conform to snake_case naming style (invalid-name)
+long.py:67:28: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+long.py:2:0: C0411: standard import "from typing import Optional, Union" should be placed before "import numpy as np" (wrong-import-order)
+
+------------------------------------------------------------------
+Your code has been rated at 7.11/10 (previous run: 7.50/10, -0.39)
+
+
+----medium.py----
+
+************* Module medium
+medium.py:16:0: C0301: Line too long (106/100) (line-too-long)
+medium.py:86:0: C0304: Final newline missing (missing-final-newline)
+medium.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+medium.py:22:18: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+medium.py:48:26: C0103: Variable name "s" doesn't conform to snake_case naming style (invalid-name)
+medium.py:48:29: C0103: Variable name "v" doesn't conform to snake_case naming style (invalid-name)
+medium.py:48:29: W0612: Unused variable 'v' (unused-variable)
+medium.py:54:24: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+medium.py:71:28: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+medium.py:2:0: C0411: standard import "from typing import Optional, Union" should be placed before "import numpy as np" (wrong-import-order)
+medium.py:2:0: W0611: Unused Union imported from typing (unused-import)
+
+------------------------------------------------------------------
+Your code has been rated at 6.07/10 (previous run: 6.67/10, -0.60)
+
+
+----small.py----
+
+************* Module small
+small.py:37:0: C0304: Final newline missing (missing-final-newline)
+small.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+small.py:3:0: C0115: Missing class docstring (missing-class-docstring)
+small.py:10:4: C0116: Missing function or method docstring (missing-function-docstring)
+small.py:10:18: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+small.py:31:12: C0103: Variable name "u" doesn't conform to snake_case naming style (invalid-name)
+small.py:31:15: C0103: Variable name "s" doesn't conform to snake_case naming style (invalid-name)
+small.py:31:18: C0103: Variable name "v" doesn't conform to snake_case naming style (invalid-name)
+small.py:31:12: W0612: Unused variable 'u' (unused-variable)
+small.py:31:15: W0612: Unused variable 's' (unused-variable)
+small.py:34:4: C0116: Missing function or method docstring (missing-function-docstring)
+small.py:34:24: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+
+------------------------------------------------------------------
+Your code has been rated at 5.00/10 (previous run: 5.00/10, +0.00)
+
