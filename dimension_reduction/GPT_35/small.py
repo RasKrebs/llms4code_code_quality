@@ -1,5 +1,4 @@
 import numpy as np
-from modules.helpers import pca_data
 
 def pca_eigen_decomp(X, num_components):
     # Center the data
@@ -41,13 +40,3 @@ def pca_svd(X, num_components):
     pca_result = np.dot(centered_X, U_reduced)
 
     return pca_result
-
-if __name__ == "__main__":
-    # Set random seed for reproducibility
-    X_random, X_bodyfat = pca_data()
-
-    # Test the two methods
-    pca_eigen_decomp(X_random, 2)
-    pca_eigen_decomp(X_bodyfat, 2)
-    pca_svd(X_random, 2)
-    pca_svd(X_bodyfat, 2)

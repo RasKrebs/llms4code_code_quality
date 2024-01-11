@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 
+
 class PrincipalComponentAnalysis:
     """
     Principal Component Analysis (PCA) implementation.
@@ -22,10 +23,10 @@ class PrincipalComponentAnalysis:
         transform(X, n_components=None): Project input data onto principal components.
         fit_transform(X, n_components=None): Fit the model and transform input data.
     """
-    
     def __init__(self, n_components=None, decomposition_method='eigen'):
         self.n_components = n_components
         self.decomposition_method = decomposition_method
+
 
     def fit(self, X):
         """
@@ -102,7 +103,7 @@ class PrincipalComponentAnalysis:
         else:
             # Use a subset of components
             return X.dot(self.eigenvectors[:, :n_components])
-
+        
     def fit_transform(self, X, n_components=None):
         """
         Fit the model and transform input data in a single step.
@@ -116,24 +117,3 @@ class PrincipalComponentAnalysis:
         """
         self.fit(X)
         return self.transform(X, n_components)
-
-# Example usage:
-# pca = PrincipalComponentAnalysis(n_components=2, decomposition_method='eigen')
-# transformed_data = pca.fit_transform(X)
-
-if __name__ == "__main__":
-    # Set random seed for reproducibility
-    np.random.seed(42)
-    
-    # Generate random data
-    X_random = np.random.rand(50000, 50)
-    
-    # Create PCA objects
-    eigen_pca = PrincipalComponentAnalysis(decomposition_method='eigen')
-    svd_pca = PrincipalComponentAnalysis(decomposition_method='svd')
-    
-    # Test the two methods
-    eigen_pca.fit_transform(X_random, n_components=2)
-    #eigen_pca.fit_transform(X_bodyfat, n_components=2)
-    svd_pca.fit_transform(X_random, n_components=2)
-    #svd_pca.fit_transform(X_bodyfat, n_components=2)

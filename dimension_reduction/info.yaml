@@ -24,20 +24,20 @@ Implement prinicpal component analysis from scratch, that can be used with eithe
 
 # Model Specific 
 GPT-3.5:
-  path: ../gpt3.5/
+  path: ../GPT_35/
   version: gpt-3.5-turbo (Jan 2024)
   data_collection_time: 01/10/2024
   additional_prompts: # Add here additional prompts used during data collection
   additional_info: # Add here additional info used during data collection
-  documentation: ../gpt3.5/documentation/
+  documentation: ../GPT_35/documentation/
 
 GPT-4:
-  path: ../gpt4/
+  path: ../GPT4/
   version: gpt-4-turbo (Jan 2024)
   data_collection_time: 01/10/2024
   additional_prompts: # Add here additional prompts used during data collection
   additional_info: # Add here additional info used during data collection
-  documentation: ../gpt4/documentation/
+  documentation: ../GPT4/documentation/
 
 Codex:
   path: ../codex/
@@ -56,11 +56,21 @@ DeepSeeker-Coder:
   documentation: ../codex/documentation/
 
 Gemini:
-  path: ../DeepSeeker-Coder/
-  version: Gemini Pro (Accessed through Bard)
+  path: ../Gemini/
+  version: Gemini Pro (Accessed through Bard Jan 2024)
   data_collection_time: 01/10/2024
   additional_prompts: 
     - The code is not complete
     - It seems the response can't be done within the max token you have selected
   additional_info: Gemini Pro was accessed through Bard. For the long prompt, a maximum token enforced by Bard limited the ability to produce a complete response. Two follow up prompts, described above was used for a more complete response.
+  documentation: ../codex/documentation/
+
+Tabnine:
+  path: ../Tabnine/
+  version: Unknown
+  data_collection_time: 01/11/2024
+  additional_prompts: # None
+  additional_info: 
+    - The medium prompt answer did not import the necessary libraries, so these were added manually
+    - Unlike other methods, Tabnine also added additional methods such as built in class-representation, __repr__, methdo
   documentation: ../codex/documentation/

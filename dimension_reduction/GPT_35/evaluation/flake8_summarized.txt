@@ -1,0 +1,51 @@
+Skipped 0 rows due to parsing errors
+./flake8_summarizer.py
+~~~~~~~~~~~~~~~~~~~~~~
+(3) E128: continuation line under-indented for visual indent
+(1) E501: line too long (82 > 79 characters)
+(1) W292: no newline at end of file
+
+
+./long.py
+~~~~~~~~~
+(16) E501: line too long (82 > 79 characters)
+(6) N806: variable in function should be lowercase
+(5) W293: blank line contains whitespace
+(3) N803: argument name should be lowercase
+(1) E302: expected 2 blank lines, found 0
+
+
+./medium.py
+~~~~~~~~~~~
+(4) E501: line too long (82 > 79 characters)
+(4) N806: variable in function should be lowercase
+(3) N803: argument name should be lowercase
+(1) E302: expected 2 blank lines, found 0
+
+
+./small.py
+~~~~~~~~~~
+(6) N806: variable in function should be lowercase
+(2) N803: argument name should be lowercase
+(1) E302: expected 2 blank lines, found 0
+(1) E501: line too long (82 > 79 characters)
+(1) W292: no newline at end of file
+
+
+Errors & warnings summary
+-------------------------
+Naming error (N8): 24
+Line length (E5): 22
+Whitespace warning (W2): 7
+Indentation (E1): 3
+Blank line (E3): 3
+Whitespace (E2): 0
+Import (E4): 0
+Statement (E7): 0
+Runtime (E9): 0
+Indentation warning (W1): 0
+Blank line warning (W3): 0
+Deprecation warning (W6): 0
+Excessive complexity (C9): 0
+Import warning (F4): 0
+Undefined or unused name (F8): 0
