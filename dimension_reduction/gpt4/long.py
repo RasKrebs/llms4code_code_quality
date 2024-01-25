@@ -25,7 +25,9 @@ class PrincipalComponentAnalysis:
         Cumulative sum of explained variance ratio.
     """
 
-    def __init__(self, n_components: Optional[int] = None, decomposition_method: str = 'eigen'):
+    def __init__(self, 
+                 n_components: Optional[int] = None, 
+                 decomposition_method: str = 'eigen'):
         self.n_components = n_components
         self.decomposition_method = decomposition_method
         self.components_ = None

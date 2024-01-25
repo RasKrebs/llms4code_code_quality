@@ -3,10 +3,14 @@ import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-E', '--eval', type=str, default='pylint')
+parser.add_argument('-M', '--model', type=str)
 parser.add_argument('-F', '--file', type=str, default='all')
 parser.add_argument('-O', '--overwrite', type=bool, default=False)
-
 args = parser.parse_args()
+
+os.system(f"cd {args.model}")
+os.chdir(args.model)
+
 
 writer = '>>' if not args.overwrite else '>'
 model = os.getcwd().split('/')[-1]
@@ -63,7 +67,7 @@ elif args.eval == "flake8":
     for file in ['long.py', 'medium.py','small.py']:
         writer = '>' if file == 'long.py' else '>>'
         os.system(f'flake8 {file} {writer} {flake8_file_out}_raw.txt')
-    os.system(f'python flake8_summarizer.py {flake8_file_out}_raw.txt > {flake8_file_out}_processed.txt')
+    os.system(f'python ../flake8_summarizer.py {flake8_file_out}_raw.txt > {flake8_file_out}_processed.txt')
     
 elif args.eval == "memory_usage": 
     fileout = f'evaluation/{model}_memory_usage'

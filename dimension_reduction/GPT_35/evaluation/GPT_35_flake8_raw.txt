@@ -1,0 +1,55 @@
+long.py:8:1: W293 blank line contains whitespace
+long.py:10:80: E501 line too long (117 > 79 characters)
+long.py:11:80: E501 line too long (146 > 79 characters)
+long.py:12:1: W293 blank line contains whitespace
+long.py:15:80: E501 line too long (80 > 79 characters)
+long.py:17:80: E501 line too long (107 > 79 characters)
+long.py:18:80: E501 line too long (107 > 79 characters)
+long.py:19:80: E501 line too long (106 > 79 characters)
+long.py:20:1: W293 blank line contains whitespace
+long.py:23:80: E501 line too long (86 > 79 characters)
+long.py:24:80: E501 line too long (84 > 79 characters)
+long.py:31:5: E303 too many blank lines (2)
+long.py:31:20: N803 argument name 'X' should be lowercase
+long.py:33:80: E501 line too long (135 > 79 characters)
+long.py:36:80: E501 line too long (86 > 79 characters)
+long.py:37:1: W293 blank line contains whitespace
+long.py:43:14: N806 variable 'X' in function should be lowercase
+long.py:45:14: N806 variable 'X' in function should be lowercase
+long.py:59:14: N806 variable 'S' in function should be lowercase
+long.py:59:14: N806 variable 'Vt' in function should be lowercase
+long.py:80:26: N803 argument name 'X' should be lowercase
+long.py:85:80: E501 line too long (97 > 79 characters)
+long.py:86:80: E501 line too long (121 > 79 characters)
+long.py:89:80: E501 line too long (94 > 79 characters)
+long.py:96:14: N806 variable 'X' in function should be lowercase
+long.py:98:14: N806 variable 'X' in function should be lowercase
+long.py:106:1: W293 blank line contains whitespace
+long.py:107:30: N803 argument name 'X' should be lowercase
+long.py:112:80: E501 line too long (86 > 79 characters)
+long.py:113:80: E501 line too long (121 > 79 characters)
+long.py:116:80: E501 line too long (94 > 79 characters)
+long.py:119:47: W292 no newline at end of file
+medium.py:3:1: E302 expected 2 blank lines, found 1
+medium.py:13:80: E501 line too long (84 > 79 characters)
+medium.py:56:20: N803 argument name 'X' should be lowercase
+medium.py:73:10: N806 variable 'X_centered' in function should be lowercase
+medium.py:81:14: N806 variable 'S' in function should be lowercase
+medium.py:81:14: N806 variable 'Vt' in function should be lowercase
+medium.py:85:80: E501 line too long (83 > 79 characters)
+medium.py:96:80: E501 line too long (82 > 79 characters)
+medium.py:98:26: N803 argument name 'X' should be lowercase
+medium.py:113:80: E501 line too long (84 > 79 characters)
+medium.py:116:10: N806 variable 'X_centered' in function should be lowercase
+medium.py:121:30: N803 argument name 'X' should be lowercase
+small.py:3:1: E302 expected 2 blank lines, found 1
+small.py:3:23: N803 argument name 'X' should be lowercase
+small.py:6:6: N806 variable 'centered_X' in function should be lowercase
+small.py:28:14: N803 argument name 'X' should be lowercase
+small.py:31:6: N806 variable 'centered_X' in function should be lowercase
+small.py:34:6: N806 variable 'U' in function should be lowercase
+small.py:34:6: N806 variable 'S' in function should be lowercase
+small.py:34:6: N806 variable 'Vt' in function should be lowercase
+small.py:36:80: E501 line too long (84 > 79 characters)
+small.py:37:6: N806 variable 'U_reduced' in function should be lowercase
+small.py:42:22: W292 no newline at end of file

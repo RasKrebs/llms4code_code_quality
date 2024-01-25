@@ -1,3 +1,6 @@
+
+----long.py----
+
 ************* Module long
 long.py:81:0: C0301: Line too long (115/100) (line-too-long)
 long.py:112:0: C0301: Line too long (119/100) (line-too-long)
@@ -13,7 +16,10 @@ long.py:112:28: C0103: Argument name "X" doesn't conform to snake_case naming st
 long.py:3:0: C0411: standard import "from typing import Union, Optional, List" should be placed before "import numpy as np" (wrong-import-order)
 
 ------------------------------------------------------------------
-Your code has been rated at 7.50/10 (previous run: 7.50/10, +0.00)
+Your code has been rated at 7.50/10 (previous run: 5.12/10, +2.38)
+
+
+----medium.py----
 
 ************* Module medium
 medium.py:1:0: C0114: Missing module docstring (missing-module-docstring)
@@ -27,7 +33,10 @@ medium.py:2:0: W0611: Unused Tuple imported from typing (unused-import)
 medium.py:2:0: W0611: Unused Union imported from typing (unused-import)
 
 ------------------------------------------------------------------
-Your code has been rated at 7.35/10 (previous run: 7.35/10, +0.00)
+Your code has been rated at 7.35/10 (previous run: 7.78/10, -0.42)
+
+
+----small.py----
 
 ************* Module small
 small.py:14:37: C0303: Trailing whitespace (trailing-whitespace)
@@ -49,5 +58,5 @@ small.py:25:4: W0612: Unused variable 'U' (unused-variable)
 small.py:25:7: W0612: Unused variable 'S' (unused-variable)
 
 ------------------------------------------------------------------
-Your code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)
+Your code has been rated at 0.00/10 (previous run: 2.63/10, -2.63)
 

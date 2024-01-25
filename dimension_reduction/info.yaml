@@ -89,3 +89,39 @@ Tabnine:
     - Small prompt, did not make it possible to specify number of return components. Also not wrapped in class. No type hinting, but some descent docstring. Additionally, had an error around l. 29 with a wrong transpose.
     - Unlike other methods, Tabnine also added additional methods such as built in class-representation, __repr__, methdo
   documentation: ../codex/documentation/
+
+
+WizardCoder:
+  path: 
+  version: 33b
+  data_collection_time: 01/13/2024
+  additional_prompts: # None
+  additional_info:
+    - Long prompt, interestingly compared to the other LLMs, wizardcoder didn't provide any information. It was pure code.
+    - Medium prompt, did provide some more comments on the code in natural language, mainly in the form of a trailing comment explaining how it could be implemented
+    - Short prompt, similarly to earlier, this model provided some more 'explanations' to how to use the code. Unline many other models, this one wrapped everything in a class.
+  documentation: 
+
+CodeLLama:
+  path: 
+  version: 34b-Instruct
+  data_collection_time: 01/14/2024
+  additional_prompts: 
+    - For the small prompt, i had to follow up with, 'implement it in python'
+  additional_info:
+    - Long prompt, added a brief, "Here is the implementation of PCA from scratch". Interestingly it did not include the imports.
+    - Medium prompt, add a small intro and outro. Interestingly it did not include the imports.
+    - Small prompt, the first response didn't produce any code, but just text. This did include imports, but the svd + eigen was to seperate functions with the same name PCA. It seemed it was meant to be individually
+  documentation: 
+
+Amazon_Q:
+  path: 
+  version: xxx
+  data_collection_time: 01/19/2024
+  additional_prompts: 
+    - For long, it didnt solve it correctly in the beginning. So here follow up prompts asking for it to not be use Scikit-learn and include the functionlity for both SVD and Eigen (despite having specified this earlier)
+      - Interestingly, it added sources to the outputs
+  additional_info:
+    - Long prompt, no comments or anything like. Also didn't build it from scratch but rather used Sklearn
+    - 
+  documentation: 
