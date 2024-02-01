@@ -1,0 +1,38 @@
+long.py:5:1: F811 redefinition of unused 'PCA' from line 3
+long.py:5:1: E302 expected 2 blank lines, found 1
+long.py:11:20: N803 argument name 'X' should be lowercase
+long.py:15:10: N806 variable 'X_centered' in function should be lowercase
+long.py:18:11: E114 indentation is not a multiple of 4 (comment)
+long.py:18:23: W291 trailing whitespace
+long.py:19:11: E111 indentation is not a multiple of 4
+long.py:20:11: E111 indentation is not a multiple of 4
+long.py:20:12: N806 variable 'U' in function should be lowercase
+long.py:20:12: N806 variable 'S' in function should be lowercase
+long.py:20:12: N806 variable 'Vt' in function should be lowercase
+long.py:23:11: E114 indentation is not a multiple of 4 (comment)
+long.py:24:11: E111 indentation is not a multiple of 4
+long.py:24:53: W291 trailing whitespace
+long.py:25:11: E111 indentation is not a multiple of 4
+long.py:26:11: E111 indentation is not a multiple of 4
+long.py:26:12: N806 variable 'Vt' in function should be lowercase
+long.py:29:32: E231 missing whitespace after ','
+long.py:32:1: W293 blank line contains whitespace
+long.py:33:26: N803 argument name 'X' should be lowercase
+long.py:35:1: W293 blank line contains whitespace
+long.py:36:10: N806 variable 'X_transformed' in function should be lowercase
+long.py:38:1: W293 blank line contains whitespace
+long.py:39:30: N803 argument name 'X' should be lowercase
+long.py:41:1: W293 blank line contains whitespace
+medium.py:36:22: E999 SyntaxError: invalid syntax
+small.py:3:1: E302 expected 2 blank lines, found 1
+small.py:4:3: E111 indentation is not a multiple of 4
+small.py:7:3: E111 indentation is not a multiple of 4
+small.py:7:18: N803 argument name 'X' should be lowercase
+small.py:11:1: W293 blank line contains whitespace
+small.py:14:1: W293 blank line contains whitespace
+small.py:17:1: W293 blank line contains whitespace
+small.py:19:54: W291 trailing whitespace
+small.py:21:80: E501 line too long (86 > 79 characters)
+small.py:25:3: E111 indentation is not a multiple of 4
+small.py:25:24: N803 argument name 'X' should be lowercase
+small.py:28:21: W292 no newline at end of file

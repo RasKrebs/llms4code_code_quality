@@ -1,0 +1,54 @@
+long.py:4:1: E302 expected 2 blank lines, found 1
+long.py:14:80: E501 line too long (97 > 79 characters)
+long.py:15:80: E501 line too long (116 > 79 characters)
+long.py:24:20: N803 argument name 'X' should be lowercase
+long.py:24:22: F821 undefined name 'Union'
+long.py:24:54: F821 undefined name 'List'
+long.py:24:59: F821 undefined name 'List'
+long.py:26:80: E501 line too long (97 > 79 characters)
+long.py:29:80: E501 line too long (92 > 79 characters)
+long.py:41:80: E501 line too long (90 > 79 characters)
+long.py:52:80: E501 line too long (93 > 79 characters)
+long.py:54:26: N803 argument name 'X' should be lowercase
+long.py:54:28: F821 undefined name 'Union'
+long.py:54:60: F821 undefined name 'List'
+long.py:54:65: F821 undefined name 'List'
+long.py:54:80: E501 line too long (98 > 79 characters)
+long.py:56:80: E501 line too long (81 > 79 characters)
+long.py:59:80: E501 line too long (92 > 79 characters)
+long.py:60:80: E501 line too long (105 > 79 characters)
+long.py:71:30: N803 argument name 'X' should be lowercase
+long.py:71:32: F821 undefined name 'Union'
+long.py:71:64: F821 undefined name 'List'
+long.py:71:69: F821 undefined name 'List'
+long.py:71:80: E501 line too long (102 > 79 characters)
+long.py:73:80: E501 line too long (115 > 79 characters)
+long.py:76:80: E501 line too long (92 > 79 characters)
+long.py:77:80: E501 line too long (105 > 79 characters)
+long.py:83:47: W292 no newline at end of file
+medium.py:3:1: E302 expected 2 blank lines, found 1
+medium.py:4:80: E501 line too long (86 > 79 characters)
+medium.py:9:80: E501 line too long (86 > 79 characters)
+medium.py:10:80: E501 line too long (122 > 79 characters)
+medium.py:16:20: N803 argument name 'X' should be lowercase
+medium.py:25:1: W293 blank line contains whitespace
+medium.py:28:1: W293 blank line contains whitespace
+medium.py:31:1: W293 blank line contains whitespace
+medium.py:43:26: N803 argument name 'X' should be lowercase
+medium.py:55:1: W293 blank line contains whitespace
+medium.py:57:10: N806 variable 'transformed_X' in function should be lowercase
+medium.py:60:30: N803 argument name 'X' should be lowercase
+medium.py:71:33: W292 no newline at end of file
+small.py:3:1: E302 expected 2 blank lines, found 1
+small.py:8:1: W293 blank line contains whitespace
+small.py:9:20: N803 argument name 'X' should be lowercase
+small.py:12:10: N806 variable 'X_centered' in function should be lowercase
+small.py:19:42: E231 missing whitespace after ','
+small.py:20:45: E231 missing whitespace after ','
+small.py:23:14: N806 variable 'U' in function should be lowercase
+small.py:23:14: N806 variable 'Vt' in function should be lowercase
+small.py:24:37: E231 missing whitespace after ','
+small.py:26:80: E501 line too long (125 > 79 characters)
+small.py:28:26: N803 argument name 'X' should be lowercase
+small.py:29:10: N806 variable 'X_centered' in function should be lowercase
+small.py:30:51: W292 no newline at end of file

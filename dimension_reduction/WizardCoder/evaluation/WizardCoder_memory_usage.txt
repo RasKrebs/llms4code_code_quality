@@ -1,0 +1,229 @@
+
+----long----
+
+Filename: memory_usage/long_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+     8    119.6 MiB    119.6 MiB           1       @profile
+     9                                             def __init__(self, n_components: int=None, decomposition_method: str='eigen') -> None:
+    10    119.6 MiB      0.0 MiB           1           self.n_components = n_components
+    11    119.6 MiB      0.0 MiB           1           self.decomposition_method = decomposition_method
+
+
+Filename: memory_usage/long_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    12    119.6 MiB    119.6 MiB           1       @profile
+    13                                             def fit(self, X: Union[np.ndarray, List[List[float]], DataFrame]) -> 'PrincipalComponentAnalysis':
+    14                                                 """Compute the eigen values and vectors for the inputted data."""
+    15                                         
+    16                                                 # Convert to numpy array if not already
+    17    119.6 MiB      0.0 MiB           1           if isinstance(X, (DataFrame, list)):
+    18                                                     X = np.array(X)
+    19                                         
+    20                                                 # Subtract mean from data
+    21    119.6 MiB      0.0 MiB           1           self.mean_ = np.mean(X, axis=0)
+    22    119.6 MiB      0.0 MiB           1           X -= self.mean_
+    23                                         
+    24                                                 # Compute covariance matrix
+    25    127.6 MiB      8.0 MiB           1           C = np.cov(X.T)
+    26                                         
+    27    127.6 MiB      0.0 MiB           1           if self.decomposition_method == 'eigen':
+    28                                                     # Calculate Eigenvalues and Eigenvectors
+    29    128.1 MiB      0.5 MiB           1               eigenvalues, eigenvectors = np.linalg.eig(C)
+    30                                         
+    31                                                     # Sort eigenvalues and eigenvectors in descending order
+    32    128.1 MiB      0.0 MiB           1               indices = np.argsort(eigenvalues)[::-1]
+    33                                                 elif self.decomposition_method == 'svd':
+    34                                                     U, S, VT = np.linalg.svd(X, full_matrices=False)
+    35                                                     eigenvectors, eigenvalues = VT.T, (S**2) / (X.shape[0] - 1)
+    36                                                 else:
+    37                                                     raise ValueError("decomposition method must be either 'eigen' or 'svd'")
+    38                                         
+    39                                                 # Compute explained variance and cumulative sum of explained variance
+    40    128.1 MiB      0.0 MiB           1           total_var = np.sum(eigenvalues)
+    41    128.1 MiB      0.0 MiB           1           self.explained_variance_ratio_ = eigenvalues / total_var
+    42    128.1 MiB      0.0 MiB           1           self.cumulative_explained_variance_ratio_ = np.cumsum(self.explained_variance_ratio_)
+    43                                         
+    44                                                 # Get the top n components if specified
+    45    128.1 MiB      0.0 MiB           1           if self.n_components is not None:
+    46                                                     eigenvectors = eigenvectors[indices[:self.n_components]]
+    47                                         
+    48    128.1 MiB      0.0 MiB           1           self.eigenvalues_ = eigenvalues
+    49    128.1 MiB      0.0 MiB           1           self.components_ = eigenvectors
+    50                                         
+    51    128.1 MiB      0.0 MiB           1           return self
+
+
+Filename: memory_usage/long_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    53    128.2 MiB    128.2 MiB           1       @profile
+    54                                             def transform(self, X: Union[np.ndarray, List[List[float]], DataFrame], n_components:
+    55                                         int=None) -> np.ndarray:
+    56                                                 """Project the inputted data onto the components."""
+    57    128.2 MiB      0.0 MiB           1           if isinstance(X, (DataFrame, list)):
+    58                                                     X = np.array(X)
+    59                                         
+    60                                                 # Subtract mean from data
+    61    128.2 MiB      0.0 MiB           1           X -= self.mean_
+    62                                         
+    63                                                 # Project data onto components
+    64    128.2 MiB      0.0 MiB           1           if n_components is None:
+    65    135.8 MiB      7.7 MiB           1               return X @ self.components_.T
+    66                                                 else:
+    67                                                     return X @ self.components_[:n_components].T
+
+
+
+----medium----
+
+Filename: memory_usage/medium_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    15     69.9 MiB     69.9 MiB           1       @profile
+    16                                             def __init__(self, n_components: Optional[int] = None,
+    17                                                          decomposition_method: str = "eigen"):
+    18     69.9 MiB      0.0 MiB           1           self.n_components = n_components
+    19     69.9 MiB      0.0 MiB           1           self.decomposition_method = decomposition_method
+
+
+Filename: memory_usage/medium_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    21     69.9 MiB     69.9 MiB           1       @profile
+    22                                             def fit(self, X: np.ndarray) -> None:
+    23                                                 """Fit PCA model to data.
+    24                                         
+    25                                                 Args:
+    26                                                     X (np.ndarray): Input data of shape (n_samples, n_features).
+    27                                         
+    28                                                 Returns:
+    29                                                     None. Updates the mean, covariance matrix and eigenvalues/vectors.
+    30                                         
+    31                                                 """
+    32                                                 # Mean centering
+    33     70.0 MiB      0.1 MiB           1           self.mean = np.mean(X, axis=0)
+    34     77.7 MiB      7.7 MiB           1           X_centered = X - self.mean
+    35     77.7 MiB      0.0 MiB           1           n_samples = X.shape[0]
+    36                                         
+    37     77.7 MiB      0.0 MiB           1           if self.decomposition_method == 'eigen':
+    38                                                     # Computing covariance matrix
+    39     85.8 MiB      8.0 MiB           1               cov_mat = np.cov(X_centered, rowvar=False)
+    40                                         
+    41                                                     # Eigen decomposition
+    42     86.6 MiB      0.8 MiB           1               eigen_values, eigen_vectors = np.linalg.eigh(cov_mat)
+    43                                         
+    44                                                     # Sort eigenvalues and vectors in descending order
+    45     86.6 MiB      0.0 MiB           1               sorted_index = np.argsort(eigen_values)[::-1]
+    46     86.6 MiB      0.0 MiB           1               self.sorted_eigenvalues = eigen_values[sorted_index]
+    47     86.6 MiB      0.0 MiB           1               self.sorted_eigenvectors = eigen_vectors[:, sorted_index]
+    48                                                 elif self.decomposition_method == 'svd':
+    49                                                     # Singular Value Decomposition
+    50                                                     U, Sigma, VT = np.linalg.svd(X_centered)
+    51                                         
+    52                                                     # Retain only the first k eigenvectors (sorted in decreasing order of their corresponding eigenvalues)
+    53                                                     self.sorted_eigenvalues = Sigma**2 / n_samples
+    54                                                     self.sorted_eigenvectors = U
+    55                                                 else:
+    56                                                     raise ValueError("Invalid decomposition method. Choose 'eigen' or 'svd'.")
+
+
+Filename: memory_usage/medium_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    58     86.6 MiB     86.6 MiB           1       @profile
+    59                                             def transform(self, X: np.ndarray) -> np.ndarray:
+    60                                                 """Apply dimensionality reduction on input data.
+    61                                         
+    62                                                 Args:
+    63                                                     X (np.ndarray): Input data of shape (n_samples, n_features).
+    64                                         
+    65                                                 Returns:
+    66                                                     Transformed data with reduced dimensionality.
+    67                                         
+    68                                                 """
+    69     86.6 MiB      0.0 MiB           1           X -= self.mean
+    70                                         
+    71     86.6 MiB      0.0 MiB           1           if self.n_components is None:
+    72                                                     return np.dot(X, self.sorted_eigenvectors)
+    73                                                 else:
+    74     94.8 MiB      8.2 MiB           1               return np.dot(X, self.sorted_eigenvectors[:, :self.n_components])
+
+
+Filename: memory_usage/medium_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    76     69.9 MiB     69.9 MiB           1       @profile
+    77                                             def fit_transform(self, X: np.ndarray) -> np.ndarray:
+    78                                                 """Fit PCA model to data and then apply dimensionality reduction on it.
+    79                                         
+    80                                                 Args:
+    81                                                     X (np.ndarray): Input data of shape (n_samples, n_features).
+    82                                         
+    83                                                 Returns:
+    84                                                     Transformed data with reduced dimensionality.
+    85                                         
+    86                                                 """
+    87     86.6 MiB     16.7 MiB           1           self.fit(X)
+    88     94.9 MiB      8.3 MiB           1           return self.transform(X)
+
+
+
+----small----
+
+Filename: memory_usage/small_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+     6     80.0 MiB     80.0 MiB           1       @profile
+     7                                             def __init__(self, n_components=None):
+     8     80.0 MiB      0.0 MiB           1           self.n_components = n_components
+
+
+Filename: memory_usage/small_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+     9     80.0 MiB     80.0 MiB           1       @profile
+    10                                             def fit(self, X, method='eigen'):
+    11                                                 # center the data
+    12     80.0 MiB      0.0 MiB           1           self.mean_ = np.mean(X, axis=0)
+    13     80.0 MiB      0.0 MiB           1           X -= self.mean_
+    14                                         
+    15     80.0 MiB      0.0 MiB           1           if method == 'eigen':
+    16                                                     # compute covariance matrix
+    17     88.1 MiB      8.1 MiB           1               cov_matrix = np.cov(X.T)
+    18                                         
+    19                                                     # get eigenvalues and eigenvectors of the covariance matrix
+    20     88.8 MiB      0.7 MiB           1               eig_vals, eig_vecs = np.linalg.eigh(cov_matrix)
+    21                                         
+    22                                                     # sort eigenvalues and corresponding eigenvectors in descending order
+    23     88.9 MiB      0.1 MiB           1               idx = eig_vals.argsort()[::-1]
+    24     88.9 MiB      0.0 MiB           1               self.eigenvalues_ = eig_vals[idx][:self.n_components]
+    25     88.9 MiB      0.0 MiB           1               self.components_ = eig_vecs[:, idx][:, :self.n_components]
+    26                                         
+    27                                                 elif method == 'svd':
+    28                                                     # perform SVD on the centered data matrix
+    29                                                     U, sigma, VT = svd(X)
+    30                                                     self.eigenvalues_ = (sigma ** 2)[:self.n_components]
+    31                                                     self.components_ = VT[:self.n_components].T
+
+
+Filename: memory_usage/small_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    32     88.9 MiB     88.9 MiB           1       @profile
+    33                                             def transform(self, X):
+    34                                                 # project data to lower dimensions
+    35    105.1 MiB     16.2 MiB           1           return np.dot(X - self.mean_, self.components_)
+
+

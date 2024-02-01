@@ -1,0 +1,79 @@
+
+----long.py----
+
+************* Module long
+long.py:18:22: C0303: Trailing whitespace (trailing-whitespace)
+long.py:19:0: W0311: Bad indentation. Found 10 spaces, expected 12 (bad-indentation)
+long.py:20:0: W0311: Bad indentation. Found 10 spaces, expected 12 (bad-indentation)
+long.py:24:52: C0303: Trailing whitespace (trailing-whitespace)
+long.py:24:0: W0311: Bad indentation. Found 10 spaces, expected 12 (bad-indentation)
+long.py:25:0: W0311: Bad indentation. Found 10 spaces, expected 12 (bad-indentation)
+long.py:26:0: W0311: Bad indentation. Found 10 spaces, expected 12 (bad-indentation)
+long.py:32:0: C0303: Trailing whitespace (trailing-whitespace)
+long.py:35:0: C0303: Trailing whitespace (trailing-whitespace)
+long.py:38:0: C0303: Trailing whitespace (trailing-whitespace)
+long.py:41:0: C0303: Trailing whitespace (trailing-whitespace)
+long.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+long.py:5:0: C0115: Missing class docstring (missing-class-docstring)
+long.py:5:0: E0102: class already defined line 3 (function-redefined)
+long.py:11:4: C0116: Missing function or method docstring (missing-function-docstring)
+long.py:11:18: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+long.py:15:8: C0103: Variable name "X_centered" doesn't conform to snake_case naming style (invalid-name)
+long.py:20:10: C0103: Variable name "U" doesn't conform to snake_case naming style (invalid-name)
+long.py:20:13: C0103: Variable name "S" doesn't conform to snake_case naming style (invalid-name)
+long.py:20:16: C0103: Variable name "Vt" doesn't conform to snake_case naming style (invalid-name)
+long.py:26:10: C0103: Variable name "Vt" doesn't conform to snake_case naming style (invalid-name)
+long.py:30:35: E1101: Instance of 'PCA' has no 'pca' member (no-member)
+long.py:31:41: E1101: Instance of 'PCA' has no 'pca' member (no-member)
+long.py:20:10: W0612: Unused variable 'U' (unused-variable)
+long.py:20:13: W0612: Unused variable 'S' (unused-variable)
+long.py:25:10: W0612: Unused variable 'eigenvalues' (unused-variable)
+long.py:33:24: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+long.py:36:8: C0103: Variable name "X_transformed" doesn't conform to snake_case naming style (invalid-name)
+long.py:39:28: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+long.py:30:8: W0201: Attribute 'explained_variance_' defined outside __init__ (attribute-defined-outside-init)
+long.py:31:8: W0201: Attribute 'explained_variance_ratio_' defined outside __init__ (attribute-defined-outside-init)
+long.py:3:0: W0611: Unused PCA imported from sklearn.decomposition (unused-import)
+
+------------------------------------------------------------------
+Your code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)
+
+
+----medium.py----
+
+************* Module medium
+medium.py:36:21: E0001: Parsing failed: 'invalid syntax (<unknown>, line 36)' (syntax-error)
+
+----small.py----
+
+************* Module small
+small.py:4:0: W0311: Bad indentation. Found 2 spaces, expected 4 (bad-indentation)
+small.py:5:0: W0311: Bad indentation. Found 4 spaces, expected 8 (bad-indentation)
+small.py:7:0: W0311: Bad indentation. Found 2 spaces, expected 4 (bad-indentation)
+small.py:9:0: W0311: Bad indentation. Found 4 spaces, expected 8 (bad-indentation)
+small.py:10:0: W0311: Bad indentation. Found 4 spaces, expected 8 (bad-indentation)
+small.py:11:0: C0303: Trailing whitespace (trailing-whitespace)
+small.py:13:0: W0311: Bad indentation. Found 4 spaces, expected 8 (bad-indentation)
+small.py:14:0: C0303: Trailing whitespace (trailing-whitespace)
+small.py:16:0: W0311: Bad indentation. Found 4 spaces, expected 8 (bad-indentation)
+small.py:17:0: C0303: Trailing whitespace (trailing-whitespace)
+small.py:19:53: C0303: Trailing whitespace (trailing-whitespace)
+small.py:19:0: W0311: Bad indentation. Found 4 spaces, expected 8 (bad-indentation)
+small.py:21:0: W0311: Bad indentation. Found 4 spaces, expected 8 (bad-indentation)
+small.py:23:0: W0311: Bad indentation. Found 4 spaces, expected 8 (bad-indentation)
+small.py:25:0: W0311: Bad indentation. Found 2 spaces, expected 4 (bad-indentation)
+small.py:27:0: W0311: Bad indentation. Found 4 spaces, expected 8 (bad-indentation)
+small.py:28:0: C0304: Final newline missing (missing-final-newline)
+small.py:28:0: W0311: Bad indentation. Found 4 spaces, expected 8 (bad-indentation)
+small.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+small.py:3:0: C0115: Missing class docstring (missing-class-docstring)
+small.py:7:2: C0116: Missing function or method docstring (missing-function-docstring)
+small.py:7:16: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+small.py:25:2: C0116: Missing function or method docstring (missing-function-docstring)
+small.py:25:22: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+small.py:9:4: W0201: Attribute 'mean_' defined outside __init__ (attribute-defined-outside-init)
+small.py:21:4: W0201: Attribute 'components_' defined outside __init__ (attribute-defined-outside-init)
+
+------------------------------------------------------------------
+Your code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)
+

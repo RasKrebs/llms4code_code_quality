@@ -1,0 +1,115 @@
+
+----LONG----
+
+
+Maintainability Index
+long.py - A (63.98)
+Cyclomatic Complexity (CC)
+long.py
+    M 30:4 PrincipalComponentAnalysis.fit - A
+    C 4:0 PrincipalComponentAnalysis - A
+    M 72:4 PrincipalComponentAnalysis.transform - A
+    M 17:4 PrincipalComponentAnalysis.__init__ - A
+    M 99:4 PrincipalComponentAnalysis.fit_transform - A
+
+5 blocks (classes, functions, methods) analyzed.
+Average complexity: A (2.4)
+
+Raw
+long.py
+    LOC: 114
+    LLOC: 47
+    SLOC: 37
+    Comments: 6
+    Single comments: 6
+    Multi: 50
+    Blank: 21
+    - Comment Stats
+        (C % L): 5%
+        (C % S): 16%
+        (C + M % L): 49%
+
+Halstead Metric
+long.py:
+    h1: 6
+    h2: 15
+    N1: 9
+    N2: 18
+    vocabulary: 21
+    length: 27
+    calculated_length: 74.11313393845472
+    volume: 118.59257041502654
+    difficulty: 3.6
+    effort: 426.93325349409554
+    time: 23.718514083005307
+    bugs: 0.03953085680500885
+
+----MEDIUM----
+
+
+Maintainability Index
+medium.py
+    ERROR: invalid syntax (<unknown>, line 47)
+Cyclomatic Complexity (CC)
+medium.py
+    ERROR: invalid syntax (<unknown>, line 47)
+
+Raw
+medium.py
+    LOC: 85
+    LLOC: 30
+    SLOC: 23
+    Comments: 6
+    Single comments: 6
+    Multi: 41
+    Blank: 15
+    - Comment Stats
+        (C % L): 7%
+        (C % S): 26%
+        (C + M % L): 55%
+
+Halstead Metric
+medium.py:
+ERROR: 'dict' object has no attribute 'total'
+
+----SMALL----
+
+
+Maintainability Index
+small.py - A (100.00)
+Cyclomatic Complexity (CC)
+small.py
+    F 3:0 pca_eigen - A
+    F 28:0 pca_svd - A
+
+2 blocks (classes, functions, methods) analyzed.
+Average complexity: A (1.0)
+
+Raw
+small.py
+    LOC: 44
+    LLOC: 28
+    SLOC: 20
+    Comments: 8
+    Single comments: 8
+    Multi: 6
+    Blank: 10
+    - Comment Stats
+        (C % L): 18%
+        (C % S): 40%
+        (C + M % L): 32%
+
+Halstead Metric
+small.py:
+    h1: 0
+    h2: 0
+    N1: 0
+    N2: 0
+    vocabulary: 0
+    length: 0
+    calculated_length: 0
+    volume: 0
+    difficulty: 0
+    effort: 0
+    time: 0.0
+    bugs: 0.0

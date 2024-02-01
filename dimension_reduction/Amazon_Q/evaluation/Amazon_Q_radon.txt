@@ -1,0 +1,117 @@
+
+----LONG----
+
+
+Maintainability Index
+long.py - A (76.70)
+Cyclomatic Complexity (CC)
+long.py
+    M 11:4 PCA.fit - A
+    C 5:0 PCA - A
+    M 6:4 PCA.__init__ - A
+    M 33:4 PCA.transform - A
+    M 39:4 PCA.fit_transform - A
+
+5 blocks (classes, functions, methods) analyzed.
+Average complexity: A (1.6)
+
+Raw
+long.py
+    LOC: 43
+    LLOC: 30
+    SLOC: 27
+    Comments: 4
+    Single comments: 6
+    Multi: 0
+    Blank: 10
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 15%
+        (C + M % L): 9%
+
+Halstead Metric
+long.py:
+    h1: 2
+    h2: 7
+    N1: 4
+    N2: 8
+    vocabulary: 9
+    length: 12
+    calculated_length: 21.651484454403228
+    volume: 38.03910001730775
+    difficulty: 1.1428571428571428
+    effort: 43.47325716263743
+    time: 2.415180953479857
+    bugs: 0.012679700005769252
+
+----MEDIUM----
+
+
+Maintainability Index
+medium.py
+    ERROR: invalid syntax (<unknown>, line 36)
+Cyclomatic Complexity (CC)
+medium.py
+    ERROR: invalid syntax (<unknown>, line 36)
+
+Raw
+medium.py
+    LOC: 61
+    LLOC: 28
+    SLOC: 23
+    Comments: 3
+    Single comments: 3
+    Multi: 21
+    Blank: 14
+    - Comment Stats
+        (C % L): 5%
+        (C % S): 13%
+        (C + M % L): 39%
+
+Halstead Metric
+medium.py:
+ERROR: 'dict' object has no attribute 'total'
+
+----SMALL----
+
+
+Maintainability Index
+small.py - A (91.84)
+Cyclomatic Complexity (CC)
+small.py
+    C 3:0 PCA - A
+    M 7:2 PCA.fit - A
+    M 4:2 PCA.__init__ - A
+    M 25:2 PCA.transform - A
+
+4 blocks (classes, functions, methods) analyzed.
+Average complexity: A (1.5)
+
+Raw
+small.py
+    LOC: 28
+    LLOC: 16
+    SLOC: 16
+    Comments: 5
+    Single comments: 5
+    Multi: 0
+    Blank: 7
+    - Comment Stats
+        (C % L): 18%
+        (C % S): 31%
+        (C + M % L): 18%
+
+Halstead Metric
+small.py:
+    h1: 1
+    h2: 4
+    N1: 2
+    N2: 4
+    vocabulary: 5
+    length: 6
+    calculated_length: 8.0
+    volume: 13.931568569324174
+    difficulty: 0.5
+    effort: 6.965784284662087
+    time: 0.3869880158145604
+    bugs: 0.004643856189774725

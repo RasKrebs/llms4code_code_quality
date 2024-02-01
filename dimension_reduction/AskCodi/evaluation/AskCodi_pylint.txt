@@ -1,0 +1,53 @@
+
+----long.py----
+
+************* Module long
+long.py:70:0: C0301: Line too long (137/100) (line-too-long)
+long.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+long.py:30:18: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+long.py:72:24: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+long.py:89:27: E1101: Instance of 'PrincipalComponentAnalysis' has no 'n_components_' member; maybe 'n_components'? (no-member)
+long.py:99:28: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+long.py:49:12: W0201: Attribute 'eigen_vals_' defined outside __init__ (attribute-defined-outside-init)
+long.py:54:12: W0201: Attribute 'eigen_vals_' defined outside __init__ (attribute-defined-outside-init)
+long.py:61:12: W0201: Attribute 'eigen_vals_' defined outside __init__ (attribute-defined-outside-init)
+long.py:50:12: W0201: Attribute 'eigen_vecs_' defined outside __init__ (attribute-defined-outside-init)
+long.py:55:12: W0201: Attribute 'eigen_vecs_' defined outside __init__ (attribute-defined-outside-init)
+long.py:62:12: W0201: Attribute 'eigen_vecs_' defined outside __init__ (attribute-defined-outside-init)
+long.py:65:8: W0201: Attribute 'explained_variance_ratio_' defined outside __init__ (attribute-defined-outside-init)
+long.py:66:8: W0201: Attribute 'cumulative_explained_variance_ratio_' defined outside __init__ (attribute-defined-outside-init)
+long.py:2:0: W0611: Unused pandas imported as pd (unused-import)
+
+------------------------------------------------------------------
+Your code has been rated at 4.57/10 (previous run: 0.00/10, +4.57)
+
+
+----medium.py----
+
+************* Module medium
+medium.py:47:70: E0001: Parsing failed: 'invalid syntax (<unknown>, line 47)' (syntax-error)
+
+----small.py----
+
+************* Module small
+small.py:9:0: C0303: Trailing whitespace (trailing-whitespace)
+small.py:12:0: C0303: Trailing whitespace (trailing-whitespace)
+small.py:17:0: C0303: Trailing whitespace (trailing-whitespace)
+small.py:22:0: C0303: Trailing whitespace (trailing-whitespace)
+small.py:25:0: C0303: Trailing whitespace (trailing-whitespace)
+small.py:30:0: C0301: Line too long (110/100) (line-too-long)
+small.py:34:0: C0303: Trailing whitespace (trailing-whitespace)
+small.py:40:0: C0303: Trailing whitespace (trailing-whitespace)
+small.py:43:0: C0303: Trailing whitespace (trailing-whitespace)
+small.py:44:0: C0304: Final newline missing (missing-final-newline)
+small.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+small.py:3:14: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+small.py:28:12: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+small.py:33:4: C0103: Variable name "U" doesn't conform to snake_case naming style (invalid-name)
+small.py:33:14: C0103: Variable name "Vt" doesn't conform to snake_case naming style (invalid-name)
+small.py:38:4: C0103: Variable name "U_k" doesn't conform to snake_case naming style (invalid-name)
+small.py:39:4: C0103: Variable name "Vt_k" doesn't conform to snake_case naming style (invalid-name)
+
+------------------------------------------------------------------
+Your code has been rated at 1.50/10 (previous run: 2.73/10, -1.23)
+

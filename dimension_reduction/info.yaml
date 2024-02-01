@@ -84,9 +84,9 @@ Tabnine:
   data_collection_time: 01/11/2024
   additional_prompts: # None
   additional_info: 
-    - The medium prompt answer did not import the necessary libraries, so these were added manually. Other than that, it had good doc strings, but no type hinting. It had lots of 'private' methods and additional feautes + had implemented decorators 
-    - Long prompt, is quite good. Good long docstrings, and good type hinting. Added a repr method to class, which is nice. Many inline comments. Used scipy alt. for SVD
-    - Small prompt, did not make it possible to specify number of return components. Also not wrapped in class. No type hinting, but some descent docstring. Additionally, had an error around l. 29 with a wrong transpose.
+    - medium: answer did not import the necessary libraries, so these were added manually. Other than that, it had good doc strings, but no type hinting. It had lots of 'private' methods and additional feautes + had implemented decorators 
+    - Long: is quite good. Good long docstrings, and good type hinting. Added a repr method to class, which is nice. Many inline comments. Used scipy alt. for SVD
+    - Small: did not make it possible to specify number of return components. Also not wrapped in class. No type hinting, but some descent docstring. Additionally, had an error around l. 29 with a wrong transpose.
     - Unlike other methods, Tabnine also added additional methods such as built in class-representation, __repr__, methdo
   documentation: ../codex/documentation/
 
@@ -97,9 +97,9 @@ WizardCoder:
   data_collection_time: 01/13/2024
   additional_prompts: # None
   additional_info:
-    - Long prompt, interestingly compared to the other LLMs, wizardcoder didn't provide any information. It was pure code.
-    - Medium prompt, did provide some more comments on the code in natural language, mainly in the form of a trailing comment explaining how it could be implemented
-    - Short prompt, similarly to earlier, this model provided some more 'explanations' to how to use the code. Unline many other models, this one wrapped everything in a class.
+    - Long: interestingly compared to the other LLMs, wizardcoder didn't provide any information. It was pure code.
+    - Medium: did provide some more comments on the code in natural language, mainly in the form of a trailing comment explaining how it could be implemented
+    - Short: similarly to earlier, this model provided some more 'explanations' to how to use the code. Unline many other models, this one wrapped everything in a class.
   documentation: 
 
 CodeLLama:
@@ -107,21 +107,47 @@ CodeLLama:
   version: 34b-Instruct
   data_collection_time: 01/14/2024
   additional_prompts: 
-    - For the small prompt, i had to follow up with, 'implement it in python'
+    - small: i had to follow up with, 'implement it in python'
   additional_info:
-    - Long prompt, added a brief, "Here is the implementation of PCA from scratch". Interestingly it did not include the imports.
-    - Medium prompt, add a small intro and outro. Interestingly it did not include the imports.
-    - Small prompt, the first response didn't produce any code, but just text. This did include imports, but the svd + eigen was to seperate functions with the same name PCA. It seemed it was meant to be individually
+    - Long: added a brief, "Here is the implementation of PCA from scratch". Interestingly it did not include the imports. Referenced self.eigenvector in transform, but hadn't actually assigned eigen vector to self at no point.
+    - Medium: add a small intro and outro. Interestingly it did not include the imports.
+    - Small: the first response didn't produce any code, but just text. This did include imports, but the svd + eigen was to seperate functions with the same name PCA. It seemed it was meant to be individually
   documentation: 
 
 Amazon_Q:
   path: 
-  version: xxx
+  version: base. IN PREVIW
   data_collection_time: 01/19/2024
   additional_prompts: 
-    - For long, it didnt solve it correctly in the beginning. So here follow up prompts asking for it to not be use Scikit-learn and include the functionlity for both SVD and Eigen (despite having specified this earlier)
-      - Interestingly, it added sources to the outputs
+    - Long: it didnt solve it correctly in the beginning. So here follow up prompts asking for it to not be use Scikit-learn and include the functionlity for both SVD and Eigen (despite having specified this earlier)
+    - small: Threw an error, so had to rephrase small to Implement a prinicpal component analysis in python from scratch, that can be used with either eigen decomposition and singular value decomposition. Do not use any open-source frameworks
+    - medium: Only build "wrapper" so had to request all code omitted for brevity.
+  additional_info: THIS MODEL WAS OMITTED BECAUSE IT HAD TOO MANY ERRORS
+    - Long: no comments or anything like. Also didn't build it from scratch but rather used Sklearn. Did not call it prinicpal component analysis, but rather "PCA". Required n_components. Added self_explained_variatnce ratio as variable without haven computed it
+    - Medium: Very little type hinting and comments. Original didn't give full code, only "wrapper class", so had to follow up with request for rest of code.
+    - Small: Failed multiple times, and more information was required for it to actually produce code. Code was quite sparse, no type hinting, few comments but no docstrings. Could only perform eigen value decomposition despite being asked to do both
+  documentation: 
+
+AskCodi:
+  path: 
+  version: base
+  data_collection_time: 01/23/2024
+  additional_prompts: 
   additional_info:
-    - Long prompt, no comments or anything like. Also didn't build it from scratch but rather used Sklearn
-    - 
+    - Long: insufficient type hinting, but provided explanation to code. Provides a lot of text. Threw multiple errors when running memory profiler. Used x.cov() from numpy, which is not a actual method. Instead it should be np.cov(x)
+    - Medium: Inufficient type hinting, but good docstrings. A bit more concise and bullet-pointy compared to long. Threw multiple errors when running memory profiler.
+    - Small: Only provided description at first, and had to follow up with a request for the implementation in python. No type hinting. No docstrings. No class. Also don't support number of PCs argument. Threw multiple errors when running memory profiler.
+  documentation: 
+
+
+Codeium:
+  path: 
+  version: base
+  data_collection_time: 01/25/2024
+  additional_prompts: 
+    - Medium: Didn't provide full code, had to follow up wiyh "Can you alo add the implementation to the code"
+  additional_info:
+    - Long: insufficient type hinting, and relatively short doc strings.
+    - Medium: Better docstrings, still insufficient type hinting. Didn't originally give all code, just wrapper class without implementation. Had to follow up
+    - small: No type hinting. No docstrings. Did implement as class, but no fit_transform method
   documentation: 

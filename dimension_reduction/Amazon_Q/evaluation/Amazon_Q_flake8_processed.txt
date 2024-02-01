@@ -1,0 +1,47 @@
+Skipped 0 rows due to parsing errors
+long.py
+~~~~~~~
+(6) N806: variable in function should be lowercase
+(5) E111: indentation is not a multiple of four
+(4) W293: blank line contains whitespace
+(3) N803: argument name should be lowercase
+(2) E114: indentation is not a multiple of four (comment)
+(2) W291: trailing whitespace
+(1) F811: redefinition of unused name from line N
+(1) E302: expected 2 blank lines, found 0
+(1) E231: missing whitespace after ','
+
+
+medium.py
+~~~~~~~~~
+(1) E999: <code not matched>
+
+
+small.py
+~~~~~~~~
+(3) E111: indentation is not a multiple of four
+(3) W293: blank line contains whitespace
+(2) N803: argument name should be lowercase
+(1) E302: expected 2 blank lines, found 0
+(1) W291: trailing whitespace
+(1) E501: line too long (82 > 79 characters)
+(1) W292: no newline at end of file
+
+
+Errors & warnings summary
+-------------------------
+Whitespace warning (W2): 11
+Naming error (N8): 11
+Indentation (E1): 10
+Blank line (E3): 2
+Whitespace (E2): 1
+Line length (E5): 1
+Runtime (E9): 1
+Undefined or unused name (F8): 1
+Import (E4): 0
+Statement (E7): 0
+Indentation warning (W1): 0
+Blank line warning (W3): 0
+Deprecation warning (W6): 0
+Excessive complexity (C9): 0
+Import warning (F4): 0

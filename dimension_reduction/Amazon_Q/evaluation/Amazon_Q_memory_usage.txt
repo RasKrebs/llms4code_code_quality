@@ -1,0 +1,44 @@
+
+----long----
+
+
+----medium----
+
+
+----small----
+
+Filename: memory_usage/small_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+     9     71.4 MiB     71.4 MiB           1     @profile
+    10                                           def fit(self, X):
+    11                                             # Center data
+    12     71.5 MiB      0.1 MiB           1       self.mean_ = np.mean(X, axis=0)
+    13     71.6 MiB      0.1 MiB           1       X -= self.mean_
+    14                                             
+    15                                             # Calculate covariance matrix
+    16     79.6 MiB      8.1 MiB           1       cov_mat = np.cov(X.T)
+    17                                             
+    18                                             # Perform eigendecomposition of covariance matrix
+    19     80.6 MiB      1.0 MiB           1       eigen_vals, eigen_vecs = np.linalg.eig(cov_mat)
+    20                                             
+    21                                             # Sort eigenvalues in descending order and select top n
+    22     80.6 MiB      0.0 MiB           2       eigen_pairs = sorted(zip(eigen_vals, eigen_vecs), 
+    23     80.6 MiB      0.0 MiB         201                            key=lambda x: x[0], reverse=True)
+    24     80.6 MiB      0.0 MiB          13       self.components_ = np.array([eigen_pairs[i][1] for i in range(self.n_components)])
+    25                                         
+    26     80.6 MiB      0.0 MiB           1       return self
+
+
+Filename: memory_usage/small_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    28     80.6 MiB     80.6 MiB           1     @profile
+    29                                           def transform(self, X):
+    30                                             # Project data onto selected components
+    31     96.8 MiB     16.2 MiB           1       projected = np.dot((X-self.mean_), self.components_.T)
+    32     96.8 MiB      0.0 MiB           1       return projected
+
+

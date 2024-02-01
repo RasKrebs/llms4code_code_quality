@@ -1,0 +1,54 @@
+long.py:6:80: E501 line too long (126 > 79 characters)
+long.py:7:80: E501 line too long (166 > 79 characters)
+long.py:8:80: E501 line too long (106 > 79 characters)
+long.py:9:80: E501 line too long (140 > 79 characters)
+long.py:18:20: N803 argument name 'X' should be lowercase
+long.py:23:80: E501 line too long (97 > 79 characters)
+long.py:29:43: F821 undefined name 'np'
+long.py:31:24: F821 undefined name 'np'
+long.py:32:28: F821 undefined name 'np'
+long.py:32:36: F821 undefined name 'np'
+long.py:32:47: F821 undefined name 'np'
+long.py:37:80: E501 line too long (87 > 79 characters)
+long.py:41:35: F821 undefined name 'np'
+long.py:42:46: F821 undefined name 'np'
+long.py:46:26: N803 argument name 'X' should be lowercase
+long.py:51:80: E501 line too long (97 > 79 characters)
+long.py:52:80: E501 line too long (119 > 79 characters)
+long.py:62:30: N803 argument name 'X' should be lowercase
+long.py:64:80: E501 line too long (85 > 79 characters)
+long.py:67:80: E501 line too long (97 > 79 characters)
+long.py:68:80: E501 line too long (119 > 79 characters)
+long.py:74:60: W292 no newline at end of file
+medium.py:6:80: E501 line too long (138 > 79 characters)
+medium.py:7:80: E501 line too long (156 > 79 characters)
+medium.py:12:80: E501 line too long (122 > 79 characters)
+medium.py:13:80: E501 line too long (139 > 79 characters)
+medium.py:20:20: N803 argument name 'X' should be lowercase
+medium.py:22:15: F821 undefined name 'np'
+medium.py:25:28: F821 undefined name 'np'
+medium.py:28:9: F841 local variable 'sorted_eigvals' is assigned to but never used
+medium.py:28:26: F821 undefined name 'np'
+medium.py:30:80: E501 line too long (80 > 79 characters)
+medium.py:33:80: E501 line too long (96 > 79 characters)
+medium.py:34:38: F821 undefined name 'np'
+medium.py:36:26: N803 argument name 'X' should be lowercase
+medium.py:37:16: F821 undefined name 'np'
+medium.py:39:30: N803 argument name 'X' should be lowercase
+medium.py:41:33: W292 no newline at end of file
+small.py:3:1: E302 expected 2 blank lines, found 1
+small.py:3:16: N803 argument name 'X' should be lowercase
+small.py:5:6: N806 variable 'X' in function should be lowercase
+small.py:19:6: N806 variable 'W' in function should be lowercase
+small.py:22:6: N806 variable 'X_pca' in function should be lowercase
+small.py:26:1: E302 expected 2 blank lines, found 1
+small.py:26:14: N803 argument name 'X' should be lowercase
+small.py:28:6: N806 variable 'X' in function should be lowercase
+small.py:31:6: N806 variable 'U' in function should be lowercase
+small.py:31:6: N806 variable 'S' in function should be lowercase
+small.py:31:6: N806 variable 'V' in function should be lowercase
+small.py:34:6: N806 variable 'S' in function should be lowercase
+small.py:35:6: N806 variable 'U' in function should be lowercase
+small.py:36:6: N806 variable 'V' in function should be lowercase
+small.py:39:6: N806 variable 'X_pca' in function should be lowercase
+small.py:41:17: W292 no newline at end of file
