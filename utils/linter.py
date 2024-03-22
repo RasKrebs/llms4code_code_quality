@@ -9,6 +9,7 @@ class LingtingReport:
     def __init__(self, file_path):
         # Path to the Python file
         self.file_path = file_path
+        self.lint_config = "utils/.pylintrc"
         
         # Get all files in file_path that end with .py
         # Check if file_path ends with '/'
@@ -43,7 +44,8 @@ class LingtingReport:
             
             # Run Pylint on the file
             # Create an instance of your custom reporter
-            results = pylint.lint.Run([file], do_exit=False)
+            '/utils/.pylintrc'
+            results = pylint.lint.Run([(f"--rcfile={self.lint_config}"), file], do_exit=False)
             
             # Extract the score and number of methods
             score = results.linter.stats.__dict__['global_note']

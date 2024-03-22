@@ -40,7 +40,19 @@ class MemoryProfilerScriptGenerator:
     
     def generate_memory_profiler_script(self, script):
         # Memory profiler import statement
-        import_statement = "from memory_profiler import profile\n"
+        import_statement = """from memory_profiler import profile
+        import os
+        import psutil
+        
+        # Get the current process ID
+        pid = os.getpid()
+
+        # Create a psutil Process object for the current process
+        process = psutil.Process(pid)
+
+        # Get the number of logical CPUs in the system
+        num_cores = psutil.cpu_count(logical=True)"""
+        
         script = [import_statement] + script
         
         # Adding the decorator to the execute_statement
@@ -65,7 +77,7 @@ class MemoryProfilerScriptGenerator:
     
     def save_memory_profiler_script(self, script:str, file:str):
         # Folder to use
-        path = self.model_path + '/memory_profiler_test/'
+        path = self.model_path + '/memory_profiler/'
         
         # File name
         name = file.split('/')[-1].replace(".py", "") + "_memory_version.py"

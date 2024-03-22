@@ -1,17 +1,17 @@
 {
   "errors": [
     {
-      "filename": "./archived/Amazon_Q/medium.py",
+      "filename": "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/archived/Amazon_Q/medium.py",
       "reason": "syntax error while parsing AST from file"
     },
     {
-      "filename": "./archived/AskCodi/medium.py",
+      "filename": "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/archived/AskCodi/medium.py",
       "reason": "syntax error while parsing AST from file"
     }
   ],
-  "generated_at": "2024-03-18T13:50:53Z",
+  "generated_at": "2024-03-22T08:47:37Z",
   "metrics": {
-    "./Codeium/long.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Codeium/long.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -24,7 +24,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./Codeium/medium.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Codeium/medium.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -37,7 +37,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./Codeium/small.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Codeium/small.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -50,7 +50,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./DeepSeeker-Coder/long.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/DeepSeeker-Coder/long.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -63,7 +63,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./DeepSeeker-Coder/medium.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/DeepSeeker-Coder/medium.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -76,7 +76,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./DeepSeeker-Coder/small.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/DeepSeeker-Coder/small.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -89,7 +89,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./GPT4/long.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/GPT4/long.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -102,7 +102,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./GPT4/medium.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/GPT4/medium.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -115,7 +115,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./GPT4/small.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/GPT4/small.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -128,7 +128,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./GPT_35/long.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/GPT_35/long.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -141,7 +141,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./GPT_35/medium.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/GPT_35/medium.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -154,7 +154,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./GPT_35/small.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/GPT_35/small.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -167,7 +167,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./Gemini/long.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Gemini/long.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -180,7 +180,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./Gemini/medium.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Gemini/medium.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -193,7 +193,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./Gemini/small.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Gemini/small.py": {
       "CONFIDENCE.HIGH": 2,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -206,7 +206,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./Tabnine/long.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Tabnine/long.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -219,7 +219,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./Tabnine/medium.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Tabnine/medium.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -232,7 +232,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./Tabnine/small.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Tabnine/small.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -245,7 +245,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./WizardCoder/long.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/WizardCoder/long.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -258,7 +258,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./WizardCoder/medium.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/WizardCoder/medium.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -271,7 +271,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./WizardCoder/small.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/WizardCoder/small.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -284,7 +284,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./archived/Amazon_Q/long.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/archived/Amazon_Q/long.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -297,12 +297,12 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./archived/Amazon_Q/medium.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/archived/Amazon_Q/medium.py": {
       "loc": 44,
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./archived/Amazon_Q/small.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/archived/Amazon_Q/small.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -315,7 +315,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./archived/AskCodi/long.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/archived/AskCodi/long.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -328,12 +328,12 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./archived/AskCodi/medium.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/archived/AskCodi/medium.py": {
       "loc": 64,
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./archived/AskCodi/small.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/archived/AskCodi/small.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -346,7 +346,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./baseline/long.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/baseline/long.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -359,7 +359,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./codellama/long.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/codellama/long.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -372,7 +372,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./codellama/medium.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/codellama/medium.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -385,7 +385,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./codellama/small.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/codellama/small.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -398,7 +398,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./codex/long.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/codex/long.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -411,7 +411,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./codex/medium.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/codex/medium.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -424,7 +424,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./codex/small.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/codex/small.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -437,7 +437,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./flake8_summarizer.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/flake8_summarizer.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -450,7 +450,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./write_to_file.py": {
+    "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/write_to_file.py": {
       "CONFIDENCE.HIGH": 11,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -482,7 +482,7 @@
       "code": "10 \n11 os.system(f\"cd {args.model}\")\n12 os.chdir(args.model)\n",
       "col_offset": 0,
       "end_col_offset": 29,
-      "filename": "./write_to_file.py",
+      "filename": "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/write_to_file.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -502,7 +502,7 @@
       "code": "31             print('Linting: ', file)\n32             os.system(f'echo \"\\n----{file}----\\n\" {writer} {fileout}.txt')\n33             os.system(f'pylint {file} >> {fileout}.txt')\n",
       "col_offset": 12,
       "end_col_offset": 74,
-      "filename": "./write_to_file.py",
+      "filename": "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/write_to_file.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -522,7 +522,7 @@
       "code": "32             os.system(f'echo \"\\n----{file}----\\n\" {writer} {fileout}.txt')\n33             os.system(f'pylint {file} >> {fileout}.txt')\n34         print('Finished')\n",
       "col_offset": 12,
       "end_col_offset": 56,
-      "filename": "./write_to_file.py",
+      "filename": "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/write_to_file.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -542,7 +542,7 @@
       "code": "35     else:\n36         os.system(f'pylint {args.file} {writer} {file_out}.txt')\n37         \n",
       "col_offset": 8,
       "end_col_offset": 64,
-      "filename": "./write_to_file.py",
+      "filename": "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/write_to_file.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -562,7 +562,7 @@
       "code": "45             file_title = file.strip('.py').upper()\n46             os.system(f'echo \"\\n----{file_title}----\\n\" {writer} {filename_out}.txt')\n47             \n",
       "col_offset": 12,
       "end_col_offset": 85,
-      "filename": "./write_to_file.py",
+      "filename": "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/write_to_file.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -582,7 +582,7 @@
       "code": "61 \n62                 os.system(f'echo \"{write}\" >> {filename_out}.txt')\n63                 os.system(f'radon {radon_eval} {file} {extra_argument} >> {filename_out}.txt')\n",
       "col_offset": 16,
       "end_col_offset": 66,
-      "filename": "./write_to_file.py",
+      "filename": "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/write_to_file.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -602,7 +602,7 @@
       "code": "62                 os.system(f'echo \"{write}\" >> {filename_out}.txt')\n63                 os.system(f'radon {radon_eval} {file} {extra_argument} >> {filename_out}.txt')\n64 \n",
       "col_offset": 16,
       "end_col_offset": 94,
-      "filename": "./write_to_file.py",
+      "filename": "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/write_to_file.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -622,7 +622,7 @@
       "code": "68         writer = '>' if file == 'long.py' else '>>'\n69         os.system(f'flake8 {file} {writer} {flake8_file_out}_raw.txt')\n70     os.system(f'python ../flake8_summarizer.py {flake8_file_out}_raw.txt > {flake8_file_out}_processed.txt')\n",
       "col_offset": 8,
       "end_col_offset": 70,
-      "filename": "./write_to_file.py",
+      "filename": "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/write_to_file.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -642,7 +642,7 @@
       "code": "69         os.system(f'flake8 {file} {writer} {flake8_file_out}_raw.txt')\n70     os.system(f'python ../flake8_summarizer.py {flake8_file_out}_raw.txt > {flake8_file_out}_processed.txt')\n71     \n",
       "col_offset": 4,
       "end_col_offset": 108,
-      "filename": "./write_to_file.py",
+      "filename": "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/write_to_file.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -662,7 +662,7 @@
       "code": "77         writer = '>' if file == 'long' else '>>'\n78         os.system(f'echo \"\\n----{file}----\\n\" {writer} {fileout}.txt')\n79         os.system(f'python -m memory_profiler memory_usage/{file}_memory_usage_version.py >> {fileout}.txt')\n",
       "col_offset": 8,
       "end_col_offset": 70,
-      "filename": "./write_to_file.py",
+      "filename": "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/write_to_file.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -682,7 +682,7 @@
       "code": "78         os.system(f'echo \"\\n----{file}----\\n\" {writer} {fileout}.txt')\n79         os.system(f'python -m memory_profiler memory_usage/{file}_memory_usage_version.py >> {fileout}.txt')\n",
       "col_offset": 8,
       "end_col_offset": 108,
-      "filename": "./write_to_file.py",
+      "filename": "/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/write_to_file.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,

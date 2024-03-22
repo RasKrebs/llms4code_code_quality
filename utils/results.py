@@ -24,6 +24,8 @@ class QualityReport:
             self.df = pd.concat([self.df] + new_results, ignore_index=True)
         else:
             self.df = pd.concat([self.df, new_results], ignore_index=True)
+            
+        self._transform()
     
     def _transform(self):
         # Transform the results dataframe

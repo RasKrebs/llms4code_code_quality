@@ -69,14 +69,18 @@ class RadonAnalyzer:
             print(f"Analyzinng: {model} ({prompt})")
             
             # Analyze code
-            raw_results = self.raw_analyze(code=code, model=model, prompt=prompt)
-            cc = self.cc_analyze(code=code, model=model, prompt=prompt)
-            hal = self.halstead(code=code, model=model, prompt=prompt)
-            mi = self._generate_frame(value=mi_visit(code, multi=True),
-                                     model=model,
-                                     prompt=prompt,
-                                     metric="mi")
-                                      
+            print(f"Analyzing {model} ({prompt})")
+            try:
+                raw_results = self.raw_analyze(code=code, model=model, prompt=prompt)
+                cc = self.cc_analyze(code=code, model=model, prompt=prompt)
+                hal = self.halstead(code=code, model=model, prompt=prompt)
+                mi = self._generate_frame(value=mi_visit(code, multi=True),
+                                         model=model,
+                                         prompt=prompt,
+                                         metric="mi")
+            except Exception as e:
+                print(f"Error in {model} ({prompt}) with error:\n{e}")
+                continue
             
             # Generate frames
             self.df = pd.concat([self.df, raw_results, cc, hal, mi])
@@ -120,16 +124,19 @@ class RadonAnalyzer:
                              prompt=prompt,
                              metric="blank")
 
-        com_to_loc = self._generate_frame(value=(raw_results.comments / raw_results.loc),
+        # Catching division by zero
+        com_to_loc = self._generate_frame(value=raw_results.comments / raw_results.loc,
                              model=model,
                              prompt=prompt,
                              metric="comments_to_loc")
-
-        com_to_sloc = self._generate_frame(value=(raw_results.comments / raw_results.sloc),
+        
+        # Catching division by zero
+        com_to_sloc = self._generate_frame(value=raw_results.comments / raw_results.sloc,
                              model=model,
                              prompt=prompt,
                              metric="comments_to_sloc")
-        mcom_to_loc = self._generate_frame(value=((raw_results.multi + raw_results.comments) / raw_results.loc),
+        # Catching division by zero
+        mcom_to_loc = self._generate_frame(value=(raw_results.multi + raw_results.comments) / raw_results.loc,
                              model=model,
                              prompt=prompt,
                              metric="multi_and_comments_to_loc")

@@ -1,0 +1,19 @@
+dimension_reduction: |
+  # Execute script data to get memory usage
+  if __name__ == "__main__":
+      # For reproducibility
+      np.random.seed(42)
+  
+      # Generate random data
+      data = np.random.rand(10000, 100)
+      
+      # Create PCA object
+      pca = PrincipalComponentAnalysis()
+  
+      # Fit and transform data
+      pca.fit(data)
+      _ = pca.transform(data)
+      
+      # Get the CPU percentage usage of the process
+      cpu_usage = process.cpu_percent(interval=1)/ num_cores
+      print(f"CPU Usage: {cpu_usage}%")
