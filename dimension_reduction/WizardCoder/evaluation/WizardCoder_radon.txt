@@ -6,11 +6,11 @@ Maintainability Index
 long.py - A (71.72)
 Cyclomatic Complexity (CC)
 long.py
-    M 12:4 PrincipalComponentAnalysis.fit - A
-    C 5:0 PrincipalComponentAnalysis - A
-    M 52:4 PrincipalComponentAnalysis.transform - A
-    M 8:4 PrincipalComponentAnalysis.__init__ - A
-    M 67:4 PrincipalComponentAnalysis.fit_transform - A
+    M 12:4 PrincipalComponentAnalysis.fit - A (5)
+    C 5:0 PrincipalComponentAnalysis - A (3)
+    M 52:4 PrincipalComponentAnalysis.transform - A (3)
+    M 8:4 PrincipalComponentAnalysis.__init__ - A (1)
+    M 67:4 PrincipalComponentAnalysis.fit_transform - A (1)
 
 5 blocks (classes, functions, methods) analyzed.
 Average complexity: A (2.6)
@@ -51,11 +51,11 @@ Maintainability Index
 medium.py - A (76.56)
 Cyclomatic Complexity (CC)
 medium.py
-    C 4:0 PrincipalComponentAnalysis - A
-    M 20:4 PrincipalComponentAnalysis.fit - A
-    M 56:4 PrincipalComponentAnalysis.transform - A
-    M 15:4 PrincipalComponentAnalysis.__init__ - A
-    M 73:4 PrincipalComponentAnalysis.fit_transform - A
+    C 4:0 PrincipalComponentAnalysis - A (3)
+    M 20:4 PrincipalComponentAnalysis.fit - A (3)
+    M 56:4 PrincipalComponentAnalysis.transform - A (2)
+    M 15:4 PrincipalComponentAnalysis.__init__ - A (1)
+    M 73:4 PrincipalComponentAnalysis.fit_transform - A (1)
 
 5 blocks (classes, functions, methods) analyzed.
 Average complexity: A (2.0)
@@ -96,10 +96,10 @@ Maintainability Index
 small.py - A (82.52)
 Cyclomatic Complexity (CC)
 small.py
-    C 4:0 PCA - A
-    M 8:4 PCA.fit - A
-    M 5:4 PCA.__init__ - A
-    M 31:4 PCA.transform - A
+    C 4:0 PCA - A (3)
+    M 8:4 PCA.fit - A (3)
+    M 5:4 PCA.__init__ - A (1)
+    M 31:4 PCA.transform - A (1)
 
 4 blocks (classes, functions, methods) analyzed.
 Average complexity: A (2.0)

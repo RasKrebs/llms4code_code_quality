@@ -109,3 +109,4 @@ if __name__ == "__main__":
     # Get the CPU percentage usage of the process
     cpu_usage = process.cpu_percent(interval=1)/ num_cores
     print(f"CPU Usage: {cpu_usage}%")
+

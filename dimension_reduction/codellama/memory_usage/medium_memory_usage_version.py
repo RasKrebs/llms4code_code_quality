@@ -1,5 +1,16 @@
 from memory_profiler import profile
 import numpy as np
+import psutil
+import os
+
+# Get the current process ID
+pid = os.getpid()
+
+# Create a psutil Process object for the current process
+process = psutil.Process(pid)
+
+# Get the number of logical CPUs in the system
+num_cores = psutil.cpu_count(logical=True)
 
 class PrincipalComponentAnalysis:
     """
@@ -32,7 +43,7 @@ default to 'eigen'.
         sorted_eigvals = np.sort(eigvals)[::-1]
 
         # Select the top n eigenvectors corresponding to the largest eigenvalues
-        self.components_ = eigvecs[:self.n_components]
+        self.components_ = eigvecs[:self.n_components].T # ORG: Originally without .T but have to be implemented to make it runable
 
         # Compute the principal components by projecting the data onto the selected eigenvectors
         self.principal_components_ = np.dot(X, self.components_)
@@ -60,3 +71,7 @@ if __name__ == "__main__":
 
     # Fit and transform data
     _ = pca.fit_transform(data)
+    
+    # Get the CPU percentage usage of the process
+    cpu_usage = process.cpu_percent(interval=1)/ num_cores
+    print(f"CPU Usage: {cpu_usage}%")

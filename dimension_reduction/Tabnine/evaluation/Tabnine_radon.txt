@@ -6,12 +6,12 @@ Maintainability Index
 long.py - A (64.31)
 Cyclomatic Complexity (CC)
 long.py
-    M 95:4 PrincipalComponentAnalysis.transform - B
-    M 43:4 PrincipalComponentAnalysis.fit - A
-    C 7:0 PrincipalComponentAnalysis - A
-    M 39:4 PrincipalComponentAnalysis.__init__ - A
-    M 76:4 PrincipalComponentAnalysis.fit_transform - A
-    M 125:4 PrincipalComponentAnalysis.__repr__ - A
+    M 95:4 PrincipalComponentAnalysis.transform - B (6)
+    M 43:4 PrincipalComponentAnalysis.fit - A (5)
+    C 7:0 PrincipalComponentAnalysis - A (4)
+    M 39:4 PrincipalComponentAnalysis.__init__ - A (1)
+    M 76:4 PrincipalComponentAnalysis.fit_transform - A (1)
+    M 125:4 PrincipalComponentAnalysis.__repr__ - A (1)
 
 6 blocks (classes, functions, methods) analyzed.
 Average complexity: A (3.0)
@@ -52,17 +52,17 @@ Maintainability Index
 medium.py - A (51.27)
 Cyclomatic Complexity (CC)
 medium.py
-    M 60:4 PrincipalComponentAnalysis.transform - B
-    M 33:4 PrincipalComponentAnalysis.fit - A
-    C 1:0 PrincipalComponentAnalysis - A
-    M 157:4 PrincipalComponentAnalysis._transform_eigen - A
-    M 176:4 PrincipalComponentAnalysis._transform_svd - A
-    M 204:4 PrincipalComponentAnalysis.n_features_ - A
-    M 19:4 PrincipalComponentAnalysis.__init__ - A
-    M 95:4 PrincipalComponentAnalysis.fit_transform - A
-    M 116:4 PrincipalComponentAnalysis._fit_eigen - A
-    M 136:4 PrincipalComponentAnalysis._fit_svd - A
-    M 196:4 PrincipalComponentAnalysis.is_fitted_ - A
+    M 60:4 PrincipalComponentAnalysis.transform - B (6)
+    M 33:4 PrincipalComponentAnalysis.fit - A (5)
+    C 1:0 PrincipalComponentAnalysis - A (3)
+    M 157:4 PrincipalComponentAnalysis._transform_eigen - A (2)
+    M 176:4 PrincipalComponentAnalysis._transform_svd - A (2)
+    M 204:4 PrincipalComponentAnalysis.n_features_ - A (2)
+    M 19:4 PrincipalComponentAnalysis.__init__ - A (1)
+    M 95:4 PrincipalComponentAnalysis.fit_transform - A (1)
+    M 116:4 PrincipalComponentAnalysis._fit_eigen - A (1)
+    M 136:4 PrincipalComponentAnalysis._fit_svd - A (1)
+    M 196:4 PrincipalComponentAnalysis.is_fitted_ - A (1)
 
 11 blocks (classes, functions, methods) analyzed.
 Average complexity: A (2.272727272727273)
@@ -103,8 +103,8 @@ Maintainability Index
 small.py - A (80.04)
 Cyclomatic Complexity (CC)
 small.py
-    F 3:0 pca_from_eigen_decomposition - A
-    F 32:0 pca_from_singular_value_decomposition - A
+    F 3:0 pca_from_eigen_decomposition - A (1)
+    F 32:0 pca_from_singular_value_decomposition - A (1)
 
 2 blocks (classes, functions, methods) analyzed.
 Average complexity: A (1.0)

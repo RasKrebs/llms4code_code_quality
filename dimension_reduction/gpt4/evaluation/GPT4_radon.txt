@@ -3,23 +3,23 @@
 
 
 Maintainability Index
-long.py - A (67.57)
+long.py - A (68.34)
 Cyclomatic Complexity (CC)
 long.py
-    M 36:4 PrincipalComponentAnalysis.fit - B
-    C 5:0 PrincipalComponentAnalysis - A
-    M 81:4 PrincipalComponentAnalysis.transform - A
-    M 28:4 PrincipalComponentAnalysis.__init__ - A
-    M 112:4 PrincipalComponentAnalysis.fit_transform - A
+    M 38:4 PrincipalComponentAnalysis.fit - B (6)
+    C 5:0 PrincipalComponentAnalysis - A (4)
+    M 83:4 PrincipalComponentAnalysis.transform - A (4)
+    M 28:4 PrincipalComponentAnalysis.__init__ - A (1)
+    M 114:4 PrincipalComponentAnalysis.fit_transform - A (1)
 
 5 blocks (classes, functions, methods) analyzed.
 Average complexity: A (3.2)
 
 Raw
 long.py
-    LOC: 128
+    LOC: 130
     LLOC: 58
-    SLOC: 49
+    SLOC: 51
     Comments: 5
     Single comments: 5
     Multi: 52
@@ -27,7 +27,7 @@ long.py
     - Comment Stats
         (C % L): 4%
         (C % S): 10%
-        (C + M % L): 45%
+        (C + M % L): 44%
 
 Halstead Metric
 long.py:
@@ -51,11 +51,11 @@ Maintainability Index
 medium.py - A (65.19)
 Cyclomatic Complexity (CC)
 medium.py
-    M 33:4 PrincipalComponentAnalysis.fit - A
-    C 4:0 PrincipalComponentAnalysis - A
-    M 26:4 PrincipalComponentAnalysis.__init__ - A
-    M 74:4 PrincipalComponentAnalysis.transform - A
-    M 91:4 PrincipalComponentAnalysis.fit_transform - A
+    M 33:4 PrincipalComponentAnalysis.fit - A (4)
+    C 4:0 PrincipalComponentAnalysis - A (3)
+    M 26:4 PrincipalComponentAnalysis.__init__ - A (1)
+    M 74:4 PrincipalComponentAnalysis.transform - A (1)
+    M 91:4 PrincipalComponentAnalysis.fit_transform - A (1)
 
 5 blocks (classes, functions, methods) analyzed.
 Average complexity: A (2.0)
@@ -96,9 +96,9 @@ Maintainability Index
 small.py - A (90.27)
 Cyclomatic Complexity (CC)
 small.py
-    F 3:0 standardize_data - A
-    F 6:0 pca_eigen - A
-    F 21:0 pca_svd - A
+    F 3:0 standardize_data - A (1)
+    F 6:0 pca_eigen - A (1)
+    F 21:0 pca_svd - A (1)
 
 3 blocks (classes, functions, methods) analyzed.
 Average complexity: A (1.0)

@@ -1,0 +1,10 @@
+,Total Memory Usage (MiB),CPU Usage Per Cent,solution
+0,161.9,22.1,Baseline
+1,152.4,22.78,GPT 3.5
+2,159.4,22.1,GPT 4
+3,169.1,22.15,Gemini/Bard
+4,160.2,22.86,DeepSeeker-Coder
+5,112,22.32,Codex
+6,222.9,21.05,Tabnine
+7,81.9,12.15,CodeLLama
+8,138.4,14.35,WizardCoder

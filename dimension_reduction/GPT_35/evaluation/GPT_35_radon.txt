@@ -1,0 +1,132 @@
+
+----LONG----
+
+
+Maintainability Index
+long.py - A (69.14)
+Cyclomatic Complexity (CC)
+long.py
+    M 80:4 PrincipalComponentAnalysis.transform - B (6)
+    M 31:4 PrincipalComponentAnalysis.fit - A (5)
+    C 5:0 PrincipalComponentAnalysis - A (4)
+    M 26:4 PrincipalComponentAnalysis.__init__ - A (1)
+    M 107:4 PrincipalComponentAnalysis.fit_transform - A (1)
+
+5 blocks (classes, functions, methods) analyzed.
+Average complexity: A (3.4)
+
+Raw
+long.py
+    LOC: 119
+    LLOC: 51
+    SLOC: 44
+    Comments: 11
+    Single comments: 11
+    Multi: 40
+    Blank: 24
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 25%
+        (C + M % L): 43%
+
+Halstead Metric
+long.py:
+    h1: 8
+    h2: 15
+    N1: 10
+    N2: 19
+    vocabulary: 23
+    length: 29
+    calculated_length: 82.60335893412778
+    volume: 131.18329672565338
+    difficulty: 5.066666666666666
+    effort: 664.6620367433104
+    time: 36.92566870796169
+    bugs: 0.04372776557521779
+
+----MEDIUM----
+
+
+Maintainability Index
+medium.py - A (55.04)
+Cyclomatic Complexity (CC)
+medium.py
+    C 3:0 PrincipalComponentAnalysis - A (3)
+    M 56:4 PrincipalComponentAnalysis.fit - A (3)
+    M 98:4 PrincipalComponentAnalysis.transform - A (3)
+    M 48:4 PrincipalComponentAnalysis.__init__ - A (1)
+    M 121:4 PrincipalComponentAnalysis.fit_transform - A (1)
+
+5 blocks (classes, functions, methods) analyzed.
+Average complexity: A (2.2)
+
+Raw
+medium.py
+    LOC: 136
+    LLOC: 45
+    SLOC: 37
+    Comments: 7
+    Single comments: 7
+    Multi: 64
+    Blank: 28
+    - Comment Stats
+        (C % L): 5%
+        (C % S): 19%
+        (C + M % L): 52%
+
+Halstead Metric
+medium.py:
+    h1: 7
+    h2: 19
+    N1: 12
+    N2: 23
+    vocabulary: 26
+    length: 35
+    calculated_length: 100.36210720983135
+    volume: 164.51539013493823
+    difficulty: 4.2368421052631575
+    effort: 697.0257318875014
+    time: 38.723651771527855
+    bugs: 0.054838463378312746
+
+----SMALL----
+
+
+Maintainability Index
+small.py - A (89.87)
+Cyclomatic Complexity (CC)
+small.py
+    F 3:0 pca_eigen_decomp - A (1)
+    F 28:0 pca_svd - A (1)
+
+2 blocks (classes, functions, methods) analyzed.
+Average complexity: A (1.0)
+
+Raw
+small.py
+    LOC: 42
+    LLOC: 23
+    SLOC: 19
+    Comments: 10
+    Single comments: 10
+    Multi: 0
+    Blank: 13
+    - Comment Stats
+        (C % L): 24%
+        (C % S): 53%
+        (C + M % L): 24%
+
+Halstead Metric
+small.py:
+    h1: 2
+    h2: 5
+    N1: 3
+    N2: 5
+    vocabulary: 7
+    length: 8
+    calculated_length: 13.60964047443681
+    volume: 22.458839376460833
+    difficulty: 1.0
+    effort: 22.458839376460833
+    time: 1.2477132986922685
+    bugs: 0.007486279792153611

@@ -1,6 +1,17 @@
 import numpy as np
 from typing import Optional, Tuple, Union
 from memory_profiler import profile
+import psutil
+import os
+
+# Get the current process ID
+pid = os.getpid()
+
+# Create a psutil Process object for the current process
+process = psutil.Process(pid)
+
+# Get the number of logical CPUs in the system
+num_cores = psutil.cpu_count(logical=True)
 
 class PrincipalComponentAnalysis:
     """
@@ -122,3 +133,8 @@ if __name__ == "__main__":
 
     # Fit and transform data
     _ = pca.fit_transform(data)
+    
+    # Get the CPU percentage usage of the process
+    cpu_usage = process.cpu_percent(interval=1)/ num_cores
+    print(f"CPU Usage: {cpu_usage}%")
+

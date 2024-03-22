@@ -110,7 +110,7 @@ CodeLLama:
     - small: i had to follow up with, 'implement it in python'
   additional_info:
     - Long: added a brief, "Here is the implementation of PCA from scratch". Interestingly it did not include the imports. Referenced self.eigenvector in transform, but hadn't actually assigned eigen vector to self at no point.
-    - Medium: add a small intro and outro. Interestingly it did not include the imports.
+    - Medium: add a small intro and outro. Interestingly it did not include the imports. Had to also add "eigvecs[:self.n_components].T" to make it runable
     - Small: the first response didn't produce any code, but just text. This did include imports, but the svd + eigen was to seperate functions with the same name PCA. It seemed it was meant to be individually
   documentation: 
 

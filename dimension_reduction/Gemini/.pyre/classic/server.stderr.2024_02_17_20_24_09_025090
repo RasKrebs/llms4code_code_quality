@@ -1,0 +1,45 @@
+2024-02-17 20:24:09 INFO Initializing file watching service...
+2024-02-17 20:24:09 INFO Connecting to watchman...
+2024-02-17 20:24:09 INFO Established watchman connection.
+2024-02-17 20:24:09 INFO Request watchman subscription at /Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Gemini
+2024-02-17 20:24:09 INFO Server has started listening on socket `/var/folders/v_/xl6xsh6x00990b93wzxm2j8c0000gn/T/pyre_server_53592409c930f2da7de881b74516bdc2.sock`
+2024-02-17 20:24:09 INFO Initializing shared memory (heap_size: 8589934592, dep_table_pow: 27, hash_table_pow: 26)
+2024-02-17 20:24:09 INFO Initializing server state from scratch...
+2024-02-17 20:24:09 INFO Creating environment...
+2024-02-17 20:24:09 INFO Building module tracker...
+2024-02-17 20:24:10 PERFORMANCE Module tracker built: 0.913s
+2024-02-17 20:24:10 PERFORMANCE Full environment built: 0.972s
+2024-02-17 20:24:10 INFO Collecting all definitions...
+2024-02-17 20:24:10 PERFORMANCE Collected definitions (defines: 26): 0.014s
+2024-02-17 20:24:10 INFO Checking 26 functions...
+2024-02-17 20:24:11 PROGRESS Processed 26 of 26 functions
+2024-02-17 20:24:11 PERFORMANCE Check_TypeCheck: 0.907s
+2024-02-17 20:24:11 MEMORY Shared memory size post-typecheck (size: 2)
+2024-02-17 20:24:11 PROGRESS Postprocessing 6 sources...
+2024-02-17 20:24:11 PROGRESS Postprocessed 6 of 6 sources
+2024-02-17 20:24:11 PERFORMANCE Check_Postprocessing: 0.004s
+2024-02-17 20:24:11 PERFORMANCE Initialization (binary_version: dc25037355687420c6f28e0c81f94b3304cc9327, initialization method: cold start): 1.941s
+2024-02-17 20:24:11 INFO Server state initialized.
+2024-02-17 20:24:11 SERVER Connection established
+2024-02-17 20:24:11 SERVER Processing request (DisplayTypeError())...
+2024-02-17 20:24:11 PERFORMANCE Server request (binary_version: dc25037355687420c6f28e0c81f94b3304cc9327, request kind: DisplayTypeErrors): 0.001s
+2024-02-17 20:24:11 SERVER Request `(DisplayTypeError())` processed
+2024-02-17 20:24:11 SERVER Connection closed
+2024-03-18 13:59:58 SERVER Processing request (IncrementalUpdate(/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Gemini/memory_profiler_test/medium_memory_version.py /Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Gemini/memory_profiler_test/small_memory_version.py /Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Gemini/memory_profiler_test/long_memory_version.py))...
+2024-03-18 13:59:59 INFO Repopulating the environment...
+2024-03-18 13:59:59 SERVER Explicit Module Update: (explicit_updates((New((raw((relative memory_profiler_test/long_memory_version.py)(priority 292)))(qualifier(memory_profiler_test long_memory_version))(is_stub false)(is_external false)(is_init false)))(New((raw((relative memory_profiler_test/small_memory_version.py)(priority 292)))(qualifier(memory_profiler_test small_memory_version))(is_stub false)(is_external false)(is_init false)))(New((raw((relative memory_profiler_test/medium_memory_version.py)(priority 292)))(qualifier(memory_profiler_test medium_memory_version))(is_stub false)(is_external false)(is_init false)))))
+2024-03-18 13:59:59 SERVER Implicit Module Update: (implicit_updates((New(memory_profiler_test))))
+2024-03-18 13:59:59 PERFORMANCE Module tracker updated: 0.007s
+2024-03-18 13:59:59 MEMORY Shared memory size (size: 2)
+2024-03-18 13:59:59 PERFORMANCE Incremental check (number of changed files: 3, number of module tracker updates: 4, number of parser updates: 4, number of rechecked modules: 0, number of re-checked functions: 0): 1.129s
+2024-03-18 13:59:59 PERFORMANCE Server request (binary_version: dc25037355687420c6f28e0c81f94b3304cc9327, request kind: IncrementalCheck): 1.211s
+2024-03-18 13:59:59 SERVER Request `(IncrementalUpdate(/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Gemini/memory_profiler_test/medium_memory_version.py /Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Gemini/memory_profiler_test/small_memory_version.py /Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Gemini/memory_profiler_test/long_memory_version.py))` processed
+2024-03-18 14:00:16 SERVER Processing request (IncrementalUpdate(/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Gemini/memory_profiler_test/long_memory_version.py /Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Gemini/memory_profiler_test/small_memory_version.py /Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Gemini/memory_profiler_test/medium_memory_version.py))...
+2024-03-18 14:00:16 INFO Repopulating the environment...
+2024-03-18 14:00:16 SERVER Explicit Module Update: (explicit_updates((Delete(memory_profiler_test long_memory_version))(Delete(memory_profiler_test small_memory_version))(Delete(memory_profiler_test medium_memory_version))))
+2024-03-18 14:00:16 SERVER Implicit Module Update: (implicit_updates((Delete(memory_profiler_test))))
+2024-03-18 14:00:16 PERFORMANCE Module tracker updated: 0.001s
+2024-03-18 14:00:16 MEMORY Shared memory size (size: 2)
+2024-03-18 14:00:16 PERFORMANCE Incremental check (number of changed files: 3, number of module tracker updates: 4, number of parser updates: 4, number of rechecked modules: 0, number of re-checked functions: 0): 0.180s
+2024-03-18 14:00:16 PERFORMANCE Server request (binary_version: dc25037355687420c6f28e0c81f94b3304cc9327, request kind: IncrementalCheck): 0.253s
+2024-03-18 14:00:16 SERVER Request `(IncrementalUpdate(/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Gemini/memory_profiler_test/long_memory_version.py /Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Gemini/memory_profiler_test/small_memory_version.py /Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Gemini/memory_profiler_test/medium_memory_version.py))` processed

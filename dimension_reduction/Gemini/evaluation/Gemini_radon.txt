@@ -3,30 +3,30 @@
 
 
 Maintainability Index
-long.py - A (71.76)
+long.py - A (71.74)
 Cyclomatic Complexity (CC)
 long.py
-    M 26:4 PrincipalComponentAnalysis.fit - B
-    C 3:0 PrincipalComponentAnalysis - B
-    M 84:4 PrincipalComponentAnalysis.transform - B
-    M 14:4 PrincipalComponentAnalysis.__init__ - A
+    M 27:4 PrincipalComponentAnalysis.fit - B (10)
+    C 4:0 PrincipalComponentAnalysis - B (7)
+    M 85:4 PrincipalComponentAnalysis.transform - B (7)
+    M 15:4 PrincipalComponentAnalysis.__init__ - A (1)
 
 4 blocks (classes, functions, methods) analyzed.
 Average complexity: B (6.25)
 
 Raw
 long.py
-    LOC: 113
-    LLOC: 55
-    SLOC: 49
+    LOC: 114
+    LLOC: 56
+    SLOC: 50
     Comments: 16
     Single comments: 16
     Multi: 23
     Blank: 25
     - Comment Stats
         (C % L): 14%
-        (C % S): 33%
-        (C + M % L): 35%
+        (C % S): 32%
+        (C + M % L): 34%
 
 Halstead Metric
 long.py:
@@ -50,26 +50,26 @@ Maintainability Index
 medium.py - A (70.54)
 Cyclomatic Complexity (CC)
 medium.py
-    M 16:4 PrincipalComponentAnalysis.fit - B
-    C 3:0 PrincipalComponentAnalysis - A
-    M 61:4 PrincipalComponentAnalysis.transform - A
-    M 12:4 PrincipalComponentAnalysis.__init__ - A
-    M 88:4 PrincipalComponentAnalysis.fit_transform - A
+    M 17:4 PrincipalComponentAnalysis.fit - B (10)
+    C 3:0 PrincipalComponentAnalysis - A (5)
+    M 62:4 PrincipalComponentAnalysis.transform - A (3)
+    M 12:4 PrincipalComponentAnalysis.__init__ - A (1)
+    M 89:4 PrincipalComponentAnalysis.fit_transform - A (1)
 
 5 blocks (classes, functions, methods) analyzed.
 Average complexity: A (4.0)
 
 Raw
 medium.py
-    LOC: 103
+    LOC: 104
     LLOC: 46
     SLOC: 39
     Comments: 14
     Single comments: 14
     Multi: 25
-    Blank: 25
+    Blank: 26
     - Comment Stats
-        (C % L): 14%
+        (C % L): 13%
         (C % S): 36%
         (C + M % L): 38%
 
@@ -95,7 +95,7 @@ Maintainability Index
 small.py - A (81.60)
 Cyclomatic Complexity (CC)
 small.py
-    F 3:0 pca - A
+    F 3:0 pca - A (5)
 
 1 blocks (classes, functions, methods) analyzed.
 Average complexity: A (5.0)

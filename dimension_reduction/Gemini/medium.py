@@ -12,7 +12,8 @@ class PrincipalComponentAnalysis:
     def __init__(self, n_components=None, decomposition_method='eigen'):
         self.n_components = n_components
         self.decomposition_method = decomposition_method
-
+        
+        
     def fit(self, X: np.ndarray) -> None:
         """
         Fits the PCA model to the given data.
@@ -34,7 +35,7 @@ class PrincipalComponentAnalysis:
 
         # Check if decomposition_method is valid
         if self.decomposition_method not in ['eigen', 'svd']:
-            raise ValueError('Invalid decomposition_method: must be either 'eigen' or 'svd'')
+            raise ValueError("Invalid decomposition_method: must be either 'eigen' or 'svd'")
 
         # Calculate mean and covariance matrix
         self.mean = np.mean(X, axis=0)

@@ -1,0 +1,65 @@
+
+----LONG----
+
+
+Maintainability Index
+long.py - A (66.46)
+Cyclomatic Complexity (CC)
+long.py
+    M 48:4 PrincipalComponentAnalysis.fit - B (6)
+    C 6:0 PrincipalComponentAnalysis - A (4)
+    M 100:4 PrincipalComponentAnalysis.transform - A (4)
+    M 10:4 PrincipalComponentAnalysis.__init__ - A (2)
+    M 121:4 PrincipalComponentAnalysis.fit_transform - A (1)
+
+5 blocks (classes, functions, methods) analyzed.
+Average complexity: A (3.4)
+
+Raw
+long.py
+    LOC: 139
+    LLOC: 58
+    SLOC: 53
+    Comments: 15
+    Single comments: 14
+    Multi: 44
+    Blank: 28
+    - Comment Stats
+        (C % L): 11%
+        (C % S): 28%
+        (C + M % L): 42%
+
+Halstead Metric
+long.py:
+    h1: 10
+    h2: 31
+    N1: 17
+    N2: 34
+    vocabulary: 41
+    length: 51
+    calculated_length: 186.7993665708668
+    volume: 273.23515223552226
+    difficulty: 5.483870967741935
+    effort: 1498.3863187109284
+    time: 83.24368437282936
+    bugs: 0.09107838407850742
+
+----MEDIUM----
+
+
+Maintainability Index
+Cyclomatic Complexity (CC)
+
+Raw
+
+Halstead Metric
+
+----SMALL----
+
+
+Maintainability Index
+Cyclomatic Complexity (CC)
+
+Raw
+
+Halstead Metric

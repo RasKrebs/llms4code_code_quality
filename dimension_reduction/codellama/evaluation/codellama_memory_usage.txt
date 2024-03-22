@@ -5,90 +5,91 @@ Filename: memory_usage/long_memory_usage_version.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-    14     72.0 MiB     72.0 MiB           1       @profile
-    15                                             def __init__(self, n_components=None, decomposition_method='eigen'):
-    16     72.0 MiB      0.0 MiB           1           self.n_components = n_components
-    17     72.0 MiB      0.0 MiB           1           self.decomposition_method = decomposition_method
-    18     72.0 MiB      0.0 MiB           1           self.explained_variance = []
-    19     72.0 MiB      0.0 MiB           1           self.cumulative_explained_variance = []
+    25     72.6 MiB     72.6 MiB           1       @profile
+    26                                             def __init__(self, n_components=None, decomposition_method='eigen'):
+    27     72.6 MiB      0.0 MiB           1           self.n_components = n_components
+    28     72.6 MiB      0.0 MiB           1           self.decomposition_method = decomposition_method
+    29     72.6 MiB      0.0 MiB           1           self.explained_variance = []
+    30     72.6 MiB      0.0 MiB           1           self.cumulative_explained_variance = []
 
 
 Filename: memory_usage/long_memory_usage_version.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-    21     72.0 MiB     72.0 MiB           1       @profile
-    22                                             def fit(self, X):
-    23                                                 """
-    24                                                 Computes the eigen values and eigen vectors for the inputted data.
-    25                                         
-    26                                                 Parameters:
-    27                                                     X (numpy array, pandas dataframe or list of lists): The input data to perform PCA on.
-    28                                         
-    29                                                 Returns:
-    30                                                     A numpy array representing the transformed data.
-    31                                                 """
-    32     72.0 MiB      0.0 MiB           1           if self.decomposition_method == 'eigen':
-    33     73.3 MiB      1.3 MiB           1               eigen_values, eigen_vectors = np.linalg.eig(X.T @ X)
-    34                                                 elif self.decomposition_method == 'svd':
-    35                                                     _, _, vt = np.linalg.svd(X.T @ X)
-    36                                                     eigen_values = np.diag(np.dot(vt, np.diag(eigen_values)))
-    37                                                     eigen_vectors = vt
-    38                                                 else:
-    39                                                     raise ValueError("Invalid decomposition method")
-    40                                         
-    41     73.3 MiB      0.0 MiB           1           if self.n_components is not None and self.n_components < eigen_values.shape[0]:
-    42     73.3 MiB      0.0 MiB           1               eigen_values = eigen_values[:self.n_components]
-    43     73.3 MiB      0.0 MiB           1               self.eigenvectors = eigen_vectors[:, :self.n_components]
-    44                                         
-    45     73.3 MiB      0.0 MiB           1           self.explained_variance = np.sum(eigen_values) / len(X)
-    46     73.3 MiB      0.0 MiB           1           self.cumulative_explained_variance = np.cumsum(eigen_values) / len(X)
-    47                                         
-    48     81.0 MiB      7.6 MiB           1           return X @ eigen_vectors
+    32     72.6 MiB     72.6 MiB           1       @profile
+    33                                             def fit(self, X):
+    34                                                 """
+    35                                                 Computes the eigen values and eigen vectors for the inputted data.
+    36                                         
+    37                                                 Parameters:
+    38                                                     X (numpy array, pandas dataframe or list of lists): The input data to perform PCA on.
+    39                                         
+    40                                                 Returns:
+    41                                                     A numpy array representing the transformed data.
+    42                                                 """
+    43     72.6 MiB      0.0 MiB           1           if self.decomposition_method == 'eigen':
+    44     73.5 MiB      0.9 MiB           1               eigen_values, eigen_vectors = np.linalg.eig(X.T @ X)
+    45                                                 elif self.decomposition_method == 'svd':
+    46                                                     _, _, vt = np.linalg.svd(X.T @ X)
+    47                                                     eigen_values = np.diag(np.dot(vt, np.diag(eigen_values)))
+    48                                                     eigen_vectors = vt
+    49                                                 else:
+    50                                                     raise ValueError("Invalid decomposition method")
+    51                                         
+    52     73.5 MiB      0.0 MiB           1           if self.n_components is not None and self.n_components < eigen_values.shape[0]:
+    53     73.5 MiB      0.0 MiB           1               eigen_values = eigen_values[:self.n_components]
+    54     73.5 MiB      0.0 MiB           1               self.eigenvectors = eigen_vectors[:, :self.n_components]
+    55                                         
+    56     73.5 MiB      0.0 MiB           1           self.explained_variance = np.sum(eigen_values) / len(X)
+    57     73.5 MiB      0.0 MiB           1           self.cumulative_explained_variance = np.cumsum(eigen_values) / len(X)
+    58                                         
+    59     81.2 MiB      7.6 MiB           1           return X @ eigen_vectors
 
 
 Filename: memory_usage/long_memory_usage_version.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-    49     81.0 MiB     81.0 MiB           1       @profile
-    50                                             def transform(self, X, n_components=None):
-    51                                                 """
-    52                                                 Projects the input data onto the principal components.
-    53                                         
-    54                                                 Parameters:
-    55                                                     X (numpy array, pandas dataframe or list of lists): The input data to perform PCA on.
-    56                                                     n_components (int): The number of components to project onto. If not specified, defaults to all components.
-    57                                         
-    58                                                 Returns:
-    59                                                     A numpy array representing the transformed data.
-    60                                                 """
-    61     81.0 MiB      0.0 MiB           1           if n_components is None:
-    62     81.0 MiB      0.0 MiB           1               n_components = self.n_components
-    63                                         
-    64     81.8 MiB      0.8 MiB           1           return X @ self.eigenvectors[:, :n_components]
-
-
-Filename: memory_usage/long_memory_usage_version.py
-
-Line #    Mem usage    Increment  Occurrences   Line Contents
-=============================================================
-    66     72.0 MiB     72.0 MiB           1       @profile
-    67                                             def fit_transform(self, X, n_components=None):
-    68                                                 """
-    69                                                 Performs PCA on the input data and projects it onto the principal components.
-    70                                         
-    71                                                 Parameters:
-    72                                                     X (numpy array, pandas dataframe or list of lists): The input data to perform PCA on.
-    73                                                     n_components (int): The number of components to project onto. If not specified, defaults to all components.
+    60     81.2 MiB     81.2 MiB           1       @profile
+    61                                             def transform(self, X, n_components=None):
+    62                                                 """
+    63                                                 Projects the input data onto the principal components.
+    64                                         
+    65                                                 Parameters:
+    66                                                     X (numpy array, pandas dataframe or list of lists): The input data to perform PCA on.
+    67                                                     n_components (int): The number of components to project onto. If not specified, defaults to all components.
+    68                                         
+    69                                                 Returns:
+    70                                                     A numpy array representing the transformed data.
+    71                                                 """
+    72     81.2 MiB      0.0 MiB           1           if n_components is None:
+    73     81.2 MiB      0.0 MiB           1               n_components = self.n_components
     74                                         
-    75                                                 Returns:
-    76                                                     A numpy array representing the transformed data.
-    77                                                 """
-    78     81.0 MiB      8.9 MiB           1           self.fit(X)
-    79     81.8 MiB      0.8 MiB           1           return self.transform(X, n_components=n_components)
+    75     81.9 MiB      0.8 MiB           1           return X @ self.eigenvectors[:, :n_components]
 
 
+Filename: memory_usage/long_memory_usage_version.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    77     72.6 MiB     72.6 MiB           1       @profile
+    78                                             def fit_transform(self, X, n_components=None):
+    79                                                 """
+    80                                                 Performs PCA on the input data and projects it onto the principal components.
+    81                                         
+    82                                                 Parameters:
+    83                                                     X (numpy array, pandas dataframe or list of lists): The input data to perform PCA on.
+    84                                                     n_components (int): The number of components to project onto. If not specified, defaults to all components.
+    85                                         
+    86                                                 Returns:
+    87                                                     A numpy array representing the transformed data.
+    88                                                 """
+    89     81.2 MiB      8.5 MiB           1           self.fit(X)
+    90     81.9 MiB      0.8 MiB           1           return self.transform(X, n_components=n_components)
+
+
+CPU Usage: 12.15%
 
 ----medium----
 
@@ -96,53 +97,54 @@ Filename: memory_usage/medium_memory_usage_version.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-    18     72.3 MiB     72.3 MiB           1       @profile
-    19                                             def __init__(self, n_components=None, decomposition_method='eigen'):
-    20     72.3 MiB      0.0 MiB           1           self.n_components = n_components
-    21     72.3 MiB      0.0 MiB           1           self.decomposition_method = decomposition_method
+    29     72.9 MiB     72.9 MiB           1       @profile
+    30                                             def __init__(self, n_components=None, decomposition_method='eigen'):
+    31     72.9 MiB      0.0 MiB           1           self.n_components = n_components
+    32     72.9 MiB      0.0 MiB           1           self.decomposition_method = decomposition_method
 
 
 Filename: memory_usage/medium_memory_usage_version.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-    23     72.3 MiB     72.3 MiB           1       @profile
-    24                                             def fit(self, X):
-    25                                                 # Compute the covariance matrix of the input data
-    26     80.4 MiB      8.1 MiB           1           cov = np.cov(X, rowvar=False)
-    27                                         
-    28                                                 # Compute the eigenvectors and eigenvalues of the covariance matrix
-    29     80.9 MiB      0.5 MiB           1           eigvals, eigvecs = np.linalg.eigh(cov)
-    30                                         
-    31                                                 # Sort the eigenvalues in descending order
-    32     80.9 MiB      0.0 MiB           1           sorted_eigvals = np.sort(eigvals)[::-1]
-    33                                         
-    34                                                 # Select the top n eigenvectors corresponding to the largest eigenvalues
-    35     80.9 MiB      0.0 MiB           1           self.components_ = eigvecs.T[:self.n_components].T
-    36                                                 
-    37                                                 # Compute the principal components by projecting the data onto the selected eigenvectors
-    38     89.4 MiB      8.5 MiB           1           self.principal_components_ = np.dot(X, self.components_)
+    34     72.9 MiB     72.9 MiB           1       @profile
+    35                                             def fit(self, X):
+    36                                                 # Compute the covariance matrix of the input data
+    37     81.0 MiB      8.2 MiB           1           cov = np.cov(X, rowvar=False)
+    38                                         
+    39                                                 # Compute the eigenvectors and eigenvalues of the covariance matrix
+    40     81.5 MiB      0.5 MiB           1           eigvals, eigvecs = np.linalg.eigh(cov)
+    41                                         
+    42                                                 # Sort the eigenvalues in descending order
+    43     81.6 MiB      0.0 MiB           1           sorted_eigvals = np.sort(eigvals)[::-1]
+    44                                         
+    45                                                 # Select the top n eigenvectors corresponding to the largest eigenvalues
+    46     81.6 MiB      0.0 MiB           1           self.components_ = eigvecs[:self.n_components].T
+    47                                         
+    48                                                 # Compute the principal components by projecting the data onto the selected eigenvectors
+    49     90.2 MiB      8.6 MiB           1           self.principal_components_ = np.dot(X, self.components_)
 
 
 Filename: memory_usage/medium_memory_usage_version.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-    40     89.4 MiB     89.4 MiB           1       @profile
-    41                                             def transform(self, X):
-    42     90.3 MiB      0.9 MiB           1           return np.dot(X, self.components_)
+    51     90.2 MiB     90.2 MiB           1       @profile
+    52                                             def transform(self, X):
+    53     91.1 MiB      0.9 MiB           1           return np.dot(X, self.components_)
 
 
 Filename: memory_usage/medium_memory_usage_version.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-    44     72.3 MiB     72.3 MiB           1       @profile
-    45                                             def fit_transform(self, X):
-    46     89.4 MiB     17.1 MiB           1           self.fit(X)
-    47     90.3 MiB      0.9 MiB           1           return self.transform(X)
+    55     72.9 MiB     72.9 MiB           1       @profile
+    56                                             def fit_transform(self, X):
+    57     90.2 MiB     17.3 MiB           1           self.fit(X)
+    58     91.1 MiB      0.9 MiB           1           return self.transform(X)
 
 
+CPU Usage: 22.866666666666664%
 
 ----small----
 
@@ -150,28 +152,29 @@ Filename: memory_usage/small_memory_usage_version.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-     4     73.4 MiB     73.4 MiB           1   @profile
-     5                                         def pca_eigen(X, k):
-     6                                             # Standardize the data
-     7     89.0 MiB     15.7 MiB           1       X = (X - np.mean(X)) / np.std(X)
-     8                                         
-     9                                             # Compute the covariance matrix
-    10     97.0 MiB      8.0 MiB           1       cov = np.cov(X, rowvar=False)
-    11                                         
-    12                                             # Compute the eigenvalues and eigenvectors of the covariance matrix
-    13     98.1 MiB      1.0 MiB           1       eigvals, eigvecs = np.linalg.eig(cov)
-    14                                         
-    15                                             # Sort the eigenvalues and corresponding eigenvectors in descending order
-    16     98.1 MiB      0.0 MiB           1       idx = np.argsort(eigvals)[::-1]
-    17     98.1 MiB      0.0 MiB           1       eigvals = eigvals[idx]
-    18     98.1 MiB      0.0 MiB           1       eigvecs = eigvecs[:, idx]
+    15     71.7 MiB     71.7 MiB           1   @profile
+    16                                         def pca_eigen(X, k):
+    17                                             # Standardize the data
+    18     87.6 MiB     15.9 MiB           1       X = (X - np.mean(X)) / np.std(X)
     19                                         
-    20                                             # Select the top k eigenvectors that explain the most variance
-    21     98.1 MiB      0.0 MiB           1       W = eigvecs[:, :k]
+    20                                             # Compute the covariance matrix
+    21     95.9 MiB      8.3 MiB           1       cov = np.cov(X, rowvar=False)
     22                                         
-    23                                             # Project the data onto the selected eigenvectors
-    24    105.8 MiB      7.7 MiB           1       X_pca = X @ W
+    23                                             # Compute the eigenvalues and eigenvectors of the covariance matrix
+    24     96.5 MiB      0.6 MiB           1       eigvals, eigvecs = np.linalg.eig(cov)
     25                                         
-    26    105.8 MiB      0.0 MiB           1       return X_pca
+    26                                             # Sort the eigenvalues and corresponding eigenvectors in descending order
+    27     96.5 MiB      0.0 MiB           1       idx = np.argsort(eigvals)[::-1]
+    28     96.5 MiB      0.0 MiB           1       eigvals = eigvals[idx]
+    29     96.5 MiB      0.0 MiB           1       eigvecs = eigvecs[:, idx]
+    30                                         
+    31                                             # Select the top k eigenvectors that explain the most variance
+    32     96.5 MiB      0.0 MiB           1       W = eigvecs[:, :k]
+    33                                         
+    34                                             # Project the data onto the selected eigenvectors
+    35    105.1 MiB      8.6 MiB           1       X_pca = X @ W
+    36                                         
+    37    105.1 MiB      0.0 MiB           1       return X_pca
 
 
+CPU Usage: 22.05%

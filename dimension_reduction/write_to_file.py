@@ -2,7 +2,7 @@ import argparse
 import os
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-E', '--eval', type=str, default='pylint')
+parser.add_argument('-E', '--eval', type=str)
 parser.add_argument('-M', '--model', type=str)
 parser.add_argument('-F', '--file', type=str, default='all')
 parser.add_argument('-O', '--overwrite', type=bool, default=False)
@@ -48,7 +48,7 @@ elif args.eval == "radon":
             for radon_eval in ['mi', 'cc', 'raw', 'hal']:
                 if radon_eval == 'cc':
                     write = "Cyclomatic Complexity (CC)"
-                    extra_argument = '-a'
+                    extra_argument = '--show-complexity -a'
                 elif radon_eval == 'mi':
                     write = "\nMaintainability Index"
                     extra_argument = '-s'

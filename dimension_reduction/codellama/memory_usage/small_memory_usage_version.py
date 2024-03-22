@@ -1,5 +1,16 @@
 import numpy as np
 from memory_profiler import profile
+import psutil
+import os
+
+# Get the current process ID
+pid = os.getpid()
+
+# Create a psutil Process object for the current process
+process = psutil.Process(pid)
+
+# Get the number of logical CPUs in the system
+num_cores = psutil.cpu_count(logical=True)
 
 @profile
 def pca_eigen(X, k):
@@ -54,3 +65,7 @@ if __name__ == "__main__":
     
     # Create PCA object
     pca = pca_eigen(X=data, k=10)
+
+    # Get the CPU percentage usage of the process
+    cpu_usage = process.cpu_percent(interval=1)/ num_cores
+    print(f"CPU Usage: {cpu_usage}%")
