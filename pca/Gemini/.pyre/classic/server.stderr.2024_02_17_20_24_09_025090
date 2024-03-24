@@ -43,3 +43,6 @@
 2024-03-18 14:00:16 PERFORMANCE Incremental check (number of changed files: 3, number of module tracker updates: 4, number of parser updates: 4, number of rechecked modules: 0, number of re-checked functions: 0): 0.180s
 2024-03-18 14:00:16 PERFORMANCE Server request (binary_version: dc25037355687420c6f28e0c81f94b3304cc9327, request kind: IncrementalCheck): 0.253s
 2024-03-18 14:00:16 SERVER Request `(IncrementalUpdate(/Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Gemini/memory_profiler_test/long_memory_version.py /Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Gemini/memory_profiler_test/small_memory_version.py /Users/rasmuskrebs/Documents/School/master_thesis/repo/dimension_reduction/Gemini/memory_profiler_test/medium_memory_version.py))` processed
+2024-03-24 11:56:39 INFO Shutting down watchman connection...
+2024-03-24 11:56:39 INFO Server is going down. Cleaning up...
+2024-03-24 11:56:39 INFO Watchman subscription error: Subscription is cancelled by watchman
