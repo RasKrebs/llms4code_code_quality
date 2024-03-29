@@ -13,7 +13,9 @@ Make sure to add documentation to the class and methods in the form of docstring
 """
 
 medium_prompt: """
-Create a python class called PrincipalComponentAnalysis that implements the Principal Component Analysis algorithm from scratch. It should have three methods, fit, transform and fit_transform. Two arguments should be able to be passed, first is n_components which specifies the number of components to use. If n_components is not specified it should default to all. Second is decomposition_method, which should be either 'eigen' or 'svd'. If not specified it should default to 'eigen'.
+Create a python class called PrincipalComponentAnalysis that implements the Principal Component Analysis algorithm from scratch. It should have three methods, fit, 
+transform and fit_transform. Two arguments should be able to be passed, first is n_components which specifies the number of components to use. If n_components is not specified 
+it should default to all. Second is decomposition_method, which should be either 'eigen' or 'svd'. If not specified it should default to 'eigen'.
 
 Make sure to add documentation to the class and methods in the form of docstrings and comments. Also make sure to add type hints to the methods.
 """
