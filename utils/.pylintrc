@@ -1,9 +1,0 @@
-[MASTER]
-output-format = colorized
-
-[MESSAGES CONTROL]
-disable = C0330, C0114
-disable = line-too-long,trailing-whitespace,invalid-name
-
-[REPORTS]
-reports = no

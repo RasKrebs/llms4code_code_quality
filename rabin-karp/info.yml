@@ -1,13 +1,34 @@
-# Application domain info yaml, to store data used during data collection
-
 # General Application Domain Info
-application: Application
-prompt: """Add here the main prompt used during data collection"""
+domain: Data Processing
+application: String Pattern Matching
+algorithm: Rabin-Karp Algorithm
 
-# Model Specific 
-llm_n:
-  data_collection_time: # Add here data collection time mm/dd/yyyy
-  chat_thread: # Add here chat thread
-  additional_prompts: # Add here additional prompts used during data collection
-  additional_info: # Add here additional info used during data collection
-    - prompt_used: # Add here prompt used
+# Prompts
+long_prompt: """
+Implement Rabin-Karp algorithm in Python from scratch. The implementation should take
+two strings as input, a text string and a pattern string, and two optional arguments 
+for the base and prime number to use in the hash function. If not provided, common 
+default values should be used. The output should be the index of the first occurrence
+The output should be the index of the first occurrence of the pattern in the text, 
+or -1 if the pattern is not found. The algorithm should be implemented using a rolling
+hash function. Make sure to add all the necessary documentation to the class and methods 
+in the form of docstrings and comments. Consider common edge cases or errors in the 
+function and include steps for handling these. Also make sure to add type hints throughout. 
+Follow the best practices for writing clean and efficient code. 
+
+"""
+medium_prompt: """
+Implement the Rabin-Karp algorithm for string pattern matching in Python from scratch.
+The implementation should take two strings as input, a text string and a pattern string, 
+along with a base and a prime number to use in the hash function, use common values if
+not provided.
+Make sure to add all the necessary documentation to the class and methods in the form 
+of docstrings and comments. Also make sure to add type hints throughout. Follow best 
+practice for writing clean and efficient code.
+
+"""
+
+small_prompt: """
+Implement the Rabin-Karp string matching algorithm from scratch in python, which returns
+the index of the first occurrence of the pattern in the text. 
+"""

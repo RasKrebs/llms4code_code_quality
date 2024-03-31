@@ -1,8 +1,44 @@
 # Application domain info yaml, to store data used during data collection
 
 # General Application Domain Info
-application: Application
-prompt: """Add here the main prompt used during data collection"""
+domain: Machine Learning
+application: Computer Vision
+algorithm: Convolution Operation
+
+long_prompt: """
+Implement convolution from scratch in Python. The class should at initalization
+take the padding, stride and dialation as inputs, in either integer or a tuple 
+corresponding to width and height. Implement the necessary steps to handle these 
+differing inputs, such as transforming integers into a tuple with each value 
+equaling the input integer. Moreover, check that each input corresponds to an 
+interger. After the class is initialized, the run method should take an image 
+and a kernel as inputs. Add methods to handle common edge cases such as the 
+kernel not being a square matrix, that the kernel is the correct size for the 
+image. If the kernel is a list, it should be converted to a numpy array. Make 
+sure to check that the kernel is a square matrix and that it is the correct 
+size for the image. The output should be the convolved image. 
+
+Make sure to add all the necessary documentation to the class and methods in the 
+form of docstrings and comments. Also make sure to add type hints throughout.
+Follow the common conventions for Python code.
+"""
+
+medium_prompt: """
+Implement convolution from scratch in python. At initalization it should take
+the padding, stride and dialation and use common default values for these if
+not specified. The run method should take an image and a kernel as inputs, and 
+return the convolved image. Make sure to add useful methods and steps to handle
+common edge cases for the image and kernel sizes. 
+
+Make sure to add all the necessary documentation to the class and methods in the
+form of docstrings and comments. Also make sure to add type hints throughout.
+
+"""
+
+small_prompt: """
+Implement convolution from scratch in python, taking padding, stride and 
+dialation as inputs. In a run pass, the image and kernel is passed as inputs.
+"""
 
 # Model Specific 
 llm_n:

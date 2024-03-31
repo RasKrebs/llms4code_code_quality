@@ -1,0 +1,51 @@
+# Application domain info yaml, to store data used during data collection
+
+# General Application Domain Info
+domain: HPC
+application: Matrix Multiplication
+algorithm: Strassen
+
+# Prompts
+long_prompt: """
+Implement the Strassen algorithm for matrix multiplication in Python from scratch. The 
+implementation should take two matrices as input and return the product of the two matrices,
+the matrices can be either a list of lists, a numpy array or a pandas dataframe. The inputs 
+should be checked to ensure that they are valid matrices and that they can be multiplied, 
+including checking that the matrices are symmetric, have equal dimensions, and that the 
+dimensions are powers of 2. The algorithm should be implemented recursively, with a base 
+case for small matrices where the standard matrix multiplication algorithm is used. The 
+algorithm should be implemented in a way that minimizes the number of recursive calls and 
+matrix additions. Implement the necessary steps to handle edge cases and common errors. The 
+implementation should be well-documented with comments and docstrings, and should follow 
+common conventions for Python code. Type hints should be used throughout.
+"""
+medium_prompt: """
+Implement the Strassen algorithm for matrix multiplication in Python from scratch. The
+implementation should take two matrices as input that are either a numpy array, pandas 
+or list of lists. Make sure to add the relevant checks to ensure that the matrices are
+valid and can be multiplied, including checking that the matrices are symmetric, have
+equal dimensions, and that the dimensions are powers of 2. The algorithm should be 
+implemented recursively, with a base case for small matrices where the standard matrix 
+multiplication algorithm is used. The output should be the product of the two matrices.
+
+Make sure to add all the necessary documentation to the class and methods in the
+form of docstrings and comments. Also make sure to add type hints throughout.
+
+"""
+
+small_prompt: """
+Implement the Strassen algorithm from scratch in python, taking two matrices as inputs
+and returning the multiplied matrices as a output. 
+"""
+
+# Additional Info
+baseline_info: "The code draws inspiration from the following sources"
+  https://github.com/jaeho3690/Matrix_multiplication_python/blob/master/strassen_base.py
+
+# Model Specific 
+llm_n:
+  data_collection_time: # Add here data collection time mm/dd/yyyy
+  chat_thread: # Add here chat thread
+  additional_prompts: # Add here additional prompts used during data collection
+  additional_info: # Add here additional info used during data collection
+    - prompt_used: # Add here prompt used

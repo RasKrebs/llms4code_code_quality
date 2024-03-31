@@ -1,27 +1,44 @@
 ### General Application Domain Info
-domain: Data Science
-application: Dimension Reduction
+domain: Machine Learning
+application: Preprocessing
 algorithm: Principal Componenet Analysis (PCA)
 
 long_prompt: """
-Create a python class called PrincipalComponentAnalysis that implements the Principal Component Analysis algorithm from scratch.  During initalization the class should take two arguments:
-* n_components, if not specified it should default to all. 
-* decomposition_method, which should be either 'eigen' or 'svd'. If not specified it should default to 'eigen'. Add a fit method that takes one input, X, that is either a numpy array, pandas dataframe or a list of lists as input. The fit method  should compute the eigen values and eigen vectors (components) for the inputted data, and stores them on the object. If n_components is specified the fit method should store only top n_components eigen values and eigen vectors. In the fit, the method should also compute the explained variance ratio, and cumulative sum of explained variance ratio for each component and store it on the object. Also add a transform method that takes one input, X, that is either a numpy array, pandas dataframe or a list of lists as input. The transform method should project the inputted data onto the components and return the projected data. The transform method should also take an optional argument, n_components, that specifies the number of components to project onto. If n_components is not specified it should default to all. The last method to add is a fit_transform method that takes one input, X, that is either a numpy array, pandas dataframe or a list of lists as input. Like transform, this method should also take an optional n_components, specifying n_components, 
-otherwise use all. The fit_transform method should call the fit method and then the transform method. 
+Implement the Principal Component Analysis algorithm from scratch in Python using eigenvalue 
+decomposition. The class should take the n_components at initialization, which specifies the
+number of components to use. If n_components is not specified it should default to all. Add 
+a fit method that takes input X is either a numpy array, pandas dataframe or a list of lists 
+as input. The method should fit the data, i.e. compute the eigen values and eigen vectors 
+(components) for the inputted data, and stores them on the object. If n_components is specified 
+the fit method should store only top n_components. In the fit, the method should also compute 
+the explained variance ratio, and cumulative sum of explained variance ratio for each component 
+and store it on the object. Also add a transform method that takes one input, X, that similarly
+can either be a numpy array, pandas dataframe or a list of lists as input. The transform method
+should project the inputted data onto the components and return the projected data. The last 
+method to add is a fit_transform  method that takes one input, X like the previous methods.
+The fit_transform method should call the fit method and then the transform method. Make sure 
+to implement the necessary steps to handle differing inputs, and common edge cases.
 
-Make sure to add documentation to the class and methods in the form of docstrings and comments. Also make sure to add type hints to the methods.
+Make sure to add documentation to the class and methods in the form of docstrings and 
+comments. Also make sure to add type hints to the methods. Follow the common conventions for 
+Python code.
 """
 
 medium_prompt: """
-Create a python class called PrincipalComponentAnalysis that implements the Principal Component Analysis algorithm from scratch. It should have three methods, fit, 
-transform and fit_transform. Two arguments should be able to be passed, first is n_components which specifies the number of components to use. If n_components is not specified 
-it should default to all. Second is decomposition_method, which should be either 'eigen' or 'svd'. If not specified it should default to 'eigen'.
+Create a python class called PrincipalComponentAnalysis that implements the Principal 
+Component Analysis algorithm from scratch. It should have three methods, fit, transform 
+and fit_transform. Two arguments should be able to be passed, first is n_components which 
+specifies the number of components to use. If n_components is not specified it should 
+default to all. Second is decomposition_method, which should be either 'eigen' or 'svd'. 
+If not specified it should default to 'eigen'.
 
-Make sure to add documentation to the class and methods in the form of docstrings and comments. Also make sure to add type hints to the methods.
+Make sure to add documentation to the class and methods in the form of docstrings and 
+comments. Also make sure to add type hints to the methods.
 """
 
 small_prompt: """
-Implement prinicpal component analysis from scratch, that can be used with either eigen decomposition and singular value decomposition. 
+Implement prinicpal component analysis from scratch, that can be used with either eigen 
+decomposition and singular value decomposition. 
 """
 
 # Model Specific 
