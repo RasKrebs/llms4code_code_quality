@@ -31,7 +31,7 @@ gemm: |
 huffman: |
   <write execution script for huffman>
 
-monte_carlo: |
+monte_carlo_simulation: |
   <write execution script for monte_carlo>
 
 page_rank: |
@@ -42,4 +42,3 @@ quick_sort: |
 
 rabin-karp: |
   <write execution script for rabin-karp>
-s

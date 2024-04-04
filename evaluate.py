@@ -19,7 +19,6 @@ with open(".evaluate_config.yml", 'r') as stream:
     config = yaml.safe_load(stream)
 
 
-
 class MuteOutput:
     def __init__(self, mute=True):
         self.mute = mute
@@ -36,6 +35,9 @@ class MuteOutput:
         
 # Loop through each algorithm
 for algorithm in algorithms:
+    if algorithm != "convolution":
+        continue
+    
     print(f"Analyzing: {algorithm} ({algorithms.index(algorithm)+1}/{len(algorithms)})...\n")
     
     # Get the execute statement

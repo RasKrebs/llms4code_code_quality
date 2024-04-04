@@ -1,13 +1,38 @@
 # Application domain info yaml, to store data used during data collection
 
 # General Application Domain Info
-application: Application
-prompt: """Add here the main prompt used during data collection"""
+domain: HPC
+application: Monte Carlo Simulatin
+algorithm: Monte Carlo Simulation For Financial Modelling
 
-# Model Specific 
-llm_n:
-  data_collection_time: # Add here data collection time mm/dd/yyyy
-  chat_thread: # Add here chat thread
-  additional_prompts: # Add here additional prompts used during data collection
-  additional_info: # Add here additional info used during data collection
-    - prompt_used: # Add here prompt used
+# Prompts
+long_prompt: """
+Implement a detailed MonteCarlo class in Python for stock price simulations. At 
+initialization take the paramters expected_return, volatility, time_horizon and 
+time_steps for the simulation. Also compute time_step_size. Add a simulate method 
+for generating the paths, which takes parameters initial stock price, number of 
+simulations, and a random seed for reproducibility. The method should return a 
+numpy array of stock paths. Include try-except blocks for error handling and raise 
+exceptions for invalid inputs. Consider common edge cases and handle them 
+appropriately, and things like input validation forpractical handling of invalid 
+or non-ideal inputs without detailed.
+
+The implementation should be well-documented with comments and docstrings, and should 
+follow common conventions for Python code. Type hints should be used throughout.
+
+"""
+medium_prompt: """
+Create a MonteCarlo Python class to simulate stock price paths from scratch. The 
+class should initialize with attributes for annual return, volatility, and time 
+parameters and include a simulate function for generating price paths with 
+parameters for initial price and simulation count.
+
+The implementation should be well-documented with comments and docstrings, and should 
+follow common conventions for Python code. Type hints should be used throughout.
+"""
+
+small_prompt: """
+Implement a MonteCarlo simulation in Python for simulating stock prices from scratch. 
+Parameters like expected return, volatility, time horizon, and time steps are all passed 
+to the implementation.
+"""

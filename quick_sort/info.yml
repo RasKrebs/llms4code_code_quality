@@ -20,15 +20,3 @@ follow any best practices for python coding.
 small_prompt: """
 Implement a quick sort algorithm from scratch in Python using no special libraries.
 """
-
-# Model Specific 
-GPT-3.5:
-  path: ../GPT_35/
-  version: gpt-3.5-turbo (Jan 2024)
-  data_collection_time: 01/10/2024
-  additional_prompts: # Add here additional prompts used during data collection
-  additional_info: Below i've noted some observations
-    - Small prompt, resulted in two functions rather than a class
-    - Medium prompt, has bad type hinting - only takes nddarray
-    - Long prompt, has almost no type hinting
-  documentation: ../GPT_35/documentation/
