@@ -4,6 +4,7 @@
 domain: Data Processing
 application:  Data Compression
 algorithm: Huffman Coding
+Baseline: "The code is adapted from the following source: https://favtutor.com/blogs/huffman-coding"
 
 # Prompts
 long_prompt: """
@@ -32,3 +33,4 @@ small_prompt: """
 Implement huffman coding from scratch in python, taking a string as input and returning
 the compressed version of the string.
 """
+

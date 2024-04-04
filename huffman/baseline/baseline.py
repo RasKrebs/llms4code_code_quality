@@ -1,6 +1,3 @@
-# Description: This file contains the baseline implementation of the Huffman Coding algorithm.
-# The code is adapted from the following source: https://favtutor.com/blogs/huffman-coding
-
 class NodeTree:
     """
     A class to represent a node in a Huffman Code tree.
