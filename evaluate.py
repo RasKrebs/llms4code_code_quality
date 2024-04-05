@@ -35,13 +35,11 @@ class MuteOutput:
         
 # Loop through each algorithm
 for algorithm in algorithms:
-    if algorithm != "convolution":
-        continue
     
     print(f"Analyzing: {algorithm} ({algorithms.index(algorithm)+1}/{len(algorithms)})...\n")
     
     # Get the execute statement
-    execute = config[algorithm]
+    # execute = config[algorithm]
     
     # Initializing QualityReport() Instance
     report = QualityReport()
@@ -70,8 +68,8 @@ for algorithm in algorithms:
         
         # Generate memory profiler results
         print("Generating memory profiler scripts... (3/3)")
-        profiler = MemoryProfilerScriptGenerator(llm,
-                                                 execute_statement=execute)
+        profiler = MemoryProfilerScriptGenerator(llm)
+                                                 #execute_statement=execute)
         
         
         # Adding Radon Results to QualityReport

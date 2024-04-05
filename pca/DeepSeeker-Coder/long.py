@@ -1,81 +1,106 @@
 import numpy as np
-import pandas as pd
-from typing import Union, List, Optional
+from typing import Union, Optional
 
-class PrincipalComponentAnalysis:
-    def __init__(self, n_components: Optional[int] = None, decomposition_method: str = 'eigen'):
+class PCA:
+    """
+    Principal Component Analysis (PCA)
+
+    Parameters
+    ----------
+    n_components : int, optional (default=None)
+        Number of components to keep.
+        If n_components is not set all components are kept.
+
+    Attributes
+    ----------
+    components_ : array, [n_components, n_features]
+        Principal axes in feature space, representing the directions of
+        maximum variance in the data.
+
+    explained_variance_ : array, [n_components]
+        The amount of variance explained by each of the selected components.
+
+    explained_variance_ratio_ : array, [n_components]
+        Percentage of variance explained by each of the selected components.
+
+    cumulative_explained_variance_ratio_ : array, [n_components]
+        Cumulative sum of explained variance ratio.
+    """
+
+    def __init__(self, n_components: Optional[int] = None):
         self.n_components = n_components
-        self.decomposition_method = decomposition_method
-        self.eigen_values = None
-        self.eigen_vectors = None
-        self.explained_variance_ratio = None
-        self.cumulative_explained_variance_ratio = None
 
-    def fit(self, X: Union[np.ndarray, pd.DataFrame, List[List]]) -> None:
+    def fit(self, X: Union[np.ndarray, list]) -> None:
         """
-        Compute the eigen values and eigen vectors for the inputted data.
-        If n_components is specified, only store top n_components eigen values and eigen vectors.
-        Also compute the explained variance ratio and cumulative sum of explained variance ratio for each component.
+        Fit the model with X.
+
+        Parameters
+        ----------
+        X : array-like, shape (n_samples, n_features)
+            Training data, where n_samples is the number of samples
+            and n_features is the number of features.
         """
-        if isinstance(X, list):
-            X = np.array(X)
-        elif isinstance(X, pd.DataFrame):
-            X = X.values
+        X = np.array(X)
+        n_samples, n_features = X.shape
 
-        # Center the data
-        X = X - np.mean(X, axis=0)
+        # Center data
+        self.mean_ = np.mean(X, axis=0)
+        X -= self.mean_
 
-        # Compute the covariance matrix
+        # Compute covariance matrix
         cov_matrix = np.cov(X.T)
 
-        # Compute the eigen values and eigen vectors
-        if self.decomposition_method == 'eigen':
-            eigen_values, eigen_vectors = np.linalg.eig(cov_matrix)
-        elif self.decomposition_method == 'svd':
-            _, eigen_values, eigen_vectors = np.linalg.svd(cov_matrix)
+        # Compute eigenvalues and eigenvectors
+        eigenvalues, eigenvectors = np.linalg.eig(cov_matrix)
 
-        # Sort the eigen values and eigen vectors in descending order
-        idx = eigen_values.argsort()[::-1]
-        eigen_values = eigen_values[idx]
-        eigen_vectors = eigen_vectors[:, idx]
+        # Sort eigenvalues and corresponding eigenvectors
+        idx = eigenvalues.argsort()[::-1]
+        eigenvalues = eigenvalues[idx]
+        eigenvectors = eigenvectors[:, idx]
 
-        # Store the eigen values and eigen vectors
-        if self.n_components is not None:
-            self.eigen_values = eigen_values[:self.n_components]
-            self.eigen_vectors = eigen_vectors[:, :self.n_components]
-        else:
-            self.eigen_values = eigen_values
-            self.eigen_vectors = eigen_vectors
+        # Determine number of components
+        if self.n_components is None:
+            self.n_components = n_features
 
-        # Compute the explained variance ratio
-        self.explained_variance_ratio = self.eigen_values / np.sum(self.eigen_values)
+        # Store results
+        self.components_ = eigenvectors[:, :self.n_components]
+        self.explained_variance_ = eigenvalues[:self.n_components]
+        self.explained_variance_ratio_ = self.explained_variance_ / np.sum(eigenvalues)
+        self.cumulative_explained_variance_ratio_ = np.cumsum(self.explained_variance_ratio_)
 
-        # Compute the cumulative sum of explained variance ratio
-        self.cumulative_explained_variance_ratio = np.cumsum(self.explained_variance_ratio)
-
-    def transform(self, X: Union[np.ndarray, pd.DataFrame, List[List]], n_components: Optional[int] = None) -> np.ndarray:
+    def transform(self, X: Union[np.ndarray, list]) -> np.ndarray:
         """
-        Project the inputted data onto the components.
-        If n_components is specified, project onto the top n_components components.
+        Apply dimensionality reduction on X.
+
+        Parameters
+        ----------
+        X : array-like, shape (n_samples, n_features)
+            New data, where n_samples is the number of samples
+            and n_features is the number of features.
+
+        Returns
+        -------
+        X_transformed : array, shape (n_samples, n_components)
+            Projection of X in the first principal components space.
         """
-        if isinstance(X, list):
-            X = np.array(X)
-        elif isinstance(X, pd.DataFrame):
-            X = X.values
+        X = np.array(X)
+        X -= self.mean_
+        return np.dot(X, self.components_)
 
-        # Center the data
-        X = X - np.mean(X, axis=0)
-
-        # Project the data onto the components
-        if n_components is not None:
-            return np.dot(X, self.eigen_vectors[:, :n_components])
-        else:
-            return np.dot(X, self.eigen_vectors)
-
-    def fit_transform(self, X: Union[np.ndarray, pd.DataFrame, List[List]], n_components: Optional[int] = None) -> np.ndarray:
+    def fit_transform(self, X: Union[np.ndarray, list]) -> np.ndarray:
         """
-        Call the fit method and then the transform method.
-        If n_components is specified, use it for both methods.
+        Fit the model with X and apply the dimensionality reduction on X.
+
+        Parameters
+        ----------
+        X : array-like, shape (n_samples, n_features)
+            Training data, where n_samples is the number of samples
+            and n_features is the number of features.
+
+        Returns
+        -------
+        X_transformed : array, shape (n_samples, n_components)
+            Projection of X in the first principal components space.
         """
         self.fit(X)
-        return self.transform(X, n_components)
+        return self.transform(X)

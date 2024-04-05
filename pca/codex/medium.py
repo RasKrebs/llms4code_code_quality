@@ -1,86 +1,64 @@
 import numpy as np
-from typing import Optional, Union
 
 class PrincipalComponentAnalysis:
     """
     Principal Component Analysis (PCA) class.
-
-    Parameters
-    ----------
-    n_components : int, optional
-        Number of components to use. If not specified, all components are used.
-    decomposition_method : str, optional
-        Method to use for decomposition. Either 'eigen' or 'svd'. If not specified, 'eigen' is used.
+    PCA is a dimensionality reduction technique that is widely used in practice.
+    This class implements PCA using eigenvalue decomposition.
     """
 
-    def __init__(self, n_components: Optional[int] = None, decomposition_method: Optional[str] = 'eigen'):
+    def __init__(self, n_components: int = None):
+        """
+        Initialize the PCA object.
+
+        :param n_components: The number of components to use. If not specified, all components are used.
+        """
         self.n_components = n_components
-        self.decomposition_method = decomposition_method
-        self.components = None
-        self.mean = None
+        self.eigenvalues = None
+        self.eigenvectors = None
 
-    def fit(self, X: np.ndarray) -> None:
+    def fit(self, X: np.ndarray):
         """
-        Fit the model with X.
+        Fit the PCA model with the input data.
 
-        Parameters
-        ----------
-        X : numpy array of shape (n_samples, n_features)
-            Training data.
+        :param X: The input data, a 2D numpy array of shape (n_samples, n_features).
         """
-        # Calculate the mean
-        self.mean = np.mean(X, axis=0)
-        X = X - self.mean
+        # Center the data
+        X_centered = X - np.mean(X, axis=0)
 
-        # Calculate the covariance matrix
-        cov = np.cov(X.T)
+        # Compute the covariance matrix
+        covariance_matrix = np.cov(X_centered.T)
 
-        # Eigen decomposition
-        if self.decomposition_method == 'eigen':
-            eigenvalues, eigenvectors = np.linalg.eig(cov)
-            # Sort eigenvectors
-            eigenvectors = eigenvectors.T
-            idxs = np.argsort(eigenvalues)[::-1]
-            eigenvalues = eigenvalues[idxs]
-            eigenvectors = eigenvectors[idxs]
-        # Singular Value Decomposition
-        elif self.decomposition_method == 'svd':
-            eigenvectors, s, v = np.linalg.svd(X.T)
-            eigenvalues = s**2 / (X.shape[0] - 1)
+        # Compute the eigenvalues and eigenvectors
+        self.eigenvalues, self.eigenvectors = np.linalg.eig(covariance_matrix)
 
-        # Store first n eigenvectors
-        self.components = eigenvectors[0:self.n_components]
+        # Sort the eigenvectors by decreasing eigenvalues
+        idx = np.argsort(self.eigenvalues)[::-1]
+        self.eigenvalues = self.eigenvalues[idx]
+        self.eigenvectors = self.eigenvectors[:, idx]
 
     def transform(self, X: np.ndarray) -> np.ndarray:
         """
-        Apply the dimensionality reduction on X.
+        Apply dimensionality reduction to the input data.
 
-        Parameters
-        ----------
-        X : numpy array of shape (n_samples, n_features)
-            Input data.
-
-        Returns
-        -------
-        X_new : numpy array of shape (n_samples, n_components)
-            Transformed values.
+        :param X: The input data, a 2D numpy array of shape (n_samples, n_features).
+        :return: The transformed data.
         """
-        X = X - self.mean
-        return np.dot(X, self.components.T)
+        # Center the data
+        X_centered = X - np.mean(X, axis=0)
+
+        # Project the data onto the principal components
+        if self.n_components is None:
+            return np.dot(X_centered, self.eigenvectors)
+        else:
+            return np.dot(X_centered, self.eigenvectors[:, :self.n_components])
 
     def fit_transform(self, X: np.ndarray) -> np.ndarray:
         """
-        Fit the model with X and apply the dimensionality reduction on X.
+        Fit the PCA model with the input data and apply dimensionality reduction.
 
-        Parameters
-        ----------
-        X : numpy array of shape (n_samples, n_features)
-            Training data.
-
-        Returns
-        -------
-        X_new : numpy array of shape (n_samples, n_components)
-            Transformed values.
+        :param X: The input data, a 2D numpy array of shape (n_samples, n_features).
+        :return: The transformed data.
         """
         self.fit(X)
         return self.transform(X)

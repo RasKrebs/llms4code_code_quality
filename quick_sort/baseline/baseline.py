@@ -1,6 +1,3 @@
-# The code below is the solution to the quick_sort problem. The code is is
-# created drawing inpsiration from https://www.programiz.com/dsa/quick-sort.
-
 # function to find the partition position
 def partition(array, low, high):
     # choose the rightmost element as pivot

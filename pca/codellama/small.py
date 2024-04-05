@@ -1,41 +1,30 @@
 import numpy as np
 
-def pca_eigen(X, k):
-    # Standardize the data
-    X = (X - np.mean(X)) / np.std(X)
+class PCA():
+    def __init__(self, n_components):
+        self.n_components = n_components
 
-    # Compute the covariance matrix
-    cov = np.cov(X, rowvar=False)
+    def fit(self, X):
+        # Calculate mean vector of each feature
+        self.mean_vec = np.mean(X, axis=0)
 
-    # Compute the eigenvalues and eigenvectors of the covariance matrix
-    eigvals, eigvecs = np.linalg.eig(cov)
+        # Subtract mean vector from original data matrix (centering)
+        centered_X = X - self.mean_vec
 
-    # Sort the eigenvalues and corresponding eigenvectors in descending order
-    idx = np.argsort(eigvals)[::-1]
-    eigvals = eigvals[idx]
-    eigvecs = eigvecs[:, idx]
+        # Compute the covariance matrix
+        cov_matrix = np.cov(centered_X.T)
 
-    # Select the top k eigenvectors that explain the most variance
-    W = eigvecs[:, :k]
+        # Perform eigenvalue decomposition on the covariance matrix
+        eig_vals, eig_vecs = np.linalg.eig(cov_matrix)
 
-    # Project the data onto the selected eigenvectors
-    X_pca = X @ W.T
+        # Arrange eigenvectors in descending order according to their corresponding eigenvalues (largest eigenvalue first)
+        idx = eig_vals.argsort()[::-1]  # Find the indices that sort the array in descending order, then reverse those indices
+        self.eig_vals = eig_vals[idx][:self.n_components]  # Keep the top n_components eigenvalues
+        self.eig_vecs = eig_vecs[:, idx][:, :self.n_components]  # Keep the top n_components eigenvectors
 
-    return X_pca
+    def transform(self, X):
+        centered_X = X - self.mean_vec
+        return np.dot(centered_X, self.eig_vecs)  # Transform new data using principal components
 
-def pca_svd(X, k):
-    # Standardize the data
-    X = (X - np.mean(X)) / np.std(X)
-
-    # Compute the singular value decomposition of the data matrix
-    U, S, V = np.linalg.svd(X, full_matrices=False)
-
-    # Select the top k singular values and corresponding singular vectors
-    S = S[:k]
-    U = U[:, :k]
-    V = V[:, :k]
-
-    # Compute the principal components
-    X_pca = U @ np.diag(S) @ V.T
-
-    return X_pca
+    def get_components(self):
+        return self.eig_vecs, self.eig_vals

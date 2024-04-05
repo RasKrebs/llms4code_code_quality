@@ -1,114 +1,125 @@
 import numpy as np
-import pandas as pd
 
-class PrincipalComponentAnalysis:
+
+class PCA:
     """
-    Implements Principal Component Analysis (PCA) from scratch.
+    Principal Component Analysis (PCA) class for dimensionality reduction.
 
-    Parameters:
-    n_components: (int, optional)
-        The number of principal components to keep. If not specified, keeps all components.
-    decomposition_method: (str, optional)
-        The decomposition method to use. Can be either 'eigen' or 'svd'. If not specified, defaults to 'eigen'.
+    This class performs PCA on a dataset using eigenvalue decomposition.
+
+    Attributes:
+        n_components (int): The number of principal components to use. Defaults to all.
+        components_ (np.ndarray): The eigenvectors representing the principal components.
+        explained_variance_ratio_ (np.ndarray): The explained variance ratio for each component.
+        explained_variance_ (np.ndarray): The explained variance for each component.
+        cumulative_explained_variance_ratio_ (np.ndarray): 
+            The cumulative explained variance ratio for each component.
     """
 
-    def __init__(self, n_components=None, decomposition_method='eigen'):
+    def __init__(self, n_components: int = None) -> None:
+        """
+        Initializes the PCA object.
+
+        Args:
+            n_components (int, optional): The number of principal components to use. 
+                Defaults to all components.
+        """
         self.n_components = n_components
-        self.decomposition_method = decomposition_method
+        self.components_ = None
+        self.explained_variance_ratio_ = None
+        self.explained_variance_ = None
+        self.cumulative_explained_variance_ratio_ = None
 
-        # Eigen values and eigen vectors of the covariance matrix
-        self.eigenvalues = None
-        self.eigenvectors = None
-
-        # Explained variance ratio and cumulative sum of explained variance ratio
-        self.explained_variance_ratio = None
-        self.cumulative_explained_variance_ratio = None
-
-    def fit(self, X):
+    def fit(self, X: np.ndarray) -> None:
         """
-        Fits the PCA model to the data.
+        Fits the PCA model to the data X.
 
-        Parameters:
-        X: (numpy.ndarray, pandas.DataFrame, list)
-            The data to fit the model to. Can be a numpy array, pandas DataFrame, or a list of lists.
+        This method computes the eigen values, eigen vectors, explained variance ratio,
+        and cumulative explained variance ratio for the data.
+
+        Args:
+            X (np.ndarray): The input data of shape (n_samples, n_features).
         """
 
-        # Check if X is a valid data format
-        if not isinstance(X, (np.ndarray, pd.DataFrame, list)):
-            raise TypeError('X must be a numpy.ndarray, pandas.DataFrame, or a list of lists.')
+        # Handle different data types by converting to float
+        X = X.astype(np.float64)
 
-        # Check if X is a 2D array
-        if not (isinstance(X, np.ndarray) and X.ndim == 2):
-            raise ValueError('X must be a 2D array.')
-
-        # Check if X contains numerical data
-        for row in X:
-            if not all(isinstance(x, (int, float)) for x in row):
-                raise ValueError('X must contain numerical data.')
-
-        # Standardize the data
-        X = StandardScaler().fit_transform(X)
+        # Center the data by subtracting the mean
+        mean = np.mean(X, axis=0)
+        X_centered = X - mean
 
         # Compute the covariance matrix
-        covariance_matrix = np.cov(X.T)
+        covariance = np.cov(X_centered.T)
 
-        # Calculate the eigen values and eigen vectors
-        if self.decomposition_method == 'eigen':
-            eigen_values, eigen_vectors = np.linalg.eig(covariance_matrix)
-        elif self.decomposition_method == 'svd':
-            U, S, Vh = np.linalg.svd(covariance_matrix)
-            eigen_values = S.astype(float)
-            eigen_vectors = Vh.T.astype(float)
-        else:
-            raise ValueError('Invalid decomposition_method: {}.'.format(self.decomposition_method))
+        # Compute eigenvalues and eigenvectors
+        eigenvalues, eigenvectors = np.linalg.eig(covariance)
 
-        # Sort eigen values and eigen vectors in descending order based on eigen values
-        sorted_idx = np.argsort(eigen_values)[::-1]
-        eigen_values = eigen_values[sorted_idx]
-        eigen_vectors = eigen_vectors[sorted_idx]
+        # Sort eigenvalues and eigenvectors in descending order
+        sorted_index = np.argsort(eigenvalues)[::-1]
+        eigenvalues = eigenvalues[sorted_index]
+        eigenvectors = eigenvectors[:, sorted_index]
 
-        # Keep only the top n_components
-        if self.n_components is not None:
-            eigen_values = eigen_values[:self.n_components]
-            eigen_vectors = eigen_vectors[:self.n_components]
+        # Select the desired number of components
+        if self.n_components is None:
+            self.n_components = len(eigenvalues)
+        components = eigenvectors[:, : self.n_components]
 
-        # Compute explained variance ratio and cumulative sum of explained variance ratio
-        explained_variance_ratio = eigen_values / np.sum(eigen_values)
+        # Calculate explained variance ratio and cumulative sum
+        total_variance = np.sum(eigenvalues)
+        explained_variance = eigenvalues[: self.n_components]
+        explained_variance_ratio = explained_variance / total_variance
         cumulative_explained_variance_ratio = np.cumsum(explained_variance_ratio)
 
-        # Store the computed values
-        self.eigenvalues = eigen_values
-        self.eigenvectors = eigen_vectors
-        self.explained_variance_ratio = explained_variance_ratio
-        self.cumulative_explained_variance_ratio = cumulative_explained_variance_ratio
-        
-    def transform(self, X):
+        # Store fit results
+        self.components_ = components
+        self.explained_variance_ratio_ = explained_variance_ratio
+        self.explained_variance_ = explained_variance
+        self.cumulative_explained_variance_ratio_ = cumulative_explained_variance_ratio
+
+    def transform(self, X: np.ndarray) -> np.ndarray:
         """
-        Projects the data onto the principal components.
-    
-        Parameters:
-        X: (numpy.ndarray, pandas.DataFrame, list)
-            The data to transform. Can be a numpy array, pandas DataFrame, or a list of lists.
-    
+        Transforms the data X onto the principal components.
+
+        Args:
+            X (np.ndarray): The input data of shape (n_samples, n_features).
+
         Returns:
-            (numpy.ndarray)
-                The projected data.
+            np.ndarray: The transformed data of shape (n_samples, n_components).
         """
-    
-        # Check if X is a valid data format
-        if not isinstance(X, (np.ndarray, pd.DataFrame, list)):
-            raise TypeError('X must be a numpy.ndarray, pandas.DataFrame, or list of lists.')
-    
-        # Check if X is a 2D array
-        if not (isinstance(X, np.ndarray) and X.ndim == 2):
-            raise ValueError('X must be a 2D array.')
-    
-        # Check if X contains numerical data
-        for row in X:
-            if not all(isinstance(x, (int, float)) for x in row):
-                raise ValueError('X must contain numerical data.')
-    
-        # Transform the data
-        transformed_data = np.dot(X, self.eigenvectors.T)
-    
-        return transformed_data
+
+        # Check if PCA is fitted
+        if self.components_ is None:
+            raise ValueError("PCA object is not fitted. Call fit(X) before transform.")
+
+        # Handle different data types by converting to float
+        X = X.astype(np.float64)
+
+        # Center the data using the mean from fit
+        mean = getattr(self, "mean_", None)  # Use stored mean if available
+        if mean is None:
+            raise ValueError(
+                "PCA object doesn't have mean information. Call fit(X) with the same data used for fitting."
+            )
+        X_centered = X - mean
+
+        # Project data onto components
+        return X_centered @ self.components_
+
+    def fit_transform(self, X: np.ndarray) -> np.ndarray:
+            """
+            Fits the PCA model to the data X and then transforms it.
+
+            This method is equivalent to calling fit(X) followed by transform(X).
+
+            Args:
+                X (np.ndarray): The input data of shape (n_samples, n_features).
+
+            Returns:
+                np.ndarray: The transformed data of shape (n_samples, n_components).
+            """
+
+            # Call fit method to compute necessary components
+            self.fit(X)
+
+            # Call transform method to project data onto components
+            return self.transform(X)

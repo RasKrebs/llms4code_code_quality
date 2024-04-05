@@ -1,41 +1,76 @@
+from typing import Union, Optional
+import numpy as np
+
 class PrincipalComponentAnalysis:
-    """
-    A class for implementing Principal Component Analysis (PCA) from scratch.
+    """Principal Component Analysis implementation.
+
+    Args:
+        n_components (int): Number of components to use. Defaults to None.
 
     Attributes:
-        n_components (int): The number of components to use in the PCA decomposition. If not specified, it will default to all components.
-        decomposition_method (str): The method to use for decomposing the data into principal components. Either 'eigen' or 'svd'. If not specified, it will
-default to 'eigen'.
+        X_transformed (np.ndarray): Transformed data after fit and transform.
+        components (np.ndarray): Principal components of the dataset.
 
-    Methods:
-        fit(X) -> None: Fits the PCA model on the input data X.
-        transform(X) -> np.ndarray: Transforms the input data X into a lower-dimensional space using the fitted PCA model.
-        fit_transform(X) -> np.ndarray: Fits the PCA model on the input data X and then transforms the data into a lower-dimensional space.
     """
-
-    def __init__(self, n_components=None, decomposition_method='eigen'):
+    def __init__(self, n_components: Optional[int] = None) -> None:
         self.n_components = n_components
-        self.decomposition_method = decomposition_method
+        self.X_transformed = None
+        self.components = None
 
-    def fit(self, X):
-        # Compute the covariance matrix of the input data
-        cov = np.cov(X, rowvar=False)
+    def fit(self, X: np.ndarray):
+        """Fits the PCA model to the data using eigen value decomposition.
 
-        # Compute the eigenvectors and eigenvalues of the covariance matrix
-        eigvals, eigvecs = np.linalg.eigh(cov)
+        Args:
+            X (np.ndarray): Input dataset with shape (n_samples, n_features).
 
-        # Sort the eigenvalues in descending order
-        sorted_eigvals = np.sort(eigvals)[::-1]
+        Returns:
+            self: The fitted instance of PrincipalComponentAnalysis class.
 
-        # Select the top n eigenvectors corresponding to the largest eigenvalues
-        self.components_ = eigvecs[:self.n_components]
+        """
+        # Calculate the mean of each feature column
+        self._mean = np.mean(X, axis=0)
+        # Center the data by subtracting the mean
+        X_centered = X - self._mean
 
-        # Compute the principal components by projecting the data onto the selected eigenvectors
-        self.principal_components_ = np.dot(X, self.components_)
+        if self.n_components:
+            # Use n_components argument for eigen value decomposition
+            eigenvalues, eigenvectors = np.linalg.eig(np.cov(X_centered.T))
+        else:
+            # Use all components for eigen value decomposition
+            eigenvalues, eigenvectors = np.linalg.eig(np.cov(X_centered.T))
 
-    def transform(self, X):
-        return np.dot(X, self.components_)
+        # Sort the eigenvalues and eigenvectors in descending order
+        idx = eigenvalues.argsort()[::-1]
+        eigenvalues = eigenvalues[idx]
+        eigenvectors = eigenvectors[:, idx]
 
-    def fit_transform(self, X):
+        self.components = eigenvectors
+
+    def transform(self, X: np.ndarray) -> Union[np.ndarray, None]:
+        """Transforms the data using the fitted principal components.
+
+        Args:
+            X (np.ndarray): Input dataset with shape (n_samples, n_features).
+
+        Returns:
+            np.ndarray or None: Transformed data after applying PCA to input.
+
+        """
+        # Center the data by subtracting the mean
+        X_centered = X - self._mean
+        # Project the centered data onto principal components
+        self.X_transformed = np.dot(X_centered, self.components[:, :self.n_components])
+
+    def fit_transform(self, X: np.ndarray) -> Union[np.ndarray, None]:
+        """Fits and transforms the data using eigen value decomposition.
+
+        Args:
+            X (np.ndarray): Input dataset with shape (n_samples, n_features).
+
+        Returns:
+            np.ndarray or None: Transformed data after applying PCA to input.
+
+        """
         self.fit(X)
-        return self.transform(X)
+        self.transform(X)
+        return self.X_transformed

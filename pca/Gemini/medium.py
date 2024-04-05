@@ -1,104 +1,101 @@
+from typing import Optional, Tuple
+
 import numpy as np
+
 
 class PrincipalComponentAnalysis:
     """
-    Implements Principal Component Analysis (PCA) algorithm for dimensionality reduction.
+    A class implementing Principal Component Analysis (PCA) from scratch using eigen-decomposition.
 
-    Args:
-        n_components: (int, optional) Number of principal components to keep. If not specified, all components will be used. Defaults to None.
-        decomposition_method: (str, optional) Decomposition method to use. Can be either 'eigen' or 'svd'. Defaults to 'eigen'.
+    This class performs dimensionality reduction on data by finding the principal components,
+    which capture the most significant variance in the data.
+
+    Attributes:
+        eigenvectors_: (np.ndarray): The eigenvectors of the covariance matrix.
+        explained_variance_: (np.ndarray): The explained variance ratio for each principal component.
+        n_components_: (int): The number of principal components used.
     """
 
-    def __init__(self, n_components=None, decomposition_method='eigen'):
-        self.n_components = n_components
-        self.decomposition_method = decomposition_method
-        
-        
-    def fit(self, X: np.ndarray) -> None:
+    def __init__(self, n_components: Optional[int] = None) -> None:
         """
-        Fits the PCA model to the given data.
+        Initializes the PCA object.
 
         Args:
-            X: (np.ndarray) Data to be transformed.
+            n_components: (Optional[int]): The number of principal components to use. Defaults to all.
         """
-        # Check if data is a numpy array
-        if not isinstance(X, np.ndarray):
-            raise TypeError('Data must be a numpy.ndarray')
+        self.eigenvectors_: np.ndarray = None
+        self.explained_variance_: np.ndarray = None
+        self.n_components_: int = n_components
 
-        # Check dimensions
-        if X.ndim != 2:
-            raise ValueError('Data must be a 2D matrix')
+    def fit(self, X: np.ndarray) -> None:
+        """
+        Fits the PCA model to the data.
 
-        # Check if n_components is an integer and greater than 0
-        if self.n_components is not None and not isinstance(self.n_components, int) or self.n_components < 1:
-            raise ValueError('n_components must be an integer greater than 0')
+        This method calculates the covariance matrix, performs eigen-decomposition, and stores
+        the eigenvectors and explained variance ratio.
 
-        # Check if decomposition_method is valid
-        if self.decomposition_method not in ['eigen', 'svd']:
-            raise ValueError("Invalid decomposition_method: must be either 'eigen' or 'svd'")
+        Args:
+            X: (np.ndarray): The data matrix with shape (n_samples, n_features).
+        """
+        n_samples, n_features = X.shape
 
-        # Calculate mean and covariance matrix
-        self.mean = np.mean(X, axis=0)
-        self.covariance_matrix = np.cov(X.T)
+        # Center the data
+        X_centered = X - np.mean(X, axis=0)
 
-        # Perform dimensionality reduction using specified method
-        if self.decomposition_method == 'eigen':
-            self.eigvals, self.eigvecs = np.linalg.eig(self.covariance_matrix)
-        elif self.decomposition_method == 'svd':
-            U, S, Vh = np.linalg.svd(self.covariance_matrix)
-            self.eigvals = S**2
-            self.eigvecs = Vh.T
+        # Calculate the covariance matrix
+        covariance = np.cov(X_centered.T)
 
-        # Sort eigenvectors by descending eigenvalues
-        indices = np.argsort(self.eigvals)[::-1]
-        self.eigvals = self.eigvals[indices]
-        self.eigvecs = self.eigvecs[indices]
+        # Eigenvalue decomposition
+        eigenvalues, eigenvectors = np.linalg.eig(covariance)
 
-        # Truncate eigenvectors to desired number of components
-        if self.n_components is not None:
-            self.eigvals = self.eigvals[:self.n_components]
-            self.eigvecs = self.eigvecs[:, :self.n_components]
+        # Sort eigenvalues and eigenvectors by decreasing order of eigenvalues
+        sorted_index = np.argsort(eigenvalues)[::-1]
+        eigenvalues = eigenvalues[sorted_index]
+        eigenvectors = eigenvectors[:, sorted_index]
+
+        # Determine the number of components to use
+        if self.n_components is None:
+            self.n_components_ = n_features
+        else:
+            self.n_components_ = min(self.n_components, n_features)
+
+        # Select the top n_components eigenvectors and explained variance
+        self.eigenvectors_ = eigenvectors[:, : self.n_components_]
+        self.explained_variance_ = eigenvalues[: self.n_components_] / np.sum(eigenvalues)
 
     def transform(self, X: np.ndarray) -> np.ndarray:
         """
-        Transforms the given data using the fitted PCA model.
+        Transforms the data using the fitted PCA model.
+
+        This method projects the data onto the principal components.
 
         Args:
-            X: (np.ndarray) Data to be transformed.
+            X: (np.ndarray): The data matrix with shape (n_samples, n_features).
 
         Returns:
-            np.ndarray: Transformed data in the lower-dimensional space.
+            (np.ndarray): The transformed data matrix with shape (n_samples, n_components).
         """
+        if self.eigenvectors_ is None:
+            raise ValueError("PCA model not fitted. Call fit before transform.")
 
-        # Check if data is a numpy array
-        if not isinstance(X, np.ndarray):
-            raise TypeError('Data must be a numpy.ndarray')
-
-        # Check dimensions
-        if X.ndim != 2:
-            raise ValueError('Data must be a 2D matrix')
-
-        # Standardize data
-        Z = X - self.mean
+        # Center the data
+        X_centered = X - np.mean(X, axis=0)
 
         # Project data onto principal components
-        transformed_data = Z @ self.eigvecs
+        return X_centered @ self.eigenvectors_
 
-        return transformed_data
-
-    def fit_transform(self, X: np.ndarray) -> np.ndarray:
+    def fit_transform(self, X: np.ndarray) -> Tuple[np.ndarray, None]:
         """
-        Fits the PCA model to the given data and transforms it simultaneously.
+        Fits the PCA model to the data and then transforms it.
+
+        This method is a convenience function that combines both fit and transform steps.
 
         Args:
-            X: (np.ndarray) Data to be fit and transformed.
+            X: (np.ndarray): The data matrix with shape (n_samples, n_features).
 
         Returns:
-            np.ndarray: Transformed data in the lower-dimensional space.
+            Tuple[np.ndarray, None]: The transformed data matrix with shape (n_samples, n_components)
+                                      and None (for compatibility with scikit-learn).
         """
-
-        # Fit the model
         self.fit(X)
-
-        # Transform the data
         return self.transform(X)

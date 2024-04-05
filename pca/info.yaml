@@ -4,169 +4,35 @@ application: Preprocessing
 algorithm: Principal Componenet Analysis (PCA)
 
 long_prompt: """
-Implement the Principal Component Analysis algorithm from scratch in Python using eigenvalue 
-decomposition. The class should take the n_components at initialization, which specifies the
-number of components to use. If n_components is not specified it should default to all. Add 
-a fit method that takes input X is either a numpy array, pandas dataframe or a list of lists 
-as input. The method should fit the data, i.e. compute the eigen values and eigen vectors 
-(components) for the inputted data, and stores them on the object. If n_components is specified 
-the fit method should store only top n_components. In the fit, the method should also compute 
-the explained variance ratio, and cumulative sum of explained variance ratio for each component 
-and store it on the object. Also add a transform method that takes one input, X, that similarly
-can either be a numpy array, pandas dataframe or a list of lists as input. The transform method
-should project the inputted data onto the components and return the projected data. The last 
-method to add is a fit_transform  method that takes one input, X like the previous methods.
-The fit_transform method should call the fit method and then the transform method. Make sure 
-to implement the necessary steps to handle differing inputs, and common edge cases.
+Implement Principal Component Analysis algorithm from scratch in Python using eigenvalue 
+decomposition. The class should take n_components at initialization, which specifies the
+number of components to use. If n_components is not specified it should default to all. 
+Add a fit method that takes input X, make sure it can handle different data types. The 
+method should fit the data, i.e. compute the eigen values and eigen vectors (components) 
+for the data. The fit method should also compute  the explained variance ratio, and 
+cumulative sum of explained variance ratio for each component and store it on the object. 
+Add a transform method that takes one input, X and similarly, make sure to handle 
+differnet data types. The transform method should project the inputted data onto the 
+components and return the projected data. Include a fit_transform that takes X and calls 
+the fit and transform methods respectively. Make sure to implement the necessary steps 
+to handle differing inputs, and common edge cases.
 
 Make sure to add documentation to the class and methods in the form of docstrings and 
-comments. Also make sure to add type hints to the methods. Follow the common conventions for 
-Python code.
+comments. Also make sure to add type hints to the methods. Follow the common conventions 
+for Python code.
 """
 
 medium_prompt: """
 Create a python class called PrincipalComponentAnalysis that implements the Principal 
-Component Analysis algorithm from scratch. It should have three methods, fit, transform 
-and fit_transform. Two arguments should be able to be passed, first is n_components which 
-specifies the number of components to use. If n_components is not specified it should 
-default to all. Second is decomposition_method, which should be either 'eigen' or 'svd'. 
-If not specified it should default to 'eigen'.
+Component Analysis algorithm from scratch using eigen value decomposition. It should 
+have three methods, fit, transform and fit_transform. One arguments should be able to 
+be passed, name n_components which specifies the number of components to use. If 
+n_components is not specified it should default to all.
 
 Make sure to add documentation to the class and methods in the form of docstrings and 
 comments. Also make sure to add type hints to the methods.
 """
 
 small_prompt: """
-Implement prinicpal component analysis from scratch, that can be used with either eigen 
-decomposition and singular value decomposition. 
+Implement prinicpal component analysis from scratch using eigenvalue decomposition
 """
-
-# Model Specific 
-GPT-3.5:
-  path: ../GPT_35/
-  version: gpt-3.5-turbo (Jan 2024)
-  data_collection_time: 01/10/2024
-  additional_prompts: # Add here additional prompts used during data collection
-  additional_info: Below i've noted some observations
-    - Small prompt, resulted in two functions rather than a class
-    - Medium prompt, has bad type hinting - only takes nddarray
-    - Long prompt, has almost no type hinting
-  documentation: ../GPT_35/documentation/
-
-GPT-4:
-  path: ../GPT4/
-  version: gpt-4-turbo (Jan 2024)
-  data_collection_time: 01/10/2024
-  additional_prompts: # Add here additional prompts used during data collection
-  additional_info: 
-    - Long prompt, returned really good type hinting
-    - Medium prompt, returned really decsent type hinting, but imported unused methods
-    - Small prompt, incuded data standardization 
-  documentation: ../GPT4/documentation/
-
-Codex:
-  path: ../codex/
-  version: Github Copilot (Jan 2024)
-  data_collection_time: 01/10/2024
-  additional_prompts: # Add here additional prompts used during data collection
-  additional_info: Used it through Github Copilot
-    - Long prompt, relatively sparse docstrings, but descent enough type hinting. Only takes numpy, not pd and lists. Very few inline comments
-    - Medium prompt, better docstrings but not as good type hinting as long. Only takes numpy, not pd and lists. More inline comments. Imports Union, but doesn't use.
-    - Small prompt, code is implemented as class. No docstrings,  or type hinting. Similarly, no fit transform. Requires number of components to be specified.
-  documentation: ../codex/documentation/
-
-DeepSeeker-Coder:
-  path: ../DeepSeeker-Coder/ 
-  version: DeepSeek-Coder-33 (Jan 2024)
-  data_collection_time: 01/10/2024
-  additional_prompts: # Add here additional prompts used during data collection
-  additional_info: Used DeepSeeker Coder, not the newly available DeepSeeker Chat
-    - Long prompt, incuded quite good type hinting, but docstrings were quite sparse. Didn't conform to typical typestring standards
-    - Medium prompt, incuded semi good type hinting, but similarly docstrings were sparse. Though included parameters in the doc strings
-    - Small prompt, while not directly specified in the prompt, DeepSeeker accurately enclosed PCA in a class. No type hinting though, or any docstrings. Also no fit_transform
-  documentation: ../codex/documentation/
-
-Gemini:
-  path: ../Gemini/
-  version: Gemini Pro (Accessed through Bard Jan 2024)
-  data_collection_time: 01/10/2024
-  additional_prompts: Below, i've noted some observations
-    - For long prompt, the code came out in complete. It seems the response can't be done within the max token you have selected. Moreover, it references pandas but does not include import. Same for standard scaler
-    - For medium prompt, the an error in the code was encountered, where single quotation marks was used in one string, rather than single + double. See l. 37 in response.
-    - The small prompt, while it combines everything in one function, it doesn't enable the ability to specify number of components to return
-  additional_info: Gemini Pro was accessed through Bard. For the long prompt, a maximum token enforced by Bard limited the ability to produce a complete response. Two follow up prompts, described above was used for a more complete response.
-  documentation: ../codex/documentation/
-
-Tabnine:
-  path: ../Tabnine/
-  version: Unknown (Jan 2024)
-  data_collection_time: 01/11/2024
-  additional_prompts: # None
-  additional_info: 
-    - medium: answer did not import the necessary libraries, so these were added manually. Other than that, it had good doc strings, but no type hinting. It had lots of 'private' methods and additional feautes + had implemented decorators 
-    - Long: is quite good. Good long docstrings, and good type hinting. Added a repr method to class, which is nice. Many inline comments. Used scipy alt. for SVD
-    - Small: did not make it possible to specify number of return components. Also not wrapped in class. No type hinting, but some descent docstring. Additionally, had an error around l. 29 with a wrong transpose.
-    - Unlike other methods, Tabnine also added additional methods such as built in class-representation, __repr__, methdo
-  documentation: ../codex/documentation/
-
-
-WizardCoder:
-  path: 
-  version: 33b
-  data_collection_time: 01/13/2024
-  additional_prompts: # None
-  additional_info:
-    - Long: interestingly compared to the other LLMs, wizardcoder didn't provide any information. It was pure code.
-    - Medium: did provide some more comments on the code in natural language, mainly in the form of a trailing comment explaining how it could be implemented
-    - Short: similarly to earlier, this model provided some more 'explanations' to how to use the code. Unline many other models, this one wrapped everything in a class.
-  documentation: 
-
-CodeLLama:
-  path: 
-  version: 34b-Instruct
-  data_collection_time: 01/14/2024
-  additional_prompts: 
-    - small: i had to follow up with, 'implement it in python'
-  additional_info:
-    - Long: added a brief, "Here is the implementation of PCA from scratch". Interestingly it did not include the imports. Referenced self.eigenvector in transform, but hadn't actually assigned eigen vector to self at no point.
-    - Medium: add a small intro and outro. Interestingly it did not include the imports. Had to also add "eigvecs[:self.n_components].T" to make it runable
-    - Small: the first response didn't produce any code, but just text. This did include imports, but the svd + eigen was to seperate functions with the same name PCA. It seemed it was meant to be individually
-  documentation: 
-
-Amazon_Q:
-  path: 
-  version: base. IN PREVIW
-  data_collection_time: 01/19/2024
-  additional_prompts: 
-    - Long: it didnt solve it correctly in the beginning. So here follow up prompts asking for it to not be use Scikit-learn and include the functionlity for both SVD and Eigen (despite having specified this earlier)
-    - small: Threw an error, so had to rephrase small to Implement a prinicpal component analysis in python from scratch, that can be used with either eigen decomposition and singular value decomposition. Do not use any open-source frameworks
-    - medium: Only build "wrapper" so had to request all code omitted for brevity.
-  additional_info: THIS MODEL WAS OMITTED BECAUSE IT HAD TOO MANY ERRORS
-    - Long: no comments or anything like. Also didn't build it from scratch but rather used Sklearn. Did not call it prinicpal component analysis, but rather "PCA". Required n_components. Added self_explained_variatnce ratio as variable without haven computed it
-    - Medium: Very little type hinting and comments. Original didn't give full code, only "wrapper class", so had to follow up with request for rest of code.
-    - Small: Failed multiple times, and more information was required for it to actually produce code. Code was quite sparse, no type hinting, few comments but no docstrings. Could only perform eigen value decomposition despite being asked to do both
-  documentation: 
-
-AskCodi:
-  path: 
-  version: base
-  data_collection_time: 01/23/2024
-  additional_prompts: 
-  additional_info:
-    - Long: insufficient type hinting, but provided explanation to code. Provides a lot of text. Threw multiple errors when running memory profiler. Used x.cov() from numpy, which is not a actual method. Instead it should be np.cov(x)
-    - Medium: Inufficient type hinting, but good docstrings. A bit more concise and bullet-pointy compared to long. Threw multiple errors when running memory profiler.
-    - Small: Only provided description at first, and had to follow up with a request for the implementation in python. No type hinting. No docstrings. No class. Also don't support number of PCs argument. Threw multiple errors when running memory profiler.
-  documentation: 
-
-
-Codeium:
-  path: 
-  version: base
-  data_collection_time: 01/25/2024
-  additional_prompts: 
-    - Medium: Didn't provide full code, had to follow up wiyh "Can you alo add the implementation to the code"
-  additional_info:
-    - Long: insufficient type hinting, and relatively short doc strings.
-    - Medium: Better docstrings, still insufficient type hinting. Didn't originally give all code, just wrapper class without implementation. Had to follow up
-    - small: No type hinting. No docstrings. Did implement as class, but no fit_transform method
-  documentation: 

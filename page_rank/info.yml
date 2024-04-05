@@ -1,13 +1,34 @@
 # Application domain info yaml, to store data used during data collection
 
 # General Application Domain Info
-application: Application
-prompt: """Add here the main prompt used during data collection"""
+domain: Data Processing
+application: Document Ranking
+algorithm: PageRank Algorithm
 
-# Model Specific 
-llm_n:
-  data_collection_time: # Add here data collection time mm/dd/yyyy
-  chat_thread: # Add here chat thread
-  additional_prompts: # Add here additional prompts used during data collection
-  additional_info: # Add here additional info used during data collection
-    - prompt_used: # Add here prompt used
+
+long_promt: |
+Develop a Python function to compute PageRank for nodes in a directed graph represented by 
+a numpy adjacency matrix. Parameters should include the graph, damping factor d 
+(default 0.85), max_iterations (default 100), and convergence tolerance tol (default 1e-6). 
+Initialize ranks equally, adjust for outbound links and the damping factor, iterate until 
+convergence (change in ranks < tol) or reaching the max iterations. Factor in teleportation 
+for nodes without outbound links. Return the PageRank as a numpy array, ensuring efficiency 
+and handling edge cases like dangling nodes and invalid input parameters.
+
+Thee implementation should be well-documented with comments and docstrings, and should 
+follow common conventions for Python code. Type hints should be used throughout.
+
+medium_promt: |
+Implement a page_rank function in Python to calculate PageRank from an adjacency matrix, with 
+parameters for damping, iterations, and tolerance. Initialize ranks evenly, update based on 
+the damping factor and link structure, iterating until convergence or max iterations. Handle 
+teleportation for dangling nodes. Return the PageRank values as a numpy array, ensuring the 
+function is robust and efficient.
+
+The implementation should be well-documented with comments and docstrings, and should 
+follow common conventions for Python code. Type hints should be used throughout.
+
+
+small_promt: |
+Create a Python function named page_rank that calculates the PageRank of a directed graph 
+represented as a numpy adjacency matrix.

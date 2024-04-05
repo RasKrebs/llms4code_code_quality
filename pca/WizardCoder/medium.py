@@ -1,84 +1,78 @@
 import numpy as np
-from typing import Union, Optional
+from sklearn import datasets
+from typing import Union
 
-class PrincipalComponentAnalysis():
-    """
-    A class that implements Principal Component Analysis algorithm.
-
-    Attributes:
-        n_components (int): Number of components to use. If not specified it will default to all.
-        decomposition_method (str): Method of decomposition, either 'eigen' or 'svd'.
-            If not specified it will default to 'eigen'.
-
-    """
-
-    def __init__(self, n_components: Optional[int] = None,
-                 decomposition_method: str = "eigen"):
-        self.n_components = n_components
-        self.decomposition_method = decomposition_method
-
-    def fit(self, X: np.ndarray) -> None:
-        """Fit PCA model to data.
+class PrincipalComponentAnalysis:
+    def __init__(self, n_components: int = None) -> None:
+        """Initialize the PCA object with number of components to be retained.
 
         Args:
-            X (np.ndarray): Input data of shape (n_samples, n_features).
+            n_components (int): Number of components to retain. Defaults to all components.
 
         Returns:
-            None. Updates the mean, covariance matrix and eigenvalues/vectors.
-
+            None
         """
-        # Mean centering
+        self.n_components = n_components
+        self.mean = None
+        self.components = None
+
+    def fit(self, X: np.ndarray) -> 'PrincipalComponentAnalysis':
+        """Fit the PCA model with X by calculating mean and components.
+
+        Args:
+            X (np.ndarray): Data to fit the model.
+
+        Returns:
+            self (PrincipalComponentAnalysis): The fitted PrincipalComponentAnalysis object.
+        """
+
+        # Calculate the mean of each feature
         self.mean = np.mean(X, axis=0)
-        X_centered = X - self.mean
-        n_samples = X.shape[0]
+        X = X - self.mean
 
-        if self.decomposition_method == 'eigen':
-            # Computing covariance matrix
-            cov_mat = np.cov(X_centered, rowvar=False)
+        # Calculating the covariance matrix of the mean-centered data.
+        cov_mat = np.cov(X.T)
 
-            # Eigen decomposition
-            eigen_values, eigen_vectors = np.linalg.eigh(cov_mat)
+        # Compute eigen values and eigen vectors
+        eigenvalues, eigenvectors = np.linalg.eig(cov_mat)
 
-            # Sort eigenvalues and vectors in descending order
-            sorted_index = np.argsort(eigen_values)[::-1]
-            self.sorted_eigenvalues = eigen_values[sorted_index]
-            self.sorted_eigenvectors = eigen_vectors[:, sorted_index]
-        elif self.decomposition_method == 'svd':
-            # Singular Value Decomposition
-            U, Sigma, VT = np.linalg.svd(X_centered)
+        # Sort eigenvalues in descending order and sort the corresponding eigenvectors
+        sorted_index = np.argsort(eigenvalues)[::-1]
+        sorted_eigenvalues = eigenvalues[sorted_index]
+        sorted_eigenvectors = eigenvectors[:,sorted_index]
 
-            # Retain only the first k eigenvectors (sorted in decreasing order of their corresponding eigenvalues)
-            self.sorted_eigenvalues = Sigma**2 / n_samples
-            self.sorted_eigenvectors = U
-        else:
-            raise ValueError("Invalid decomposition method. Choose 'eigen' or 'svd'.")
+        # Selecting the first n eigenvectors as per given dimension
+        if self.n_components is not None:
+            sorted_eigenvectors = sorted_eigenvectors[:, :self.n_components]
+
+        # Store the resultant vectors
+        self.components = sorted_eigenvectors
+
+        return self
 
     def transform(self, X: np.ndarray) -> np.ndarray:
-        """Apply dimensionality reduction on input data.
+        """Transform the given data using the fitted PCA model.
 
         Args:
-            X (np.ndarray): Input data of shape (n_samples, n_features).
+            X (np.ndarray): Data to be transformed.
 
         Returns:
-            Transformed data with reduced dimensionality.
-
+            X_transformed (np.ndarray): Transformed data.
         """
-        X -= self.mean
 
-        if self.n_components is None:
-            return np.dot(X, self.sorted_eigenvectors)
-        else:
-            return np.dot(X, self.sorted_eigenvectors[:, :self.n_components])
+        # Mean centering
+        X = X - self.mean
+
+        # Return the projection of X onto the principal components
+        return np.dot(X, self.components)
 
     def fit_transform(self, X: np.ndarray) -> np.ndarray:
-        """Fit PCA model to data and then apply dimensionality reduction on it.
+        """Fit and transform the data using the fitted PCA model.
 
         Args:
-            X (np.ndarray): Input data of shape (n_samples, n_features).
+            X (np.ndarray): Data to be transformed.
 
         Returns:
-            Transformed data with reduced dimensionality.
-
+            X_transformed (np.ndarray): Transformed data.
         """
-        self.fit(X)
-        return self.transform(X)
+        return self.fit(X).transform(X)

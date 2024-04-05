@@ -3,6 +3,8 @@ domain: High Performance Computing
 application: Sorting Algorithms
 algorithm: Quick Sort
 
+baseline_info: The code below is the solution to the quick_sort problem. The code is is created drawing inpsiration from https://www.programiz.com/dsa/quick-sort.
+
 long_prompt: """
 Implement the quick sort algoritmh for sorting thoruhg a list of integers. The implementation shall be build from scratch in Python 
 using no special libraries. The implementation should take a list of integers as input and return a sorted list, but make sure to 

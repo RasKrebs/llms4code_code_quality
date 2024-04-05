@@ -122,7 +122,7 @@ class Conv2D():
 
         # Initialize output convolved image
         conv_image = np.zeros((padded_image.shape[0] - dilated_kernel.shape[0], padded_image.shape[1] -
-dilated_kernel.shape[1]))
+                               dilated_kernel.shape[1]))
 
         # Perform convolution on the input image with the kernel using NumPy's 'convolve2d' function
         return np.convolve2d(padded_image, np.rot90(dilated_kernel, k=2), mode='valid')

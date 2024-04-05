@@ -4,8 +4,8 @@ import glob
 # Loading script and generating memory_profiler version of the script
 class MemoryProfilerScriptGenerator:
     def __init__(self, 
-                 model_path:str, 
-                 execute_statement:str):
+                 model_path:str):
+                 #, execute_statement:str):
         
         # Path to the Python file
         self.model_path = model_path
@@ -22,7 +22,7 @@ class MemoryProfilerScriptGenerator:
             raise FileNotFoundError(f"No .py files found in {self.model_path}")
         
         # Attributes
-        self.execute_statement = execute_statement
+        #self.execute_statement = execute_statement
         
         # Run MemoryProfiler Script Generator
         self.run()
@@ -40,7 +40,9 @@ class MemoryProfilerScriptGenerator:
     
     def generate_memory_profiler_script(self, script):
         # Memory profiler import statement
-        import_statement = """from memory_profiler import profile
+        import_statement = """
+        # IMPORTED FROM EVALUATE SCRIPT
+        from memory_profiler import profile
         import os
         import psutil
         
@@ -51,7 +53,11 @@ class MemoryProfilerScriptGenerator:
         process = psutil.Process(pid)
 
         # Get the number of logical CPUs in the system
-        num_cores = psutil.cpu_count(logical=True)"""
+        num_cores = psutil.cpu_count(logical=True)
+        
+        # BELOW IMPORTS ARE FROM THE SOLUTION
+        
+        """
         
         script = [import_statement] + script
         
@@ -59,8 +65,8 @@ class MemoryProfilerScriptGenerator:
         script = self.add_decorator_to_functions('@profile', script)
         
         # Assigning the execute_statement
-        execute_statement = self.execute_statement
-        script = script + [execute_statement]
+        #execute_statement = self.execute_statement
+        # script = script + [execute_statement]
         
         return script
         

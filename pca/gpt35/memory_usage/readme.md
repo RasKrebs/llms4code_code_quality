@@ -1,2 +1,0 @@
-### Memory Usage Subfolder
-To compute memory usage for code, the library [memory_profiler](https://github.com/pythonprofilers/memory_profiler) is used. This library requires that the `@profile` decorator are implemented into the source code prior execution. To not have this inclusion affect the raw outputted source code from the models, copies of the source code was made, where this module and decorator was included, along with a simple execution of the code. To ensure reproducability of this, a random seed is specified.

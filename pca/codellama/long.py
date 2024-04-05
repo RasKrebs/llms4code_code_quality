@@ -1,76 +1,66 @@
 import numpy as np
+from typing import Union, Optional
 
-class PrincipalComponentAnalysis:
-    """
-    A class for performing Principal Component Analysis (PCA) on a dataset.
-
-    Attributes:
-        n_components: The number of components to keep in the PCA decomposition. If not specified, defaults to all components.
-        decomposition_method: The method used for computing the eigen values and eigen vectors. Can be either 'eigen' or 'svd'. If not specified, defaults to 'eigen'.
-        explained_variance: A list of floats representing the explained variance ratio for each component.
-        cumulative_explained_variance: A list of floats representing the cumulative sum of the explained variance ratios for each component.
-    """
-    def __init__(self, n_components=None, decomposition_method='eigen'):
-        self.n_components = n_components
-        self.decomposition_method = decomposition_method
-        self.explained_variance = []
-        self.cumulative_explained_variance = []
-    
-
-    def fit(self, X):
+class PCA:
+    def __init__(self, n_components: Optional[int] = None):
         """
-        Computes the eigen values and eigen vectors for the inputted data.
+        Initialize the PCA class.
 
-        Parameters:
-            X (numpy array, pandas dataframe or list of lists): The input data to perform PCA on.
+        Args:
+            n_components (Optional[int], optional): Number of principal components to use. Defaults to None, which uses all components.
+        """
+        self.n_components = n_components  # Store number of components
+        self.X_mean = None  # Mean for each feature
+        self.components = None  # Eigenvectors (principal components)
+        self.explained_variance_ratio = None  # Explained variance ratio for each component
+
+    def fit(self, X: Union[list, np.ndarray]):
+        """
+        Fit the data by computing eigenvectors (principal components) and explained variance ratio.
+
+        Args:
+            X (Union[list, np.ndarray]): Input data as a list or numpy array.
+        """
+        if isinstance(X, list):  # If input data is a list, convert it to numpy array
+            X = np.asarray(X)
+
+        self.X_mean = np.mean(X, axis=0)  # Compute mean for each feature along rows (axis=0)
+        X -= self.X_mean  # Mean-center the data by subtracting means from each row
+
+        U, Sigma, Vt = np.linalg.svd(X, full_matrices=False)  # Singular value decomposition using numpy.linalg.svd (SVD)
+        explained_variance = (Sigma ** 2) / (X.shape[0] - 1)  # Compute variance along each component
+        total_variance = np.sum(explained_variance)  # Total variance
+
+        self.explained_variance_ratio = explained_variance / total_variance  # Explained variance ratio for each component
+        self.components = Vt.T[:self.n_components, :]  # Store the top n_components components (principal components)
+
+    def transform(self, X: Union[list, np.ndarray]) -> np.ndarray:
+        """
+        Transform data by projecting it onto principal components and return transformed data.
+
+        Args:
+            X (Union[list, np.ndarray]): Input data as a list or numpy array.
 
         Returns:
-            A numpy array representing the transformed data.
+            np.ndarray: Transformed data after projection on principal components.
         """
-        if self.decomposition_method == 'eigen':
-            eigen_values, eigen_vectors = np.linalg.eig(X.T @ X)
-        elif self.decomposition_method == 'svd':
-            _, _, vt = np.linalg.svd(X.T @ X)
-            eigen_values = np.diag(np.dot(vt, np.diag(eigen_values)))
-            eigen_vectors = vt
-        else:
-            raise ValueError("Invalid decomposition method")
+        if isinstance(X, list):  # If input data is a list, convert it to numpy array
+            X = np.asarray(X)
 
-        if self.n_components is not None and self.n_components < eigen_values.shape[0]:
-            eigen_values = eigen_values[:self.n_components]
-            self.eigenvectors = eigen_vectors[:, :self.n_components]
+        X -= self.X_mean  # Mean-center the data by subtracting means from each row
+        transformed_data = np.dot(X, self.components.T)  # Project onto principal components and return transformed data
+        return transformed_data
 
-        self.explained_variance = np.sum(eigen_values) / len(X)
-        self.cumulative_explained_variance = np.cumsum(eigen_values) / len(X)
-
-        return X @ eigen_vectors
-
-    def transform(self, X, n_components=None):
+    def fit_transform(self, X: Union[list, np.ndarray]) -> np.ndarray:
         """
-        Projects the input data onto the principal components.
+        Fit the data by computing eigenvectors (principal components) and explained variance ratio, then transform the data by projecting it onto principal components and return transformed data.
 
-        Parameters:
-            X (numpy array, pandas dataframe or list of lists): The input data to perform PCA on.
-            n_components (int): The number of components to project onto. If not specified, defaults to all components.
+        Args:
+            X (Union[list, np.ndarray]): Input data as a list or numpy array.
 
         Returns:
-            A numpy array representing the transformed data.
+            np.ndarray: Transformed data after projection on principal components.
         """
-        if n_components is None:
-            n_components = self.n_components
-
-        return X @ self.eigenvectors[:, :n_components]
-
-    def fit_transform(self, X, n_components=None):
-        """
-        Performs PCA on the input data and projects it onto the principal components.
-
-        Parameters:
-            X (numpy array, pandas dataframe or list of lists): The input data to perform PCA on.
-            n_components (int): The number of components to project onto. If not specified, defaults to all components.
-
-        Returns:
-            A numpy array representing the transformed data.
-        """
-        self.fit(X)
-        return self.transform(X, n_components=n_components)
+        self.fit(X)  # Fit the data first by computing eigenvectors (principal components) and explained variance ratio
+        transformed_data = self.transform(X)  # Then transform the data using fitted principal components
+        return transformed_data

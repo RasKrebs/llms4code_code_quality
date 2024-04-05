@@ -1,33 +1,32 @@
 import numpy as np
-from scipy.linalg import svd
 
 class PCA:
-    def __init__(self, n_components=None):
+    def __init__(self, n_components):
         self.n_components = n_components
+        self.components = None
+        self.mean = None
 
-    def fit(self, X, method='svd'):
-        # center the data
-        self.mean_ = np.mean(X, axis=0)
-        X -= self.mean_
+    def fit(self, X):
+        # Mean centering
+        self.mean = np.mean(X, axis=0)
+        X = X - self.mean
 
-        if method == 'eigen':
-            # compute covariance matrix
-            cov_matrix = np.cov(X.T)
+        # Covariance matrix, method 1
+        cov = np.cov(X.T)
 
-            # get eigenvalues and eigenvectors of the covariance matrix
-            eig_vals, eig_vecs = np.linalg.eigh(cov_matrix)
+        # Eigenvalues, eigenvectors
+        eigenvalues, eigenvectors = np.linalg.eig(cov)
 
-            # sort eigenvalues and corresponding eigenvectors in descending order
-            idx = eig_vals.argsort()[::-1]
-            self.eigenvalues_ = eig_vals[idx][:self.n_components]
-            self.components_ = eig_vecs[:, idx][:, :self.n_components]
+        # Sort eigenvalues and eigenvectors
+        eigenvectors = eigenvectors.T
+        idxs = np.argsort(eigenvalues)[::-1]
+        eigenvalues = eigenvalues[idxs]
+        eigenvectors = eigenvectors[idxs]
 
-        elif method == 'svd':
-            # perform SVD on the centered data matrix
-            U, sigma, VT = svd(X)
-            self.eigenvalues_ = (sigma ** 2)[:self.n_components]
-            self.components_ = VT[:self.n_components].T
+        # Store first n_components
+        self.components = eigenvectors[:self.n_components]
 
     def transform(self, X):
-        # project data to lower dimensions
-        return np.dot(X - self.mean_, self.components_.T)
+        # Project data
+        X = X - self.mean
+        return np.dot(X, self.components.T)
