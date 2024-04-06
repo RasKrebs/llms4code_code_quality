@@ -1,0 +1,44 @@
+
+# IMPORTED FROM EVALUATE SCRIPT
+from memory_profiler import profile
+import os
+import psutil
+
+# Get the current process ID
+pid = os.getpid()
+
+# Create a psutil Process object for the current process
+process = psutil.Process(pid)
+
+# Get the number of logical CPUs in the system
+num_cores = psutil.cpu_count(logical=True)
+
+# BELOW IMPORTS ARE FROM THE SOLUTION
+        
+@profile
+def partition(arr, low, high):
+    # Select the last element as pivot
+    pivot = arr[high]
+
+    i = low - 1
+    for j in range(low, high):
+        if arr[j] < pivot:
+            i += 1
+
+            # Swap elements at indices i and j
+            arr[i], arr[j] = arr[j], arr[i]
+
+    # Swap the pivot element with the element at index (i + 1)
+    arr[i+1], arr[high] = arr[high], arr[i+1]
+
+    return i+1
+
+@profile
+def quickSort(arr, low, high):
+    if low < high:
+        # Partition the array and get the pivot index
+        pi = partition(arr, low, high)
+
+        # Recursively sort elements before and after the pivot
+        quickSort(arr, low, pi-1)
+        quickSort(arr, pi+1, high)

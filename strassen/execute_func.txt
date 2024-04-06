@@ -1,0 +1,13 @@
+def execute():
+    # Set a seed for reproducibility
+    np.random.seed(42)
+    
+    # Define the dimensions for the matrices
+    dim = 64 
+    
+    # Generate random matrices A and B of size dim x dim
+    A = np.random.randint(1, 10, size=(dim, dim)) 
+    B = np.random.randint(1, 10, size=(dim, dim))
+    
+    # Perform matrix multiplication using the Strassen algorithm
+    C = strassen(A, B)

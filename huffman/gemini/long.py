@@ -110,10 +110,3 @@ def compress(text: str) -> str:
 
     return compressed
 
-
-# Example usage
-text = "This is an example string to compress."
-compressed_text = compress(text)
-
-print("Original text:", text)
-print("Compressed text:", compressed_text)

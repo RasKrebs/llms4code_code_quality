@@ -41,23 +41,23 @@ class MemoryProfilerScriptGenerator:
     def generate_memory_profiler_script(self, script):
         # Memory profiler import statement
         import_statement = """
-        # IMPORTED FROM EVALUATE SCRIPT
-        from memory_profiler import profile
-        import os
-        import psutil
-        
-        # Get the current process ID
-        pid = os.getpid()
+# IMPORTED FROM EVALUATE SCRIPT
+from memory_profiler import profile
+import os
+import psutil
 
-        # Create a psutil Process object for the current process
-        process = psutil.Process(pid)
+# Get the current process ID
+pid = os.getpid()
 
-        # Get the number of logical CPUs in the system
-        num_cores = psutil.cpu_count(logical=True)
+# Create a psutil Process object for the current process
+process = psutil.Process(pid)
+
+# Get the number of logical CPUs in the system
+num_cores = psutil.cpu_count(logical=True)
+
+# BELOW IMPORTS ARE FROM THE SOLUTION
         
-        # BELOW IMPORTS ARE FROM THE SOLUTION
-        
-        """
+"""
         
         script = [import_statement] + script
         

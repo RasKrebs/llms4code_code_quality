@@ -1,0 +1,10 @@
+import numpy as np
+np.random.seed(42)
+
+n = 100
+graph = np.random.randint(0, 2, (n, n))
+# Ensure at least one outbound link per node by setting at least one 1 per row
+for i in range(n):
+    if not np.any(graph[i]):
+        j = np.random.randint(0, n)
+        graph[i][j] = 1

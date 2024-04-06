@@ -1,0 +1,11 @@
+
+def execute(text):
+    if not isinstance(text, str):
+        raise ValueError("Input data must be a string.")  # Ensure the input is a string
+    
+    root = huffman_code_tree(text)  # Generate the Huffman tree from the input text
+    if root is None:
+        return None  # Return None if the root couldn't be created (e.g., empty string)
+    
+    huffman_codes = generate_huffman_codes(root)  # Generate Huffman codes using the tree
+    return huffman_codes

@@ -30,10 +30,11 @@ def strassen(A: Union[List[List[int]], np.ndarray], B: Union[List[List[int]], np
         return A * B
 
     # Split the matrices into quadrants
-    A11, A12 = np.hsplit(A, 2)
-    A21, A22 = np.vsplit(A12, 2)
-    B11, B12 = np.hsplit(B, 2)
-    B21, B22 = np.vsplit(B12, 2)
+    mid = A.shape[0] // 2
+    A11, A12 = A[:mid, :mid], A[:mid, mid:]
+    A21, A22 = A[mid:, :mid], A[mid:, mid:]
+    B11, B12 = B[:mid, :mid], B[:mid, mid:]
+    B21, B22 = B[mid:, :mid], B[mid:, mid:]
 
     # Compute the 7 products using Strassen's formulas
     M1 = strassen(A11 + A22, B11 + B22)

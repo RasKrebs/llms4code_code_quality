@@ -1,82 +1,135 @@
-import heapq
-import os
-from collections import defaultdict
 from typing import Dict, List, Tuple
+import heapq
 
-class NodeTree(object):
+class Node:
     """
-    A class to create a node in the Huffman tree.
+    A class to represent a node in the Huffman tree.
+
+    Attributes:
+        char (str): The character represented by the node.
+        freq (int): The frequency of the character.
+        left (Node): The left child of the node.
+        right (Node): The right child of the node.
     """
-    def __init__(self, left=None, right=None):
+    def __init__(self, char: str, freq: int, left=None, right=None):
+        self.char = char
+        self.freq = freq
         self.left = left
         self.right = right
 
-    def children(self):
-        return (self.left, self.right)
+    def __lt__(self, other):
+        return self.freq < other.freq
 
-    def nodes(self):
-        return (self.left, self.right)
-
-    def __str__(self):
-        return '%s_%s' % (self.left, self.right)
-
-
-def huffman_code_tree(node, binString=''):
+class HuffmanTree:
     """
-    A function to generate Huffman code for each character.
+    A class to represent a Huffman tree.
+
+    Attributes:
+        root (Node): The root of the Huffman tree.
     """
-    if type(node) is str:
-        return {node: binString}
-    (l, r) = node.children()
-    d = dict()
-    d.update(huffman_code_tree(l, binString + '0'))
-    d.update(huffman_code_tree(r, binString + '1'))
-    return d
+    def __init__(self, text: str):
+        self.root = self.build_tree(text)
 
+    def build_tree(self, text: str) -> Node:
+        """
+        Builds the Huffman tree for the given text.
 
-def tree_generator(data: str) -> Tuple[NodeTree, Dict[str, str]]:
+        Args:
+            text (str): The text to build the tree for.
+
+        Returns:
+            Node: The root of the Huffman tree.
+        """
+        freq_dict = self.get_frequency(text)
+        heap = [Node(char, freq) for char, freq in freq_dict.items()]
+        heapq.heapify(heap)
+
+        while len(heap) > 1:
+            node1 = heapq.heappop(heap)
+            node2 = heapq.heappop(heap)
+            merged = Node(None, node1.freq + node2.freq, node1, node2)
+            heapq.heappush(heap, merged)
+
+        return heap[0]
+
+    def get_frequency(self, text: str) -> Dict[str, int]:
+        """
+        Calculates the frequency of each character in the given text.
+
+        Args:
+            text (str): The text to calculate the frequency for.
+
+        Returns:
+            Dict[str, int]: A dictionary mapping characters to their frequencies.
+        """
+        freq_dict = {}
+        for char in text:
+            if char not in freq_dict:
+                freq_dict[char] = 0
+            freq_dict[char] += 1
+        return freq_dict
+
+class HuffmanCoding:
     """
-    A function to generate the Huffman tree.
+    A class to represent the Huffman coding algorithm.
+
+    Attributes:
+        tree (HuffmanTree): The Huffman tree used for encoding and decoding.
     """
-    frequency = defaultdict(int)
-    for symbol in data:
-        frequency[symbol] += 1
+    def __init__(self, text: str):
+        self.tree = HuffmanTree(text)
 
-    heap = [[weight, [symbol, ""]] for symbol, weight in frequency.items()]
-    heapq.heapify(heap)
-    while len(heap) > 1:
-        lo = heapq.heappop(heap)
-        hi = heapq.heappop(heap)
-        for pair in lo[1:]:
-            pair[1] = '0' + pair[1]
-        for pair in hi[1:]:
-            pair[1] = '1' + pair[1]
-        heapq.heappush(heap, [lo[0] + hi[0]] + lo[1:] + hi[1:])
-    return huffman_code_tree(heap[0][0])
+    def encode(self, text: str) -> str:
+        """
+        Encodes the given text using the Huffman tree.
 
+        Args:
+            text (str): The text to encode.
 
-def huffman_encoding(data: str) -> Tuple[str, Dict[str, str]]:
-    """
-    A function to encode the data using Huffman coding.
-    """
-    huffman_code = tree_generator(data)
-    encoded_output = "".join([huffman_code[char] for char in data])
-    return encoded_output, huffman_code
+        Returns:
+            str: The encoded text.
+        """
+        encoding_dict = self.get_encoding_dict(self.tree.root)
+        return ''.join([encoding_dict[char] for char in text])
 
+    def decode(self, encoded_text: str) -> str:
+        """
+        Decodes the given encoded text using the Huffman tree.
 
-def huffman_decoding(encoded_data: str, huffman_code: Dict[str, str]) -> str:
-    """
-    A function to decode the data using Huffman coding.
-    """
-    huffman_code_reverse = {v: k for k, v in huffman_code.items()}
-    temp = ""
-    decoded_output = ""
+        Args:
+            encoded_text (str): The encoded text to decode.
 
-    for digit in encoded_data:
-        temp += digit
-        if temp in huffman_code_reverse:
-            character = huffman_code_reverse[temp]
-            decoded_output += character
-            temp = ""
+        Returns:
+            str: The decoded text.
+        """
+        decoded_text = []
+        node = self.tree.root
+        for bit in encoded_text:
+            if bit == '0':
+                node = node.left
+            else:
+                node = node.right
+            if node.char is not None:
+                decoded_text.append(node.char)
+                node = self.tree.root
+        return ''.join(decoded_text)
 
-    return decoded_output
+    def get_encoding_dict(self, node: Node, path: str = '') -> Dict[str, str]:
+        """
+        Generates the encoding dictionary for the Huffman tree.
+
+        Args:
+            node (Node): The current node in the tree.
+            path (str): The path taken to reach the current node.
+
+        Returns:
+            Dict[str, str]: A dictionary mapping characters to their Huffman codes.
+        """
+        if node is None:
+            return {}
+        if node.char is not None:
+            return {node.char: path}
+        return {
+            **self.get_encoding_dict(node.left, path + '0'),
+            **self.get_encoding_dict(node.right, path + '1')
+        }

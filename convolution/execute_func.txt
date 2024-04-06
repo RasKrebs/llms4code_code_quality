@@ -1,0 +1,10 @@
+
+# The execute function
+def execute(image, kernel, padding, stride, dilation):
+    # Instantiate the Conv2D object with given padding, stride, and dilation
+    conv2d = Conv2D(padding, stride, dilation)
+    
+    # Run the convolution process
+    convolved_image = conv2d.run(image, kernel)
+    
+    return convolved_image

@@ -1,15 +1,21 @@
+
+# IMPORTED FROM EVALUATE SCRIPT
 from memory_profiler import profile
-        import os
-        import psutil
+import os
+import psutil
+
+# Get the current process ID
+pid = os.getpid()
+
+# Create a psutil Process object for the current process
+process = psutil.Process(pid)
+
+# Get the number of logical CPUs in the system
+num_cores = psutil.cpu_count(logical=True)
+
+# BELOW IMPORTS ARE FROM THE SOLUTION
         
-        # Get the current process ID
-        pid = os.getpid()
-
-        # Create a psutil Process object for the current process
-        process = psutil.Process(pid)
-
-        # Get the number of logical CPUs in the system
-        num_cores = psutil.cpu_count(logical=True)# This solution is built drawing inspiration from the following resources:
+# This solution is built drawing inspiration from the following resources:
 # https://github.com/detkov/Convolution-From-Scratch/blob/main/convolution.py
 from typing import List, Tuple, Union
 import numpy as np
@@ -265,4 +271,3 @@ class Convolution:
 
         # Return the output matrix
         return matrix_out
-<write execution script for convolution>

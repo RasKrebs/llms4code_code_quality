@@ -1,0 +1,23 @@
+
+# Define a simple 5x5 image
+import numpy as np
+
+np.random.seed(0)
+
+# Define the shape of the image
+image_shape = (1980, 1280)
+
+# Create a random image array
+image = np.random.randint(0, 256, size=image_shape)
+
+# Define a simple 3x3 kernel
+kernel = np.array([
+    [-1, 0, 1],
+    [-2, 0, 2],
+    [-1, 0, 1]
+])
+
+# Specify padding, stride, and dilation
+padding = (1, 1)  # Padding of 1 pixel on all sides
+stride = (1, 1)   # Stride of 1, moving the filter one pixel at a time
+dilation = (1, 1) # Dilation of 1, meaning no dilation

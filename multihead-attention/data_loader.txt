@@ -1,0 +1,8 @@
+import numpy as np
+import random
+
+np.random.seed(42)
+seq_length = 100 
+batch_size = 32
+emb_size = 512
+num_heads = 8 

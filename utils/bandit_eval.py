@@ -20,7 +20,7 @@ class Bandit:
         self.df = pd.DataFrame(columns=['metric', 'framework', 'model','value','prompt'])
         
         # File names and substrings to skip while analyzing
-        self.skip = ['archived', 'flake8_summarizer', 'memory_usage', 'utils', 'write_to_file', '_total']
+        self.skip = ['archived', 'flake8_summarizer', 'memory_profiler', 'resource_monitor','resource_version', 'utils', 'write_to_file', '_total']
         
         # Run the report
         self._run()

@@ -43,10 +43,15 @@ def huffman_code_tree(node, bin_string=''):
     Returns:
         dict: A dictionary containing the Huffman Code for each character.
     """
+    # If the node is None, return an empty dictionary
+    if node is None:
+        return {}
+
     # If the node is a string, return the character and its code
     if isinstance(node, str):
         return {node: bin_string}
-    # Otherwise, continue traversing the tree
+
+    # Continue traversing the tree
     (left, right) = node.children()
 
     # Create a dictionary to store the Huffman Code for each character

@@ -1,0 +1,11 @@
+import numpy as np
+np.random.seed(42)
+
+# Load data/parameters section
+mu = 0.1  # Expected annual return
+sigma = 0.2  # Volatility
+time_horizon = 2  # Time horizon in years
+time_steps = 252  # Number of time steps, assuming 252 trading days in a year
+initial_stock_price = 100  # Initial stock price
+num_simulations = 10000  # Number of simulations
+random_seed = 42  # Random seed for reproducibility

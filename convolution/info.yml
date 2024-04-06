@@ -25,10 +25,9 @@ Follow the common conventions for Python code.
 
 medium_prompt: """
 Implement convolution from scratch in python. At initalization it should take
-the padding, stride and dialation and use common default values for these if
-not specified. The run method should take an image and a kernel as inputs, and 
-return the convolved image. Make sure to add useful methods and steps to handle
-common edge cases for the image and kernel sizes. 
+the padding, stride and dialation. The run method should take an image and a 
+kernel as inputs, and  return the convolved image. Make sure to add useful 
+methods and steps to handle common edge cases for the image and kernel sizes. 
 
 Make sure to add all the necessary documentation to the class and methods in the
 form of docstrings and comments. Also make sure to add type hints throughout.

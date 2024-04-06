@@ -32,14 +32,24 @@ class MuteOutput:
     def __exit__(self, exc_type, exc_value, traceback):
         sys.stdout = self._stdout
         
-        
+load_file = lambda file: open(file, "r").read()
+
+resource_monitor_script = load_file('utils/resource_monitor.py')
+
+data_line = "# --- DATA HERE ---"
+main_line = "# --- MAIN CODE ---"
+execute_line = "# --- EXECUTE HERE ---"
+
 # Loop through each algorithm
 for algorithm in algorithms:
-    
+    if algorithm not in ["page_rank"]: #["pca", 'huffman', "monte_carlo_simulation"]:
+        continue
     print(f"Analyzing: {algorithm} ({algorithms.index(algorithm)+1}/{len(algorithms)})...\n")
     
-    # Get the execute statement
-    # execute = config[algorithm]
+    # Extracting resource related scritps
+    data_script = load_file(f'{algorithm}/data_loader.txt')
+    execute_func = load_file(f'{algorithm}/execute_func.txt')
+    execute_statement = load_file(f'{algorithm}/execute_statement.txt')
     
     # Initializing QualityReport() Instance
     report = QualityReport()
@@ -60,23 +70,42 @@ for algorithm in algorithms:
         
         # Initializing LingtingReport() Instance
         print("Running linter... (1/3)")
-        linter = LingtingReport(llm)
+        #linter = LingtingReport(llm)
         
         # Initializing RadonAnalyzer() Instance
         print("Running radon... (2/3)")
-        radon = RadonAnalyzer(llm)
-        
-        # Generate memory profiler results
-        print("Generating memory profiler scripts... (3/3)")
-        profiler = MemoryProfilerScriptGenerator(llm)
-                                                 #execute_statement=execute)
-        
+        #radon = RadonAnalyzer(llm)
         
         # Adding Radon Results to QualityReport
-        report([radon.df, linter.df])
+        #report([radon.df, linter.df])
+        
+        # Generate memory profiler results
+        print("Generating resource monitoring scripts... (3/3)")
+        
+        # Currently commented out to not overwrite the existing resource monitor scripts
+        # os.makedirs(os.path.join(llm, 'resource_monitor'), exist_ok=True)
+        # 
+        # # Loop through each file in the LLM
+        # for file in os.listdir(llm):
+        #     # Skip files that are not python files
+        #     if file.endswith(".py"): 
+        #         # Extract the main code
+        #         main_code = load_file(f'{llm}/{file}')
+        #         
+        #         pre_data = resource_monitor_script.split(data_line)[0] + '\n'
+        #         post_data = resource_monitor_script.split(data_line)[1].split(main_line)[0] + '\n'
+        #         post_execute = resource_monitor_script.split(execute_line)[1] + '\n'
+        #         post_execute = post_execute.replace('    output = execute(x)', execute_statement)
+        #         code = pre_data + data_script + post_data + main_code + execute_func + post_execute
+        #         
+        #         # Write the resource monitor script
+        #         with open(os.path.join(llm, 'resource_monitor', file.replace('.py', '') + '_resource_version.py'), "w") as f:
+        #             f.write(code)
+        #     else: 
+        #         continue
     
     report(bandit.df)
     
     report.save_results(sheet_name=algorithm)
-    
-    
+        
+        

@@ -1,0 +1,11 @@
+
+# Execute function
+def execute(mu: int, sigma: int, time_horizon: int, time_steps: int,
+            initial_stock_price: int, num_simulations: int, random_seed: int) -> np.ndarray:
+    # Initialize the Monte Carlo simulation with the specified parameters
+    mc = MonteCarlo(mu, sigma, time_horizon, time_steps)
+    
+    # Perform the simulation
+    simulated_stock_paths = mc.simulate(initial_stock_price, num_simulations, random_seed)
+    
+    return simulated_stock_paths

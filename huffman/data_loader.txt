@@ -1,0 +1,5 @@
+import requests
+
+book_url = "https://www.gutenberg.org/cache/epub/1513/pg1513-images.html"
+response = requests.get(book_url)
+text = response.text

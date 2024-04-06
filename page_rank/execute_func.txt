@@ -1,0 +1,4 @@
+def execute(adj_matrix):
+    # Execute the page_rank function
+    output = page_rank(adj_matrix)
+    return output

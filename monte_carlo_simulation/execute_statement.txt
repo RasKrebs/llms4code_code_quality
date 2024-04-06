@@ -1,0 +1,3 @@
+
+    # Using the execute function
+    simulated_stock_paths = execute(mu, sigma, time_horizon, time_steps, initial_stock_price, num_simulations, random_seed)

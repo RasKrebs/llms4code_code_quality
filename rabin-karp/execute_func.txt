@@ -1,0 +1,25 @@
+def execute():
+    # Initialize the RabinKarp object
+    rk = RabinKarp()
+
+    # Define a text to search within
+    text = """
+Integration of Artificial Intelligence (AI) into business processes has garnered significant 
+attention, with particularly automated code generation emerging as a promising area. Tools
+like ChatGPT and GitHub Copilot are increasingly being implemented in development pro-
+cesses, hinting at potential gains in developer efficiency and productivity (Poldrack et al.,
+2023). While efficiency and productivity is advantageous, it represents only one facet of
+a successful development process. Despite this, there remains little research exploring the
+value added and effects on the software development process of such tools. Furthermore,
+integrating new technologies in any business process is often accompanied by establishing
+frameworks that outline their effective use. Such methodologies are crucial for effectively
+harnessing the potential of these innovations but have yet to be extensively explored in the
+current context. MOTIVATION Tools like ChatGPT and GitHub Copilot are increas-
+ingly being implemented in development processes, hinting at potential gains in developer
+efficiency and productivity"""
+    
+    # Define a pattern to search for in the text
+    pattern = "establishing frameworks"
+    
+    # Utilize the RabinKarp object's search method to find the pattern in the text
+    position = rk.search(text, pattern)
