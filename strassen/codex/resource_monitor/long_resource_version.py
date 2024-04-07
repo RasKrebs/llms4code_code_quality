@@ -67,6 +67,7 @@ def strassen(A: np.ndarray, B: np.ndarray) -> np.ndarray:
 
     # Combine the quarters to get the final result
     return np.vstack((np.hstack((C11, C12)), np.hstack((C21, C22))))
+
 def execute():
     # Set a seed for reproducibility
     np.random.seed(42)

@@ -35,7 +35,7 @@ class RabinKarpAlgorithm:
         self.prime = prime
         self.text_len = len(text)
         self.pattern_len = len(pattern)
-        self.base_power = pow(base, pattern_len - 1, prime)
+        self.base_power = pow(base, self.pattern_len - 1, prime)
         self.text_hash = self.hash_text(text)
         self.pattern_hash = self.hash_pattern(pattern)
 
@@ -71,8 +71,6 @@ class RabinKarpAlgorithm:
 
         return -1
 def execute():
-    # Initialize the RabinKarp object
-    rk = RabinKarp()
 
     # Define a text to search within
     text = """
@@ -93,8 +91,11 @@ efficiency and productivity"""
     # Define a pattern to search for in the text
     pattern = "establishing frameworks"
     
+    # Initialize the RabinKarp object
+    rk = RabinKarpAlgorithm(text, pattern)
+    
     # Utilize the RabinKarp object's search method to find the pattern in the text
-    position = rk.search(text, pattern)
+    position = rk.search()
 
 
 

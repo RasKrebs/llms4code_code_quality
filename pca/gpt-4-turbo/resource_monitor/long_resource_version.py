@@ -18,7 +18,7 @@ def resource_monitor():
     """
     global max_resources_usage
     process = psutil.Process(os.getpid())
-    
+
     while monitoring:
         cpu_usage = process.cpu_percent(interval=1) / multiprocessing.cpu_count()
         memory_usage = process.memory_info().rss
@@ -64,21 +64,21 @@ class PCA:
         """
         # Ensure X is a numpy array
         X = np.asarray(X, dtype=float)
-        
+
         # Centering the data (subtracting the mean)
         X -= np.mean(X, axis=0)
-        
+
         # Calculating the covariance matrix
         cov_matrix = np.cov(X, rowvar=False)
 
         # Eigen decomposition
         eigen_values, eigen_vectors = np.linalg.eigh(cov_matrix)
-        
+
         # Sorting eigenvalues and eigenvectors in decreasing order
         sorted_idx = np.argsort(eigen_values)[::-1]
         eigen_values = eigen_values[sorted_idx]
         eigen_vectors = eigen_vectors[:, sorted_idx]
-        
+
         # Store the principal components
         if self.n_components is not None and self.n_components < X.shape[1]:
             self.components_ = eigen_vectors[:, :self.n_components]
@@ -105,7 +105,7 @@ class PCA:
         X -= np.mean(X, axis=0)  # Centering is necessary before projection
 
         return np.dot(X, self.components_)
-    
+
     def fit_transform(self, X: np.ndarray) -> np.ndarray:
         """
         Fit the model with X and apply the dimensionality reduction on X.
@@ -121,19 +121,20 @@ class PCA:
 def execute():
     # Set the random seed for reproducibility
     np.random.seed(42)
-    
-    # Generate random data: 100 samples with 5 features
-    X = np.random.rand(100, 5)
-    
+
+    # Generate random data: 10000 samples with 1000 features
+    X = np.random.rand(10000, 1000)
+
+
     # Initialize PCA with 2 components
     pca = PCA(n_components=2)
-    
+
     # Fit PCA on the generated data
     pca.fit(X)
-    
+
     # Transform the data using the fitted PCA
     X_pca = pca.transform(X)
-    
+
 # Execute the function to see the results
 
 

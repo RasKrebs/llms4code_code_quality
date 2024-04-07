@@ -7,6 +7,7 @@ import multiprocessing
 max_resources_usage = {"cpu": 0, "memory": 0}
 
 
+import numpy as np
 np.random.seed(42)
 
 n = 100
@@ -65,7 +66,8 @@ def page_rank(graph: np.ndarray, d: float = 0.85, max_iterations: int = 100, tol
     dangling_nodes = (out_links == 0).flatten()
 
     # Handle dangling nodes and normalize the adjacency matrix
-    M = np.divide(graph, out_links, out=np.zeros_like(graph), where=(out_links != 0))
+
+    M = np.divide(graph, out_links, out=np.zeros_like(graph, dtype=float), where=(out_links != 0))
     M[:, dangling_nodes] = 1 / n
 
     # Apply damping factor and teleportation
@@ -99,7 +101,7 @@ if __name__ == "__main__":
     # Execute the Huffman coding process
 
     # Using the execute function
-    output = execute(adj_matrix)
+    output = execute(graph)
 
 
     # Stop the monitoring

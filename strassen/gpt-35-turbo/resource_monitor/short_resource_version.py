@@ -74,6 +74,7 @@ def add_matrices(A, B):
 
 def subtract_matrices(A, B):
     return [[A[i][j] - B[i][j] for j in range(len(A[0]))] for i in range(len(A))]
+
 def execute():
     # Set a seed for reproducibility
     np.random.seed(42)
@@ -86,7 +87,7 @@ def execute():
     B = np.random.randint(1, 10, size=(dim, dim))
     
     # Perform matrix multiplication using the Strassen algorithm
-    C = strassen(A, B)
+    C = strassen_matrix_mult(A, B)
 
 
 

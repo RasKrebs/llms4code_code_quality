@@ -103,7 +103,7 @@ efficiency and productivity"""
     pattern = "establishing frameworks"
     
     # Utilize the RabinKarp object's search method to find the pattern in the text
-    position = rk.search(text, pattern)
+    position = rk.search_pattern(text, pattern)
 
 
 

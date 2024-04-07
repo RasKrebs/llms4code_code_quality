@@ -4,20 +4,18 @@ from utils.results import QualityReport
 from utils.bandit_eval import Bandit
 from utils.memory_profiler_generator import MemoryProfilerScriptGenerator
 import glob
+import pandas as pd
 import os
 import sys
-import yaml
+import numpy as np
+import subprocess
+
 
 # List of folders to be excluded from analysis
 folders_not_to_visit = ["archived", "utils", "app_domain_template", "data"]
 
 # List of algorithms
 algorithms = [x for x in glob.glob("*") if x not in folders_not_to_visit and os.path.isdir(x)]
-
-# Load yaml with execute statement
-with open(".evaluate_config.yml", 'r') as stream:
-    config = yaml.safe_load(stream)
-
 
 class MuteOutput:
     def __init__(self, mute=True):
@@ -31,33 +29,18 @@ class MuteOutput:
 
     def __exit__(self, exc_type, exc_value, traceback):
         sys.stdout = self._stdout
-        
-load_file = lambda file: open(file, "r").read()
-
-resource_monitor_script = load_file('utils/resource_monitor.py')
-
-data_line = "# --- DATA HERE ---"
-main_line = "# --- MAIN CODE ---"
-execute_line = "# --- EXECUTE HERE ---"
 
 # Loop through each algorithm
 for algorithm in algorithms:
-    if algorithm not in ["page_rank"]: #["pca", 'huffman', "monte_carlo_simulation"]:
-        continue
     print(f"Analyzing: {algorithm} ({algorithms.index(algorithm)+1}/{len(algorithms)})...\n")
-    
-    # Extracting resource related scritps
-    data_script = load_file(f'{algorithm}/data_loader.txt')
-    execute_func = load_file(f'{algorithm}/execute_func.txt')
-    execute_statement = load_file(f'{algorithm}/execute_statement.txt')
-    
+
     # Initializing QualityReport() Instance
     report = QualityReport()
-    
+
     # Initializing Bandit() Instance
     print("Running bandit on all files...")
     bandit = Bandit(algorithm)
-    
+
     # Filtering the list of llms to only include valid folders
     algorithm_path = glob.glob(f"{algorithm}/*")
     algorithm_folder = [os.path.isdir(folder) for folder in algorithm_path]
@@ -67,45 +50,62 @@ for algorithm in algorithms:
     for llm in filtered_list:
         model = llm.split("/")[-2]
         print(f"Analyzing: {model} ({filtered_list.index(llm)+1}/{len(filtered_list)})...\n")
-        
+
         # Initializing LingtingReport() Instance
         print("Running linter... (1/3)")
-        #linter = LingtingReport(llm)
-        
+        linter = LingtingReport(llm)
+
         # Initializing RadonAnalyzer() Instance
         print("Running radon... (2/3)")
-        #radon = RadonAnalyzer(llm)
-        
+        radon = RadonAnalyzer(llm)
+
         # Adding Radon Results to QualityReport
-        #report([radon.df, linter.df])
-        
+        report([radon.df, linter.df])
+
         # Generate memory profiler results
-        print("Generating resource monitoring scripts... (3/3)")
-        
-        # Currently commented out to not overwrite the existing resource monitor scripts
-        # os.makedirs(os.path.join(llm, 'resource_monitor'), exist_ok=True)
-        # 
-        # # Loop through each file in the LLM
-        # for file in os.listdir(llm):
-        #     # Skip files that are not python files
-        #     if file.endswith(".py"): 
-        #         # Extract the main code
-        #         main_code = load_file(f'{llm}/{file}')
-        #         
-        #         pre_data = resource_monitor_script.split(data_line)[0] + '\n'
-        #         post_data = resource_monitor_script.split(data_line)[1].split(main_line)[0] + '\n'
-        #         post_execute = resource_monitor_script.split(execute_line)[1] + '\n'
-        #         post_execute = post_execute.replace('    output = execute(x)', execute_statement)
-        #         code = pre_data + data_script + post_data + main_code + execute_func + post_execute
-        #         
-        #         # Write the resource monitor script
-        #         with open(os.path.join(llm, 'resource_monitor', file.replace('.py', '') + '_resource_version.py'), "w") as f:
-        #             f.write(code)
-        #     else: 
-        #         continue
-    
+        print("Performing Resource Monitoring... (3/3)")
+
+        # Loop through each script in the resource_monitor folder
+        for script in os.listdir(os.path.join(llm, 'resource_monitor')):
+            # Skip files that are not python files
+            if not script.endswith(".py"):
+                continue
+
+            print(f"Executing {script}...")
+
+            # Skip potential files ending with .py
+            cpu_usage_list = []
+            memory_usage_list = []
+
+
+            # Loop over the resource monitor 5 times to get the maximum values
+            for _ in range(5):
+                # Get the path of the script
+                script_path = os.path.join(llm, 'resource_monitor', script)
+
+                # Modified line to capture output and errors
+                result = subprocess.run(['python3', script_path], check=True, timeout=20, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+                # Decode and process the output
+                output = result.stdout.decode('utf-8')
+                results = output.split('\n')
+                results = [float(x) for x in results if x != '']
+
+                # Append the results to the output list
+                cpu_usage_list.append(results[0])
+                memory_usage_list.append(results[1])
+
+            max_cpu = max(cpu_usage_list)
+            max_memory = max(memory_usage_list)
+
+            # Append the results to the output list
+            results = [[algorithm, 'cpu', 'psutil', llm.split('/')[-2], max_cpu, script.split('_')[0]] for x, y in zip([max_cpu, max_memory], ['cpu','memory_usage'])]
+
+            resource_frame = pd.DataFrame(result, columns=['metric', 'framework', 'model','value','prompt'])
+
+            # Add the results to the report
+            report(resource_frame)
+
     report(bandit.df)
-    
+
     report.save_results(sheet_name=algorithm)
-        
-        

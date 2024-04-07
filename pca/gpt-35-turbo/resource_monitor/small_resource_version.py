@@ -18,7 +18,7 @@ def resource_monitor():
     """
     global max_resources_usage
     process = psutil.Process(os.getpid())
-    
+
     while monitoring:
         cpu_usage = process.cpu_percent(interval=1) / multiprocessing.cpu_count()
         memory_usage = process.memory_info().rss
@@ -38,16 +38,16 @@ class CustomPCA:
     def fit(self, X):
         # Compute the mean of the data
         self.mean = np.mean(X, axis=0)
-        
+
         # Center the data
         X_centered = X - self.mean
-        
+
         # Compute the covariance matrix
         cov_matrix = np.cov(X_centered, rowvar=False)
-        
+
         # Perform eigenvalue decomposition
         eigenvalues, eigenvectors = np.linalg.eig(cov_matrix)
-        
+
         # Sort the eigenvectors based on eigenvalues
         idx = np.argsort(eigenvalues)[::-1]
         self.components = eigenvectors[:, idx][:, :self.n_components]
@@ -55,7 +55,7 @@ class CustomPCA:
     def transform(self, X):
         # Center the data
         X_centered = X - self.mean
-        
+
         # Project the data onto the principal components
         return np.dot(X_centered, self.components)
 
@@ -65,19 +65,20 @@ class CustomPCA:
 def execute():
     # Set the random seed for reproducibility
     np.random.seed(42)
-    
-    # Generate random data: 100 samples with 5 features
-    X = np.random.rand(100, 5)
-    
-    # Initialize PCA with 2 components  
+
+    # Generate random data: 10000 samples with 1000 features
+    X = np.random.rand(10000, 1000)
+
+
+    # Initialize PCA with 2 components
     pca = CustomPCA(n_components=2)
-    
+
     # Fit PCA on the generated data
     pca.fit(X)
-    
+
     # Transform the data using the fitted PCA
     X_pca = pca.transform(X)
-    
+
 # Execute the function to see the results
 
 

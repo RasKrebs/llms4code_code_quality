@@ -126,17 +126,7 @@ class RabinKarp:
         h = (h + q) % q  # handle negative hash value
 
     return result
-
-# Example usage
-text = "GEEKSFORGEEKS"
-pattern = "FOR"
-rk = RabinKarp()
-matches = rk.search(text, pattern)
-
-if matches:
-  print("Pattern found at indices:", matches)
-else:
-  print("Pattern not found in the text")
+  
 def execute():
     # Initialize the RabinKarp object
     rk = RabinKarp()

@@ -18,7 +18,7 @@ def resource_monitor():
     """
     global max_resources_usage
     process = psutil.Process(os.getpid())
-    
+
     while monitoring:
         cpu_usage = process.cpu_percent(interval=1) / multiprocessing.cpu_count()
         memory_usage = process.memory_info().rss
@@ -41,7 +41,7 @@ class PCA:
         components_ (np.ndarray): The eigenvectors representing the principal components.
         explained_variance_ratio_ (np.ndarray): The explained variance ratio for each component.
         explained_variance_ (np.ndarray): The explained variance for each component.
-        cumulative_explained_variance_ratio_ (np.ndarray): 
+        cumulative_explained_variance_ratio_ (np.ndarray):
             The cumulative explained variance ratio for each component.
     """
 
@@ -50,7 +50,7 @@ class PCA:
         Initializes the PCA object.
 
         Args:
-            n_components (int, optional): The number of principal components to use. 
+            n_components (int, optional): The number of principal components to use.
                 Defaults to all components.
         """
         self.n_components = n_components
@@ -156,19 +156,20 @@ class PCA:
 def execute():
     # Set the random seed for reproducibility
     np.random.seed(42)
-    
-    # Generate random data: 100 samples with 5 features
-    X = np.random.rand(100, 5)
-    
+
+    # Generate random data: 10000 samples with 1000 features
+    X = np.random.rand(10000, 1000)
+
+
     # Initialize PCA with 2 components
     pca = PCA(n_components=2)
-    
+
     # Fit PCA on the generated data
     pca.fit(X)
-    
+
     # Transform the data using the fitted PCA
     X_pca = pca.transform(X)
-    
+
 # Execute the function to see the results
 
 

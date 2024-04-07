@@ -2,6 +2,7 @@ import psutil
 import os
 import threading
 import multiprocessing
+from typing import List
 
 # Define a global variable to store the maximum resources usage
 max_resources_usage = {"cpu": 0, "memory": 0}
@@ -88,8 +89,6 @@ class RabinKarp:
         new_hash = (old_hash * self.base + ord(new_char)) % self.prime
         return new_hash
 def execute():
-    # Initialize the RabinKarp object
-    rk = RabinKarp()
 
     # Define a text to search within
     text = """
@@ -110,8 +109,11 @@ efficiency and productivity"""
     # Define a pattern to search for in the text
     pattern = "establishing frameworks"
     
+    # Initialize the RabinKarp object
+    rk = RabinKarp(text, pattern)
+    
     # Utilize the RabinKarp object's search method to find the pattern in the text
-    position = rk.search(text, pattern)
+    position = rk.search()
 
 
 

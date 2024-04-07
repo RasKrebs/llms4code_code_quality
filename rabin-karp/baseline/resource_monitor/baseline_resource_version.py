@@ -63,8 +63,9 @@ def rabin_karp(pattern:str,
 
     # Calculate the hash value of pattern and first window of text
     for i in range(pattern_len):
-        pattern_hash = (base * pattern_hash + ord(pattern[i])) % prime
-        text_hash = (base * text_hash + ord(text[i])) % prime
+        if i < text_len:
+            pattern_hash = (base * pattern_hash + ord(pattern[i])) % prime
+            text_hash = (base * text_hash + ord(text[i])) % prime
 
     # Slide the pattern over text one by one
     for i in range(text_len-pattern_len+1):
@@ -90,8 +91,6 @@ def rabin_karp(pattern:str,
             if text_hash < 0:
                 text_hash = text_hash + prime
 def execute():
-    # Initialize the RabinKarp object
-    rk = RabinKarp()
 
     # Define a text to search within
     text = """
@@ -112,8 +111,8 @@ efficiency and productivity"""
     # Define a pattern to search for in the text
     pattern = "establishing frameworks"
     
-    # Utilize the RabinKarp object's search method to find the pattern in the text
-    position = rk.search(text, pattern)
+    # Initialize the RabinKarp object
+    rk = rabin_karp(text, pattern)
 
 
 

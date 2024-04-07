@@ -104,8 +104,6 @@ class RabinKarp:
         """
         return self._search()
 def execute():
-    # Initialize the RabinKarp object
-    rk = RabinKarp()
 
     # Define a text to search within
     text = """
@@ -126,8 +124,11 @@ efficiency and productivity"""
     # Define a pattern to search for in the text
     pattern = "establishing frameworks"
     
+    # Initialize the RabinKarp object
+    rk = RabinKarp(text, pattern)
+
     # Utilize the RabinKarp object's search method to find the pattern in the text
-    position = rk.search(text, pattern)
+    position = rk.search()
 
 
 

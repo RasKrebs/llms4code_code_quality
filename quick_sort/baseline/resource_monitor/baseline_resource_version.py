@@ -67,6 +67,7 @@ def quick_sort(array, low, high):
 
         # recursive call on the right of pivot
         quick_sort(array, pivot + 1, high)
+
 def execute():
     # Set the random seed for reproducibility
     random.seed(42)
@@ -75,7 +76,7 @@ def execute():
     arr = [random.randint(0, 100) for _ in range(10000)]
     
     # Attempt to sort the array using our quick_sort function
-    sorted_arr = quick_sort(arr)
+    sorted_arr = quick_sort(arr, 0, len(arr)-1)
 
 
 

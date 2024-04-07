@@ -7,6 +7,7 @@ import multiprocessing
 max_resources_usage = {"cpu": 0, "memory": 0}
 
 
+import numpy as np
 np.random.seed(42)
 
 n = 100
@@ -71,9 +72,6 @@ def page_rank(adj_matrix: np.ndarray, damping: float = 0.85,
             return new_rank
 
         rank = new_rank
-
-        # Maximum iterations reached without convergence
-        print("Warning: PageRank did not converge within tolerance.")
     return rank
 def execute(adj_matrix):
     # Execute the page_rank function
@@ -92,7 +90,7 @@ if __name__ == "__main__":
     # Execute the Huffman coding process
 
     # Using the execute function
-    output = execute(adj_matrix)
+    output = execute(graph)
 
 
     # Stop the monitoring

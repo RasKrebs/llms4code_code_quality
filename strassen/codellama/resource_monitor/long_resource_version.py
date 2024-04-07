@@ -133,13 +133,8 @@ def subtract_matrices(A, B):
     """
     return [[a - b for a, b in zip(A_row, B_row)] for A_row, B_row in zip(A, B)]
 
-def main():
-    # Example usage
-    A = [[1, 2], [3, 4]]
-    B = [[5, 6], [7, 8]]
 
-    result = strassen_multiply(A, B)
-    print(result)
+
 def execute():
     # Set a seed for reproducibility
     np.random.seed(42)
@@ -152,7 +147,7 @@ def execute():
     B = np.random.randint(1, 10, size=(dim, dim))
     
     # Perform matrix multiplication using the Strassen algorithm
-    C = strassen(A, B)
+    C = strassen_multiply(A, B)
 
 
 

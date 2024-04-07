@@ -114,10 +114,6 @@ def rabin_karp_search(text, pattern, base=101, prime=257):
     # If no match is found, return -1
     return -1
 def execute():
-    # Initialize the RabinKarp object
-    rk = RabinKarp()
-
-    # Define a text to search within
     text = """
 Integration of Artificial Intelligence (AI) into business processes has garnered significant 
 attention, with particularly automated code generation emerging as a promising area. Tools
@@ -136,8 +132,8 @@ efficiency and productivity"""
     # Define a pattern to search for in the text
     pattern = "establishing frameworks"
     
-    # Utilize the RabinKarp object's search method to find the pattern in the text
-    position = rk.search(text, pattern)
+    # Initialize the RabinKarp object
+    rk = rabin_karp_search(text, pattern)
 
 
 

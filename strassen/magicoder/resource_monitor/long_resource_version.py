@@ -89,7 +89,7 @@ def execute():
     B = np.random.randint(1, 10, size=(dim, dim))
     
     # Perform matrix multiplication using the Strassen algorithm
-    C = strassen(A, B)
+    C = strassens_matrix_mul(A, B)
 
 
 

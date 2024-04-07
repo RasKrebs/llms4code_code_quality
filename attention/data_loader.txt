@@ -1,0 +1,6 @@
+
+import numpy as np
+
+np.random.seed(42)
+seq_length = 100 
+emb_size = 512

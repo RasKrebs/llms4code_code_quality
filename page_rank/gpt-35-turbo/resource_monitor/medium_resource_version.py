@@ -7,6 +7,7 @@ import multiprocessing
 max_resources_usage = {"cpu": 0, "memory": 0}
 
 
+import numpy as np
 np.random.seed(42)
 
 n = 100
@@ -98,7 +99,7 @@ if __name__ == "__main__":
     # Execute the Huffman coding process
 
     # Using the execute function
-    output = execute(adj_matrix)
+    output = execute(graph)
 
 
     # Stop the monitoring

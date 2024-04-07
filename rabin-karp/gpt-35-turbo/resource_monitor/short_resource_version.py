@@ -57,9 +57,6 @@ def rabin_karp(text, pattern):
 
     return -1
 def execute():
-    # Initialize the RabinKarp object
-    rk = RabinKarp()
-
     # Define a text to search within
     text = """
 Integration of Artificial Intelligence (AI) into business processes has garnered significant 
@@ -80,7 +77,8 @@ efficiency and productivity"""
     pattern = "establishing frameworks"
     
     # Utilize the RabinKarp object's search method to find the pattern in the text
-    position = rk.search(text, pattern)
+    position = rabin_karp(text, pattern)
+
 
 
 

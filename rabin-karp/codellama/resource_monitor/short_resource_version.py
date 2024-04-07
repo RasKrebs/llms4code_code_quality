@@ -44,11 +44,11 @@ def rabin_karp(text: str, pattern: str, hashing=DEFAULT_HASHING) -> Union[int, N
     """
 
     # Calculate hash value of pattern (assuming ASCII encoding)
-    pattern_hash = hashing(pattern.encode("ascii"))
+    pattern_hash = hashlib.sha256(pattern.encode("ascii")).hexdigest()
 
     # Calculate hash values for all substrings in text (assuming ASCII encoding)
     text_substrings = [text[i : i + len(pattern)] for i in range(len(text))]
-    text_hashes = [hashing(s.encode("ascii")) for s in text_substrings]
+    text_hashes = [hashlib.sha256(s.encode("ascii")).hexdigest() for s in text_substrings]
 
     # Loop through all substrings in text
     for i, substring_hash in enumerate(text_hashes):
@@ -57,11 +57,8 @@ def rabin_karp(text: str, pattern: str, hashing=DEFAULT_HASHING) -> Union[int, N
             return i  # Return index of first occurrence of the pattern in the text
     # If no match has been found after searching all substrings, return None
     return None
-def execute():
-    # Initialize the RabinKarp object
-    rk = RabinKarp()
 
-    # Define a text to search within
+def execute():
     text = """
 Integration of Artificial Intelligence (AI) into business processes has garnered significant 
 attention, with particularly automated code generation emerging as a promising area. Tools
@@ -80,9 +77,8 @@ efficiency and productivity"""
     # Define a pattern to search for in the text
     pattern = "establishing frameworks"
     
-    # Utilize the RabinKarp object's search method to find the pattern in the text
-    position = rk.search(text, pattern)
-
+    # Initialize the RabinKarp object
+    rk = rabin_karp(text, pattern)
 
 
 if __name__ == "__main__":

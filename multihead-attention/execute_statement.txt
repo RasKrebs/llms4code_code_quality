@@ -1,3 +1,0 @@
-
-    # Using the execute function
-    output = execute(batch_size, emb_size, num_heads, seq_length)

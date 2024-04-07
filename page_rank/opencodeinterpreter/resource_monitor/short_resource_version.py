@@ -7,6 +7,7 @@ import multiprocessing
 max_resources_usage = {"cpu": 0, "memory": 0}
 
 
+import numpy as np
 np.random.seed(42)
 
 n = 100
@@ -40,6 +41,7 @@ def page_rank(adjacency_matrix, d=0.85, max_iterations=100):
     n = adjacency_matrix.shape[0]
 
     # Ensure matrix is stochastic
+    adjacency_matrix = adjacency_matrix.astype(float)
     row_sums = adjacency_matrix.sum(axis=1)
     adjacency_matrix /= row_sums[:, np.newaxis]
 
@@ -73,7 +75,7 @@ if __name__ == "__main__":
     # Execute the Huffman coding process
 
     # Using the execute function
-    output = execute(adj_matrix)
+    output = execute(graph)
 
 
     # Stop the monitoring

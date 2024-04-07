@@ -52,7 +52,7 @@ def strassen(a: List[List], b: List[List]) -> List[List]:
 
     # Partitioning the matrices into quadrants for Strassen multiplication
     a11, a12, a21, a22 = a[:mid, :mid], a[:mid, mid:], a[mid:, :mid], a[mid:, mid:]
-    b11, b12, b21, b2 = b[:mid, :mid], b[:mid, mid:], b[mid:, :mid], b[mid:, mid:]
+    b11, b12, b21, b22 = b[:mid, :mid], b[:mid, mid:], b[mid:, :mid], b[mid:, mid:]
 
     # Recursive calls for Strassen multiplication
     p1 = strassen(a11, sub_matrix(b12, b22))

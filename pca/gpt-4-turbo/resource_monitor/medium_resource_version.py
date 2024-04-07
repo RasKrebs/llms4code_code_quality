@@ -18,7 +18,7 @@ def resource_monitor():
     """
     global max_resources_usage
     process = psutil.Process(os.getpid())
-    
+
     while monitoring:
         cpu_usage = process.cpu_percent(interval=1) / multiprocessing.cpu_count()
         memory_usage = process.memory_info().rss
@@ -38,7 +38,7 @@ class PrincipalComponentAnalysis:
     where the greatest variances by some scalar projection of the data come to lie on the
     first coordinate (called the first principal component), the second greatest variance on
     the second coordinate, and so on.
-    
+
     Parameters
     ----------
     n_components : int, optional
@@ -66,7 +66,7 @@ class PrincipalComponentAnalysis:
         self.n_components = n_components
         self.components_ = None
         self.explained_variance_ = None
-    
+
     def fit(self, X: np.ndarray) -> None:
         """
         Fit the model with X by computing the mean and principal components.
@@ -80,18 +80,18 @@ class PrincipalComponentAnalysis:
         """
         # Centering the data (subtract the mean)
         X_centered = X - np.mean(X, axis=0)
-        
+
         # Computing the covariance matrix
         covariance_matrix = np.cov(X_centered, rowvar=False)
-        
+
         # Computing eigenvalues and eigenvectors of the covariance matrix
         eigen_values, eigen_vectors = np.linalg.eigh(covariance_matrix)
-        
+
         # Sorting the eigenvectors by decreasing eigenvalues
         idx = np.argsort(eigen_values)[::-1]
         eigen_values_sorted = eigen_values[idx]
         eigen_vectors_sorted = eigen_vectors[:, idx]
-        
+
         # Selecting n_components if set, otherwise use all
         if self.n_components is not None:
             self.components_ = eigen_vectors_sorted[:, :self.n_components].T
@@ -99,7 +99,7 @@ class PrincipalComponentAnalysis:
         else:
             self.components_ = eigen_vectors_sorted.T
             self.explained_variance_ = eigen_values_sorted
-    
+
     def transform(self, X: np.ndarray) -> np.ndarray:
         """
         Project the data onto the principal axes previously extracted from a training set.
@@ -116,14 +116,14 @@ class PrincipalComponentAnalysis:
         """
         if self.components_ is None:
             raise ValueError("Model has not been fitted yet. Call 'fit' with appropriate data.")
-        
+
         # Centering the data
         X_centered = X - np.mean(X, axis=0)
-        
+
         # Projecting data
         X_projected = np.dot(X_centered, self.components_.T)
         return X_projected
-    
+
     def fit_transform(self, X: np.ndarray) -> np.ndarray:
         """
         Fit the model with X and apply the dimensionality reduction on X.
@@ -143,19 +143,20 @@ class PrincipalComponentAnalysis:
 def execute():
     # Set the random seed for reproducibility
     np.random.seed(42)
-    
-    # Generate random data: 100 samples with 5 features
-    X = np.random.rand(100, 5)
-    
+
+    # Generate random data: 10000 samples with 1000 features
+    X = np.random.rand(10000, 1000)
+
+
     # Initialize PCA with 2 components
     pca = PrincipalComponentAnalysis(n_components=2)
-    
+
     # Fit PCA on the generated data
     pca.fit(X)
-    
+
     # Transform the data using the fitted PCA
     X_pca = pca.transform(X)
-    
+
 # Execute the function to see the results
 
 

@@ -119,6 +119,7 @@ def strassen_matrix_multiplication(A, B):
     # Remove padding from the result if any
     result = result_padded[:A.shape[0], :B.shape[1]]
     return result
+
 def execute():
     # Set a seed for reproducibility
     np.random.seed(42)
@@ -131,7 +132,7 @@ def execute():
     B = np.random.randint(1, 10, size=(dim, dim))
     
     # Perform matrix multiplication using the Strassen algorithm
-    C = strassen(A, B)
+    C = strassen_matrix_multiplication(A, B)
 
 
 

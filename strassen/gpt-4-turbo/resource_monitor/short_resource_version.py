@@ -68,6 +68,7 @@ def strassen(x, y):
     top = np.hstack((upper_left, upper_right))
     bottom = np.hstack((lower_left, lower_right))
     return np.vstack((top, bottom))
+
 def execute():
     # Set a seed for reproducibility
     np.random.seed(42)

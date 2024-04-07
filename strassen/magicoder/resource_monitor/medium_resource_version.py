@@ -66,10 +66,13 @@ class MatrixMultiplier(object):
         Returns:
             result (np.ndarray): Result of the multiplication of two matrices.
         """
+        a = np.array(a)  # convert a into a numpy array
+        b = np.array(b)  # convert b into a numpy array
+
         if len(a) == 1 and len(b) == 1:   # base case for small matrices where standard multiplication is used
             return a*b
 
-        mid = len(a[0]) // 2
+        mid = len(a) // 2
 
         # split into quadrants
         a11, a12, a21, a22 = a[:mid, :mid], a[:mid, mid:], a[mid:, :mid], a[mid:, mid:]
@@ -113,11 +116,13 @@ def execute():
     dim = 64 
     
     # Generate random matrices A and B of size dim x dim
-    A = np.random.randint(1, 10, size=(dim, dim)) 
-    B = np.random.randint(1, 10, size=(dim, dim))
+    A = np.random.randint(1, 10, size=(dim, dim)).tolist() 
+    B = np.random.randint(1, 10, size=(dim, dim)).tolist()
     
     # Perform matrix multiplication using the Strassen algorithm
-    C = strassen(A, B)
+    C = MatrixMultiplier(A, B).strassen(A, B)
+    
+    return C
 
 
 

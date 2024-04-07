@@ -19,7 +19,7 @@ def resource_monitor():
     """
     global max_resources_usage
     process = psutil.Process(os.getpid())
-    
+
     while monitoring:
         cpu_usage = process.cpu_percent(interval=1) / multiprocessing.cpu_count()
         memory_usage = process.memory_info().rss
@@ -53,15 +53,13 @@ def quick_sort(arr):
     # Recursively sort the sub-lists and concatenate the results
     return quick_sort(less) + [pivot] + quick_sort(greater)
 
-# Test the function
-print(quick_sort([3, 6, 8, 10, 1, 2, 1]))
 def execute():
     # Set the random seed for reproducibility
     random.seed(42)
-    
+
     # Generate random data: a list of 10 integers
     arr = [random.randint(0, 100) for _ in range(10000)]
-    
+
     # Attempt to sort the array using our quick_sort function
     sorted_arr = quick_sort(arr)
 

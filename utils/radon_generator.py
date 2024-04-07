@@ -16,25 +16,25 @@ class RadonAnalyzer:
         """
         # Path to model
         self.model_path = model_path
-        
+
         # Make sure path ends with '/'
         if self.model_path[-1] != '/':
             self.model_path += '/'
-        
+
         # Get all files in file_path that end with .py
         self.py_files = glob.glob(self.model_path + "*.py")
-        
+
         # Raise error if no files found
         if len(self.py_files) == 0:
             raise FileNotFoundError(f"No .py files found in {self.model_path}")
-        
+
         # Dataframe for results
         self.df = pd.DataFrame(columns=["metric", "framework", "model", "value"])
-        
+
         # Analyze the code
         self.analyze()
 
-    
+
     def _load_code(self, filepath: str) -> str:
         """Load code from file
 
@@ -47,7 +47,7 @@ class RadonAnalyzer:
         # Open file and read code
         with open(filepath, 'r') as file:
             return file.read()
-        
+
     def _generate_frame(self, value, model, prompt, metric):
         # Return the frame
         out = pd.DataFrame({
@@ -56,18 +56,23 @@ class RadonAnalyzer:
             "model": model,
             "prompt": prompt,
             "value": value}, index=[0])
-        
+
         return out
-    
+
     def analyze(self):
         print("Running radon")
         for file in self.py_files:
+
+            # Skip resource_version.py
+            if file.endswith("resource_version.py"):
+                continue
+
             # Load code
             code = self._load_code(file)
             model = file.split("/")[-2]
             prompt = file.split("/")[-1].replace(".py", "")
             print(f"Analyzinng: {model} ({prompt})")
-            
+
             # Analyze code
             print(f"Analyzing {model} ({prompt})")
             try:
@@ -81,11 +86,11 @@ class RadonAnalyzer:
             except Exception as e:
                 print(f"Error in {model} ({prompt}) with error:\n{e}")
                 continue
-            
+
             # Generate frames
             self.df = pd.concat([self.df, raw_results, cc, hal, mi])
-            
-    
+
+
     def raw_analyze(self, code: str, model: str, prompt: str) -> pd.DataFrame:
         """Analyze code
 
@@ -97,7 +102,7 @@ class RadonAnalyzer:
         """
         # Analyze code
         raw_results = raw.analyze(code)
-        
+
         # Raw Extractor
         loc = self._generate_frame(value=raw_results.loc,
                              model=model,
@@ -108,7 +113,7 @@ class RadonAnalyzer:
                              model=model,
                              prompt=prompt,
                              metric="sloc")
-        
+
         comments = self._generate_frame(value=raw_results.comments,
                              model=model,
                              prompt=prompt,
@@ -129,7 +134,7 @@ class RadonAnalyzer:
                              model=model,
                              prompt=prompt,
                              metric="comments_to_loc")
-        
+
         # Catching division by zero
         com_to_sloc = self._generate_frame(value=raw_results.comments / raw_results.sloc,
                              model=model,
@@ -140,11 +145,11 @@ class RadonAnalyzer:
                              model=model,
                              prompt=prompt,
                              metric="multi_and_comments_to_loc")
-        
+
 
         return pd.concat([loc, sloc, comments, multi, blank, com_to_loc, com_to_sloc, mcom_to_loc])
 
-    
+
     def cc_analyze(self, code: str, prompt:str, model:str) -> pd.DataFrame:
         """Analyze code complexity
 
@@ -156,7 +161,7 @@ class RadonAnalyzer:
         """
         # Analyze code
         raw = cc_visit(code)
-        
+
         # Complexity Extractor
         is_class: bool = any([x.letter == "C" for x in raw])
 
@@ -168,7 +173,7 @@ class RadonAnalyzer:
                     max_complexity = max([y.complexity for y in x.methods])
                 else:
                     continue
-        
+
         # Otherwise loop through functions and take max complexity
         else:
             number_of_methods = len(raw)
@@ -180,16 +185,16 @@ class RadonAnalyzer:
             prompt=prompt,
             metric="max_complexity"
         )
-        
+
         methods = self._generate_frame(
             value=number_of_methods,
             model=model,
             prompt=prompt,
             metric="number_of_methods"
         )
-        
+
         return pd.concat([mc, methods])
-    
+
     def halstead(self, code: str, model:str, prompt: str):
         """Analyze code complexity
 
@@ -200,13 +205,13 @@ class RadonAnalyzer:
             dict: Dictionary with complexity data
         """
         halstead = h_visit(code)
-        
+
         # Data Extractor
         length = self._generate_frame(value=halstead.total.length,
                              model=model,
                              prompt=prompt,
                              metric="halstead_length")
-        
+
         volume = self._generate_frame(value=halstead.total.volume,
                              model=model,
                              prompt=prompt,
@@ -231,5 +236,5 @@ class RadonAnalyzer:
                              model=model,
                              prompt=prompt,
                              metric="halstead_bugs")
-        
+
         return pd.concat([length, volume, difficulty, effort, time, bugs])

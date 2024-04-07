@@ -7,6 +7,7 @@ import multiprocessing
 max_resources_usage = {"cpu": 0, "memory": 0}
 
 
+import numpy as np
 np.random.seed(42)
 
 n = 100
@@ -69,7 +70,7 @@ def compute_PageRank(graph: np.ndarray, d: float = 0.85, max_iterations: int = 1
     # Iterate until convergence or max iterations
     for _ in range(max_iterations):
         # Compute new ranks
-        new_ranks = (1 - d) / N + d * (graph @ (ranks / graph.sum(axis=1, where=~dangling_nodes)) + ranks[dangling_nodes].sum())
+        new_ranks = (1 - d) / N + d * (graph @ (ranks / graph.sum(axis=1, where=~dangling_nodes.astype(bool))) + ranks[dangling_nodes].sum())
 
         # Compute change in ranks
         delta = np.abs(new_ranks - ranks).sum()
@@ -84,7 +85,7 @@ def compute_PageRank(graph: np.ndarray, d: float = 0.85, max_iterations: int = 1
     return ranks
 def execute(adj_matrix):
     # Execute the page_rank function
-    output = page_rank(adj_matrix)
+    output = compute_PageRank(adj_matrix)
     return output
 
 

@@ -18,7 +18,7 @@ def resource_monitor():
     """
     global max_resources_usage
     process = psutil.Process(os.getpid())
-    
+
     while monitoring:
         cpu_usage = process.cpu_percent(interval=1) / multiprocessing.cpu_count()
         memory_usage = process.memory_info().rss
@@ -54,13 +54,14 @@ def pca(X, num_components):
 def execute():
     # Set the random seed for reproducibility
     np.random.seed(42)
-    
-    # Generate random data: 100 samples with 5 features
-    X = np.random.rand(100, 5)
-    
+
+    # Generate random data: 10000 samples with 1000 features
+    X = np.random.rand(10000, 1000)
+
+
     # Initialize PCA with 2 components
     pc = pca(X, num_components=2)
-    
+
 # Execute the function to see the results
 
 

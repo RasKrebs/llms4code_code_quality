@@ -1,0 +1,12 @@
+
+def execute(emb_size, num_heads):
+    # Load the data
+    data = np.random.rand(emb_size, seq_length)
+    
+    # Initialize the MultiHeadAttention model
+    model = Attention(emb_size)
+    
+    # Perform the forward pass and return the output
+    output = model.forward(data)
+    return output
+

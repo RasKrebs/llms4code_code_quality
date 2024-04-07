@@ -103,6 +103,7 @@ def strassen_multiply(matrix1: np.ndarray, matrix2: np.ndarray) -> np.ndarray:
   c22 = p1 - p2 + p3 + p6
 
   return np.block([[c11, c12], [c21, c22]])
+
 def execute():
     # Set a seed for reproducibility
     np.random.seed(42)
@@ -115,7 +116,7 @@ def execute():
     B = np.random.randint(1, 10, size=(dim, dim))
     
     # Perform matrix multiplication using the Strassen algorithm
-    C = strassen(A, B)
+    C = strassen_multiply(A, B)
 
 
 

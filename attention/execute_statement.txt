@@ -1,0 +1,3 @@
+
+    # Using the execute function
+    output = execute(emb_size,seq_length)

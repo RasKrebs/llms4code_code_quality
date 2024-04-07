@@ -7,6 +7,7 @@ import multiprocessing
 max_resources_usage = {"cpu": 0, "memory": 0}
 
 
+import numpy as np
 np.random.seed(42)
 
 n = 100
@@ -87,7 +88,7 @@ def pagerank(A: np.ndarray, d: float = 0.85, max_iter: int = 100, tol: float = 1
     return PR
 def execute(adj_matrix):
     # Execute the page_rank function
-    output = page_rank(adj_matrix)
+    output = pagerank(adj_matrix)
     return output
 
 
@@ -102,7 +103,7 @@ if __name__ == "__main__":
     # Execute the Huffman coding process
 
     # Using the execute function
-    output = execute(adj_matrix)
+    output = execute(graph)
 
 
     # Stop the monitoring

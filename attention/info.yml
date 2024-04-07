@@ -1,0 +1,46 @@
+# Application domain info yaml, to store data used during data collection
+
+# General Application Domain Info
+domain: Machine Learning
+application: Language Modelling
+algorithm: Attention
+
+# Prompts
+long_prompt: """
+Implement an Attention class in Python for transformer models completely from 
+scratch, meaning popular deep learning frameworks can't be used. It should 
+initialize with emb_size. Initialize weights all the weights with random values. 
+Include a scaled_dot_product_attention method to perform the attention operation, 
+performing scaled_dot_product, which also applied softmax for stability. The 
+forward method projects input tensors into query, key, and value tensors using 
+the initialized weights and performs attention. Implement the necessary steps to 
+handle edge cases and common errors. 
+
+It should only take (embedding_size, sequence_length) as input, exclude batch size.
+
+The implementation should be well-documented with comments and docstrings, and should 
+follow common conventions for Python code. Type hints should be used throughout.
+
+"""
+medium_prompt: """
+Implement Attention from scratch in python, which performs the the attention mechanism. 
+Torch or any other popular deep learning frameworks can't be used. At initializion, emb_size
+are passed. Generate random weight matrices for query, key, value, and output projections. 
+Include a method for scaled dot-product attention that can handle numeric overflow. Also 
+include a method for softmax. A forward method should perform the computation and return 
+the output. 
+
+It should only take (embedding_size, sequence_length) as input, exclude batch size.
+
+The implementation should be well-documented with comments and docstrings, and should 
+follow common conventions for Python code. Type hints should be used throughout.
+"""
+
+small_prompt: """
+Produce an implementation fo attention in Python from scratch. Torch or any other popular 
+deep learning frameworks can't be used. It should take embedding size at initialization, 
+and produce random weight. A forward method should do the computations.
+
+It should only take (embedding_size, sequence_length) as input, exclude batch size.
+
+"""

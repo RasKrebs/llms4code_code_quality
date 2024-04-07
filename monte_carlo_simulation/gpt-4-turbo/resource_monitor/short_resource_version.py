@@ -67,7 +67,7 @@ def simulate_stock_prices(S0, expected_return, volatility, T, dt, num_simulation
     
     # Combine drift and diffusion terms
     stock_price_changes = drift + diffusion
-    
+    'hyg'
     # Create an array to hold the simulated stock prices
     stock_prices = np.zeros_like(stock_price_changes)
     stock_prices[0] = S0

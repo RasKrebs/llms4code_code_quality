@@ -65,7 +65,6 @@ def quick_sort(arr: List[int]) -> List[int]:
 try:
     arr = [3, 2, 1, 5, 4]
     sorted_arr = quick_sort(arr)
-    print(sorted_arr)
 except ValueError as e:
     print(e)
 def execute():

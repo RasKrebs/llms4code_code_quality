@@ -55,7 +55,7 @@ def execute():
     arr = [random.randint(0, 100) for _ in range(10000)]
     
     # Attempt to sort the array using our quick_sort function
-    sorted_arr = quick_sort(arr)
+    sorted_arr = quicksort(arr)
 
 
 

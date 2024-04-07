@@ -18,7 +18,7 @@ def resource_monitor():
     """
     global max_resources_usage
     process = psutil.Process(os.getpid())
-    
+
     while monitoring:
         cpu_usage = process.cpu_percent(interval=1) / multiprocessing.cpu_count()
         memory_usage = process.memory_info().rss
@@ -40,10 +40,10 @@ class PrincipalComponentAnalysis:
     Methods:
     fit(X: np.ndarray) -> None:
         Fit the PCA model with the data.
-    
+
     transform(X: np.ndarray) -> np.ndarray:
         Apply dimensionality reduction to X.
-    
+
     fit_transform(X: np.ndarray) -> np.ndarray:
         Fit the PCA model with the data and apply dimensionality reduction to X.
     """
@@ -54,7 +54,7 @@ class PrincipalComponentAnalysis:
     def fit(self, X: np.ndarray) -> None:
         """
         Fit the PCA model with the data.
-        
+
         Parameters:
         X : np.ndarray
             Input data of shape (n_samples, n_features).
@@ -62,13 +62,13 @@ class PrincipalComponentAnalysis:
         # Centering the data
         mean = np.mean(X, axis=0)
         X_centered = X - mean
-        
+
         # Calculate the covariance matrix
         cov_matrix = np.cov(X_centered, rowvar=False)
-        
+
         # Perform eigen decomposition
         eigenvalues, eigenvectors = np.linalg.eig(cov_matrix)
-        
+
         # Sort eigenvalues and eigenvectors in decreasing order
         idx = np.argsort(eigenvalues)[::-1]
         eigenvalues = eigenvalues[idx]
@@ -83,11 +83,11 @@ class PrincipalComponentAnalysis:
     def transform(self, X: np.ndarray) -> np.ndarray:
         """
         Apply dimensionality reduction to X.
-        
+
         Parameters:
         X : np.ndarray
             Input data of shape (n_samples, n_features).
-        
+
         Returns:
         np.ndarray
             Transformed data of shape (n_samples, n_components).
@@ -98,11 +98,11 @@ class PrincipalComponentAnalysis:
     def fit_transform(self, X: np.ndarray) -> np.ndarray:
         """
         Fit the PCA model with the data and apply dimensionality reduction to X.
-        
+
         Parameters:
         X : np.ndarray
             Input data of shape (n_samples, n_features).
-        
+
         Returns:
         np.ndarray
             Transformed data of shape (n_samples, n_components).
@@ -113,19 +113,20 @@ class PrincipalComponentAnalysis:
 def execute():
     # Set the random seed for reproducibility
     np.random.seed(42)
-    
-    # Generate random data: 100 samples with 5 features
-    X = np.random.rand(100, 5)
-    
+
+    # Generate random data: 10000 samples with 1000 features
+    X = np.random.rand(10000, 1000)
+
+
     # Initialize PCA with 2 components
     pca = PrincipalComponentAnalysis(n_components=2)
-    
+
     # Fit PCA on the generated data
     pca.fit(X)
-    
+
     # Transform the data using the fitted PCA
     X_pca = pca.transform(X)
-    
+
 # Execute the function to see the results
 
 

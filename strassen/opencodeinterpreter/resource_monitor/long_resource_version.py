@@ -30,62 +30,63 @@ def resource_monitor():
 from typing import List
 import numpy as np
 
-def strassen_matrix_mult(matrix1: List[List[int]], matrix2: List[List[int]]) -> List[List[int]]:
-    # Get the size of the square matrices
-    size = len(matrix1)
+import numpy as np
 
-    # Base case for small matrices
-    if size == 1:
-        return [[matrix1[0][0] * matrix2[0][0]]]
+def strassen_matrix_mult(A, B):
+    """
+    Implements the Strassen algorithm for matrix multiplication in Python from scratch.
 
-    # Divide each matrix into four sub-matrices
-    mid_size = size // 2
-    a, b, c, d = split_matrix(matrix1)
-    e, f, g, h = split_matrix(matrix2)
+    Parameters:
+    A (numpy array or list of lists) : Input matrix 1
+    B (numpy array or list of lists) : Input matrix 2
 
-    # Recursive calls for the seven products
-    p1 = strassen_matrix_mult(a, subtract_matrices(f, h))
-    p2 = strassen_matrix_mult(add_matrices(a, b), h)
-    p3 = strassen_matrix_mult(add_matrices(c, d), e)
-    p4 = strassen_matrix_mult(d, subtract_matrices(g, e))
-    p5 = strassen_matrix_mult(add_matrices(a, d), add_matrices(e, h))
-    p6 = strassen_matrix_mult(subtract_matrices(b, d), add_matrices(g, h))
-    p7 = strassen_matrix_mult(subtract_matrices(a, c), add_matrices(e, f))
+    Returns:
+    numpy array : The product of the two input matrices
+    """
 
-    # Compute the four sums (or differences) required for the next step
-    c1 = add_matrices(subtract_matrices(add_matrices(p5, p4), p2), p6)
-    c2 = add_matrices(p1, p2)
-    c3 = add_matrices(p3, p4)
-    c4 = subtract_matrices(subtract_matrices(add_matrices(p5, p1), p3), p7)
+    # Convert inputs to numpy arrays if necessary
+    A = np.array(A, dtype=float)
+    B = np.array(B, dtype=float)
 
-    # Combine the four products into a single resulting matrix
-    top_left = c1[:mid_size] + c2[:mid_size]
-    top_right = c1[mid_size:] + c2[mid_size:]
-    bottom_left = c3[:mid_size] + c4[:mid_size]
-    bottom_right = c3[mid_size:] + c4[mid_size:]
+    # Check that the matrices are square and have dimensions equal to powers of 2
+    dim_A, dim_B = A.shape[0], B.shape[1]
+    if not (np.isclose(dim_A, 2**int(np.log2(dim_A))) and np.isclose(dim_B, 2**int(np.log2(dim_B)))):
+        raise ValueError("Matrices must have dimensions that are powers of 2")
 
-    # Return the resulting matrix
-    return top_left + bottom_left, top_right + bottom_right
+    # Base case for small matrices (less than or equal to 1x1)
+    if A.shape[0] == 1 and B.shape[1] == 1:
+        return A * B
 
+    # Split the input matrices into four quadrants
+    mid_A = A.shape[0] // 2
+    mid_B = B.shape[1] // 2
 
-def split_matrix(matrix: List[List[int]]) -> List[List[List[int]]]:
-    """Split a square matrix into four equal parts."""
+    A11, A12 = A[:mid_A, :mid_A], A[:mid_A, mid_A:]
+    A21, A22 = A[mid_A:, :mid_A], A[mid_A:, mid_A:]
 
-    mid = len(matrix) // 2
-    return [row[:mid] for row in matrix[:mid]], \
-           [row[mid:] for row in matrix[:mid]], \
-           [row[:mid] for row in matrix[mid:]], \
-           [row[mid:] for row in matrix[mid:]]
+    B11, B12 = B[:mid_B, :mid_B], B[:mid_B, mid_B:]
+    B21, B22 = B[mid_B:, :mid_B], B[mid_B:, mid_B:]
 
-def add_matrices(matrix1: List[List[int]], matrix2: List[List[int]]) -> List[List[int]]:
-    """Add two matrices together."""
+    # Perform the recursive multiplication steps using Strassen's formulae
+    P1 = strassen_matrix_mult(A11 + A22, B11 + B22)
+    P2 = strassen_matrix_mult(A21 + A22, B11)
+    P3 = strassen_matrix_mult(A11, B12 - B22)
+    P4 = strassen_matrix_mult(A22, B21 - B11)
+    P5 = strassen_matrix_mult(A11 + A12, B22)
+    P6 = strassen_matrix_mult(A21 - A11, B11 + B12)
+    P7 = strassen_matrix_mult(A12 - A22, B21 + B22)
 
-    return [[matrix1[i][j] + matrix2[i][j] for j in range(len(matrix1))] for i in range(len(matrix1))]
+    # Combine the results into the final product matrix
+    C11 = P1 + P4 - P5 + P7
+    C12 = P3 + P5
+    C21 = P2 + P4
+    C22 = P1 + P3 - P2 + P6
 
-def subtract_matrices(matrix1: List[List[int]], matrix2: List[List[int]]) -> List[List[int]]:
-    """Subtract the second matrix from the first matrix."""
+    # Combine the four quadrants into a single matrix and return
+    C = np.vstack((np.hstack((C11, C12)), np.hstack((C21, C22))))
 
-    return [[matrix1[i][j] - matrix2[i][j] for j in range(len(matrix1))] for i in range(len(matrix1))]
+    return C
+
 def execute():
     # Set a seed for reproducibility
     np.random.seed(42)
@@ -98,7 +99,9 @@ def execute():
     B = np.random.randint(1, 10, size=(dim, dim))
     
     # Perform matrix multiplication using the Strassen algorithm
-    C = strassen(A, B)
+    C = strassen_matrix_mult(A, B)
+    
+    return C
 
 
 

@@ -48,7 +48,7 @@ def validate_matrix(matrix) -> bool:
 
     # Check if the matrix is square and has dimensions that are powers of 2
     dim = matrix.shape[0] if isinstance(matrix, np.ndarray) else len(matrix)
-    if dim != matrix.shape[1] or not is_power_of_2(dim):
+    if dim != len(matrix) or not is_power_of_2(dim):
         raise ValueError("Matrix dimensions must be equal and powers of 2.")
 
     return True
@@ -115,6 +115,7 @@ def strassen_algorithm(A, B):
     top = [c11[i] + c12[i] for i in range(len(c11))]
     bottom = [c21[i] + c22[i] for i in range(len(c21))]
     return top + bottom
+
 def execute():
     # Set a seed for reproducibility
     np.random.seed(42)
@@ -123,11 +124,11 @@ def execute():
     dim = 64 
     
     # Generate random matrices A and B of size dim x dim
-    A = np.random.randint(1, 10, size=(dim, dim)) 
-    B = np.random.randint(1, 10, size=(dim, dim))
+    A = np.random.randint(1, 10, size=(dim, dim)).tolist()
+    B = np.random.randint(1, 10, size=(dim, dim)).tolist()
     
     # Perform matrix multiplication using the Strassen algorithm
-    C = strassen(A, B)
+    C = strassen_algorithm(A, B)
 
 
 
