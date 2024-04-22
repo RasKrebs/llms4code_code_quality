@@ -27,7 +27,7 @@ def resource_monitor():
     """
     global max_resources_usage
     process = psutil.Process(os.getpid())
-    
+
     while monitoring:
         cpu_usage = process.cpu_percent(interval=1) / multiprocessing.cpu_count()
         memory_usage = process.memory_info().rss
@@ -57,7 +57,7 @@ def execute(mu: int, sigma: int, time_horizon: int, time_steps: int,
             initial_stock_price: int, num_simulations: int, random_seed: int) -> np.ndarray:
     # Initialize the Monte Carlo simulation with the specified parameters
     mc = monte_carlo_simulation(initial_stock_price, mu, sigma, time_horizon, time_steps, num_simulations)
-    
+
     return mc
 
 

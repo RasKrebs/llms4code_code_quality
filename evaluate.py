@@ -77,31 +77,31 @@ for algorithm in algorithms:
             cpu_usage_list = []
             memory_usage_list = []
 
-
             # Loop over the resource monitor 5 times to get the maximum values
             for _ in range(5):
                 # Get the path of the script
                 script_path = os.path.join(llm, 'resource_monitor', script)
 
                 # Modified line to capture output and errors
-                result = subprocess.run(['python3', script_path], check=True, timeout=20, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                result = subprocess.run(['python3', script_path], check=True, timeout=60, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
                 # Decode and process the output
                 output = result.stdout.decode('utf-8')
-                results = output.split('\n')
-                results = [float(x) for x in results if x != '']
+                output_list = output.split('\n')
+                output_list = [float(x) for x in output_list if x != '']
 
                 # Append the results to the output list
-                cpu_usage_list.append(results[0])
-                memory_usage_list.append(results[1])
+                cpu_usage_list.append(output_list[0])
+                memory_usage_list.append(output_list[1])
 
             max_cpu = max(cpu_usage_list)
             max_memory = max(memory_usage_list)
 
             # Append the results to the output list
-            results = [[algorithm, 'cpu', 'psutil', llm.split('/')[-2], max_cpu, script.split('_')[0]] for x, y in zip([max_cpu, max_memory], ['cpu','memory_usage'])]
 
-            resource_frame = pd.DataFrame(result, columns=['metric', 'framework', 'model','value','prompt'])
+            data_frame_results = [[y, 'psutil', llm.split('/')[-2], x, script.split('_')[0]] for x, y in zip([max_cpu, max_memory], ['cpu','memory_usage'])]
+
+            resource_frame = pd.DataFrame(data_frame_results, columns=['metric', 'framework', 'model','value','prompt'])
 
             # Add the results to the report
             report(resource_frame)

@@ -12,7 +12,7 @@ class PCA:
         components_ (np.ndarray): The eigenvectors representing the principal components.
         explained_variance_ratio_ (np.ndarray): The explained variance ratio for each component.
         explained_variance_ (np.ndarray): The explained variance for each component.
-        cumulative_explained_variance_ratio_ (np.ndarray): 
+        cumulative_explained_variance_ratio_ (np.ndarray):
             The cumulative explained variance ratio for each component.
     """
 
@@ -21,7 +21,7 @@ class PCA:
         Initializes the PCA object.
 
         Args:
-            n_components (int, optional): The number of principal components to use. 
+            n_components (int, optional): The number of principal components to use.
                 Defaults to all components.
         """
         self.n_components = n_components
@@ -106,20 +106,20 @@ class PCA:
         return X_centered @ self.components_
 
     def fit_transform(self, X: np.ndarray) -> np.ndarray:
-            """
-            Fits the PCA model to the data X and then transforms it.
+        """
+        Fits the PCA model to the data X and then transforms it.
 
-            This method is equivalent to calling fit(X) followed by transform(X).
+        This method is equivalent to calling fit(X) followed by transform(X).
 
-            Args:
-                X (np.ndarray): The input data of shape (n_samples, n_features).
+        Args:
+            X (np.ndarray): The input data of shape (n_samples, n_features).
 
-            Returns:
-                np.ndarray: The transformed data of shape (n_samples, n_components).
-            """
+        Returns:
+            np.ndarray: The transformed data of shape (n_samples, n_components).
+        """
 
-            # Call fit method to compute necessary components
-            self.fit(X)
+        # Call fit method to compute necessary components
+        self.fit(X)
 
-            # Call transform method to project data onto components
-            return self.transform(X)
+        # Call transform method to project data onto components
+        return self.transform(X)
