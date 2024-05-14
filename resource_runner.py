@@ -4,7 +4,11 @@ import glob
 
 folders_not_to_visit = ["archived", "utils", "app_domain_template", "data"]
 algorithms = [x for x in glob.glob("*") if x not in folders_not_to_visit and os.path.isdir(x)]
-
+load_file = lambda file: open(file, "r").read()
+resource_monitor_script = load_file('utils/resource_monitor.py')
+data_line = "# --- DATA HERE ---"
+main_line = "# --- MAIN CODE ---"
+execute_line = "# --- EXECUTE HERE ---"
 
 # Loop through each algorithm
 for algorithm in algorithms:
@@ -50,11 +54,3 @@ for algorithm in algorithms:
         #     else:
         #         continue
 
-
-#load_file = lambda file: open(file, "r").read()
-#
-#resource_monitor_script = load_file('utils/resource_monitor.py')
-#
-#data_line = "# --- DATA HERE ---"
-#main_line = "# --- MAIN CODE ---"
-#execute_line = "# --- EXECUTE HERE ---"
